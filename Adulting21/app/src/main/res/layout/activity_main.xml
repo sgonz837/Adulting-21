@@ -6,18 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="194dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944"
-        app:srcCompat="@drawable/drunk_guy" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="82dp"
@@ -94,6 +82,7 @@
         app:srcCompat="@drawable/whiskey" />
 
     <SearchView
+        android:id="@+id/searchView"
         android:layout_width="269dp"
         android:layout_height="38dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +100,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.188"
-        app:srcCompat="@drawable/rum" />
+        app:srcCompat="@drawable/vrwquq1478252802" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -124,6 +113,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011"
         app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Popular Drinks"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
