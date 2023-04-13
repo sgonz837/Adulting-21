@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+/*
             GlobalScope.launch(Dispatchers.IO) {
                 val apiService = CocktailApiService()
                 val response = apiService.getCocktails()
@@ -25,5 +25,7 @@ class MainActivity : AppCompatActivity() {
                     textView.text = response
                 }
             }
+
+ */
         }
     }
