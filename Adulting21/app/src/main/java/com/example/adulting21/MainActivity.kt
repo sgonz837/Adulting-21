@@ -13,7 +13,11 @@ import android.widget.TextView
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+<<<<<<< Updated upstream
         setContentView(R.layout.activity_main)
+=======
+        setContentView(R.layout.drink_info)
+>>>>>>> Stashed changes
 /*
             GlobalScope.launch(Dispatchers.IO) {
                 val apiService = CocktailApiService()
