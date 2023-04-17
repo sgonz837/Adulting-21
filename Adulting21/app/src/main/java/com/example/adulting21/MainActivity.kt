@@ -9,8 +9,6 @@ import android.view.View
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.bumptech.glide.Glide
-import com.example.adulting21.databinding.ActivityMainBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -24,17 +22,36 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.homepage)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        replaceFragment(HomeFragment())
+        val fragment = supportFragmentManager.findFragmentByTag("HomeFragment")
+
+        if (fragment == null) {
+            // The fragment hasn't been added yet, so add it now
+            supportFragmentManager.beginTransaction()
+                .add(R.id.frame_layout, HomeFragment(), "HomeFragment")
+                .commit()
+        }
+
+
+        //bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        //val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNavigationView.setOnItemSelectedListener { item ->
+
+        //bottomNavigationView.setOnItemSelectedListener { item ->
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
+                //R.id.home -> replaceFragment(HomeFragment())
+                //R.id.home -> setContentView(R.layout.homepage)
                 R.id.profile -> replaceFragment(ProfileFragment())
                 R.id.settings -> replaceFragment(SettingsFragment())
             }
             true
         }
+
+
         //setContentView(R.layout.activity_main)
 
         //val button3 = findViewById<Button>(R.id.button3)
@@ -51,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         //val button3: Button = findViewById(R.id.button3)
        //setContentView(R.layout.drink_info)
 
-
+/*
 
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
@@ -104,9 +121,11 @@ class MainActivity : AppCompatActivity() {
 
  */
 
-            }
+
+ */
+           // }
         }
-    }
+    //}
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()

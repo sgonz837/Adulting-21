@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-
     <TextView
-        android:id="@+id/text_view"
+        android:id="@+id/text_view1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -20,12 +20,9 @@
         app:layout_constraintVertical_bias="0.606" />
 
     <LinearLayout
-        android:id="@+id/layout"
-
+        android:id="@+id/layout1"
         android:layout_width="219dp"
         android:layout_height="176dp"
-
-
         android:layout_marginStart="96dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="96dp"
@@ -39,8 +36,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-
-
 
 </FrameLayout>

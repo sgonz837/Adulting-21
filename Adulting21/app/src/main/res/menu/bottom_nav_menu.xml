@@ -16,5 +16,6 @@
     <item
         android:id="@+id/search"
 
+        android:icon="@drawable/baseline_search_24"
         android:title="Search" />
 </menu>
