@@ -31,10 +31,12 @@ import kotlinx.coroutines.withContext
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+
 class HomeFragment : Fragment() {
 
     override fun onCreateView(
-        //honestly i dont know what this does but its required for a fragment file
+        //honestly i don't know what this does but its required for a fragment file
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,7 +58,13 @@ class HomeFragment : Fragment() {
                 layout.removeAllViews()
 
                 val layout1 = view.findViewById<LinearLayout>(R.id.layout2)
-                layout.removeAllViews() //have to test this out
+                layout1.removeAllViews() //have to test this out
+
+                val layout2 = view.findViewById<LinearLayout>(R.id.layout3)
+                layout2.removeAllViews() //have to test this out
+
+                val layout3 = view.findViewById<LinearLayout>(R.id.layout4)
+                layout3.removeAllViews() //have to test this out
 
                 val textView = view.findViewById<TextView>(R.id.text_view1)
                 textView.text = response.joinToString(separator = "\n") {
@@ -64,7 +72,7 @@ class HomeFragment : Fragment() {
                 }
 
                 /*
-                    Just like in any other programming lanuage, we can use a for loop, but we use
+                    Just like in any other programming language, we can use a for loop, but we use
                     this for for loop through the data class that we set up in the cocktailapi file
 
                     index is the same as i in a for loop but we can use to to get what we need from
@@ -90,9 +98,29 @@ class HomeFragment : Fragment() {
                         layout1.addView(imageView1)
                         return@forEachIndexed
                     }
+
+                    if (index == 2) {
+                        val imageView2 = ImageView(requireContext())
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(imageView2)
+                        layout2.addView(imageView2)
+                        return@forEachIndexed
+                    }
+                    if (index == 3) {
+                        val imageView3 = ImageView(requireContext())
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(imageView3)
+                        layout3.addView(imageView3)
+                        return@forEachIndexed
+                    }
                 }
             }
         }
         return view
     }
 }
+

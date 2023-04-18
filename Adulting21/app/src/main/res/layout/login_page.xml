@@ -64,7 +64,7 @@
         android:id="@+id/textView18"
         android:layout_width="195dp"
         android:layout_height="83dp"
-        android:text="<<SLOGAN HERE>>"
+        android:text="SLOGAN HERE"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -78,7 +78,7 @@
         android:id="@+id/button7"
         android:layout_width="160dp"
         android:layout_height="61dp"
-        android:text="Login"
+        android:text="login"
         android:textSize="20sp"
         tools:layout_editor_absoluteX="125dp"
         tools:layout_editor_absoluteY="528dp" />

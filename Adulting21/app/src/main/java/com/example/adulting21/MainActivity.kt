@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.homepage)
-        replaceFragment(HomeFragment())
+        //replaceFragment(HomeFragment())
         val fragment = supportFragmentManager.findFragmentByTag("HomeFragment")
 
         if (fragment == null) {
@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
                 R.id.settings -> replaceFragment(SettingsFragment())
+                R.id.search -> replaceFragment(SearchFragment())
             }
             true
         }
