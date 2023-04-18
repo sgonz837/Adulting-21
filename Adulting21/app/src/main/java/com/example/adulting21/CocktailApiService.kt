@@ -24,7 +24,6 @@ class CocktailApiService {
         client.newCall(request).execute().use { response ->
 
             val responseBody = response.body
-            // return response.body().toString()
             return responseBody?.string() ?: "Error"
         }
     }
@@ -38,7 +37,6 @@ class CocktailApiService {
 
         client.newCall(request).execute().use { response ->
             val responseBody = response.body
-            // return response.body().toString()
             return responseBody?.string() ?: "Error"
         }
     }
@@ -78,6 +76,10 @@ class CocktailApiService {
     }
 }
 
+/*
+    This data class will hold all the information that we get from the api functions and be able
+    to use it on other files
+ */
 data class Cocktail(
     val id: String,
     val name: String,

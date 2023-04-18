@@ -1,3 +1,11 @@
+/*
+    Author: Sayan Gonzalez
+    Description: Code for homepage aspects will go here.
+                 What i done is set up a layout format to hold whatever api calls that we will do
+                 then display it using the layout page
+ */
+
+
 package com.example.adulting21
 
 import android.os.Bundle
@@ -16,10 +24,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -29,12 +34,19 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
 
     override fun onCreateView(
+        //honestly i dont know what this does but its required for a fragment file
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //attaches to the appropriate layout file
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        /*
+            GlobalScope.launch is the only place where we can api calls so any any all api function
+            calls will happen here, if you were to implement something bad then the whole app will
+            crash since its such a delicate built in function
+         */
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
             val response = apiService.popularCocktails()
@@ -42,18 +54,40 @@ class HomeFragment : Fragment() {
 
                 val layout = view.findViewById<LinearLayout>(R.id.layout1)
                 layout.removeAllViews()
-                //layout.orientation = LinearLayout.HORIZONTAL
+
+                val layout1 = view.findViewById<LinearLayout>(R.id.layout2)
+                layout.removeAllViews() //have to test this out
 
                 val textView = view.findViewById<TextView>(R.id.text_view1)
                 textView.text = response.joinToString(separator = "\n") {
                     "${it.name}"
                 }
 
+                /*
+                    Just like in any other programming lanuage, we can use a for loop, but we use
+                    this for for loop through the data class that we set up in the cocktailapi file
+
+                    index is the same as i in a for loop but we can use to to get what we need from
+                    the data class file
+                 */
                 response.forEachIndexed { index, cocktail ->
                     if (index == 0) {
                         val imageView = ImageView(requireContext())
-                        Picasso.get().load(cocktail.imageUrl).into(imageView)
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(imageView)
                         layout.addView(imageView)
+                        return@forEachIndexed
+                    }
+
+                    if (index == 1) {
+                        val imageView1 = ImageView(requireContext())
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(imageView1)
+                        layout1.addView(imageView1)
                         return@forEachIndexed
                     }
                 }
