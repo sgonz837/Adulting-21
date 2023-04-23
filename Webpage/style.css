@@ -1,0 +1,11 @@
+/* CSS is not working for paragraph tags and I don't know why, 
+so my current solution is to center it in the PHP file. */
+
+p {
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+	font-family: Arial, sans-serif
+}
