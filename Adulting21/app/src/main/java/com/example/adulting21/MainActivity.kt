@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.homepage)
+        //setContentView(R.layout.login_register)
+
+
         //replaceFragment(HomeFragment())
         val fragment = supportFragmentManager.findFragmentByTag("HomeFragment")
 
@@ -46,6 +49,8 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+
     }
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager

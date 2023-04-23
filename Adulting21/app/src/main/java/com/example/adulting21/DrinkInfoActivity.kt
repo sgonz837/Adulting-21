@@ -12,6 +12,7 @@ class DrinkInfoActivity : AppCompatActivity() {
         setContentView(R.layout.drink_info)
     }
 
+
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this, MainActivity::class.java)

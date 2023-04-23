@@ -201,7 +201,7 @@ class HomeFragment : Fragment() {
 
         val button = view.findViewById<LinearLayout>(R.id.layout2)
         button.setOnClickListener {
-            val intent = Intent(activity, DrinkInfoActivity::class.java)
+            val intent = Intent(activity, DrinkInfoFragment::class.java)
             startActivity(intent)
         }
 
