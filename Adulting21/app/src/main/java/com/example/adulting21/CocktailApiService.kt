@@ -44,7 +44,8 @@ class CocktailApiService {
     // name typo but I cant be bothered to rewrite the name,
     fun popularCocktails(): List<Cocktail> {
         //this takes the url and requests the database for a json file
-        val url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+        //val url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php"
         val request = Request.Builder()
             .url(url)
             .build()

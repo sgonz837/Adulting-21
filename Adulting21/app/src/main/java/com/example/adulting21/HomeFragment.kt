@@ -8,6 +8,7 @@
 
 package com.example.adulting21
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -43,7 +44,6 @@ class HomeFragment : Fragment() {
     ): View? {
         //attaches to the appropriate layout file
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
         /*
             GlobalScope.launch is the only place where we can api calls so any any all api function
             calls will happen here, if you were to implement something bad then the whole app will
@@ -58,13 +58,31 @@ class HomeFragment : Fragment() {
                 layout.removeAllViews()
 
                 val layout1 = view.findViewById<LinearLayout>(R.id.layout2)
-                layout1.removeAllViews() //have to test this out
+                layout1.removeAllViews()
 
                 val layout2 = view.findViewById<LinearLayout>(R.id.layout3)
-                layout2.removeAllViews() //have to test this out
+                layout2.removeAllViews()
 
                 val layout3 = view.findViewById<LinearLayout>(R.id.layout4)
-                layout3.removeAllViews() //have to test this out
+                layout3.removeAllViews()
+
+                val layout4 = view.findViewById<LinearLayout>(R.id.layout5)
+                layout4.removeAllViews()
+
+                val layout5 = view.findViewById<LinearLayout>(R.id.layout6)
+                layout5.removeAllViews()
+
+                val layout6 = view.findViewById<LinearLayout>(R.id.layout7)
+                layout6.removeAllViews()
+
+                val layout7 = view.findViewById<LinearLayout>(R.id.layout8)
+                layout7.removeAllViews()
+
+                val layout8 = view.findViewById<LinearLayout>(R.id.layout9)
+                layout8.removeAllViews()
+
+                val layout9 = view.findViewById<LinearLayout>(R.id.layout10)
+                layout9.removeAllViews()
 
                 val textView = view.findViewById<TextView>(R.id.text_view1)
                 textView.text = response.joinToString(separator = "\n") {
@@ -117,9 +135,130 @@ class HomeFragment : Fragment() {
                         layout3.addView(imageView3)
                         return@forEachIndexed
                     }
+
+                    if (index == 4) {
+                        val imageView4 = ImageView(requireContext())
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(imageView4)
+                        layout4.addView(imageView4)
+                        return@forEachIndexed
+                    }
+
+                    if (index == 5) {
+                        val imageView5 = ImageView(requireContext())
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(imageView5)
+                        layout5.addView(imageView5)
+                        return@forEachIndexed
+                    }
+
+                    if (index == 6) {
+                        val imageView6 = ImageView(requireContext())
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(imageView6)
+                        layout6.addView(imageView6)
+                        return@forEachIndexed
+                    }
+
+                    if (index == 7) {
+                        val imageView7 = ImageView(requireContext())
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(imageView7)
+                        layout7.addView(imageView7)
+                        return@forEachIndexed
+                    }
+
+                    if (index == 8) {
+                        val imageView8 = ImageView(requireContext())
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(imageView8)
+                        layout8.addView(imageView8)
+                        return@forEachIndexed
+                    }
+                    if (index == 9) {
+                        val imageView9 = ImageView(requireContext())
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(imageView9)
+                        layout9.addView(imageView9)
+                        return@forEachIndexed
+                    }
                 }
+
             }
         }
+
+        val button = view.findViewById<LinearLayout>(R.id.layout2)
+        button.setOnClickListener {
+            val intent = Intent(activity, DrinkInfoActivity::class.java)
+            startActivity(intent)
+        }
+
+        val button1 = view.findViewById<LinearLayout>(R.id.layout1)
+        button1.setOnClickListener {
+            val intent1 = Intent(activity, DrinkInfoActivity::class.java)
+            startActivity(intent1)
+        }
+
+        val button2 = view.findViewById<LinearLayout>(R.id.layout3)
+        button2.setOnClickListener {
+            val intent2 = Intent(activity, DrinkInfoActivity::class.java)
+            startActivity(intent2)
+        }
+
+        val button3 = view.findViewById<LinearLayout>(R.id.layout4)
+        button3.setOnClickListener {
+            val intent3 = Intent(activity, DrinkInfoActivity::class.java)
+            startActivity(intent3)
+        }
+
+        val button4 = view.findViewById<LinearLayout>(R.id.layout5)
+        button4.setOnClickListener {
+            val intent4 = Intent(activity, DrinkInfoActivity::class.java)
+            startActivity(intent4)
+        }
+
+        val button5 = view.findViewById<LinearLayout>(R.id.layout6)
+        button5.setOnClickListener {
+            val intent5 = Intent(activity, DrinkInfoActivity::class.java)
+            startActivity(intent5)
+        }
+
+        val button6 = view.findViewById<LinearLayout>(R.id.layout7)
+        button6.setOnClickListener {
+            val intent6 = Intent(activity, DrinkInfoActivity::class.java)
+            startActivity(intent6)
+        }
+
+        val button7 = view.findViewById<LinearLayout>(R.id.layout8)
+        button7.setOnClickListener {
+            val intent7 = Intent(activity, DrinkInfoActivity::class.java)
+            startActivity(intent7)
+        }
+
+        val button8 = view.findViewById<LinearLayout>(R.id.layout9)
+        button8.setOnClickListener {
+            val intent8 = Intent(activity, DrinkInfoActivity::class.java)
+            startActivity(intent8)
+        }
+
+        val button9 = view.findViewById<LinearLayout>(R.id.layout10)
+        button9.setOnClickListener {
+            val intent9 = Intent(activity, DrinkInfoActivity::class.java)
+            startActivity(intent9)
+        }
+
         return view
     }
 }
