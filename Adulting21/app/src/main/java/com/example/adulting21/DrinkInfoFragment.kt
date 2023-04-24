@@ -27,7 +27,7 @@ class DrinkInfoFragment : Fragment(){
             val apiService = CocktailApiService()
             val response = apiService.popularCocktails()
             withContext(Dispatchers.Main) {
-
+                /*
                 val layout = view.findViewById<LinearLayout>(R.id.imageIngredient2)
                 //layout.removeAllViews()
 
@@ -41,12 +41,14 @@ class DrinkInfoFragment : Fragment(){
                         layout.addView(imageView)
                         return@forEachIndexed
                     }
+                    */
+
 
                 }
             }
 
 
-        }
+       // }
 
         return view
         }
