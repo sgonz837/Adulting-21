@@ -1,11 +1,55 @@
 /* CSS is not working for paragraph tags and I don't know why, 
 so my current solution is to center it in the PHP file. */
 
-p {
-	text-align: center;
-}
-
 h1 {
 	text-align: center;
 	font-family: Arial, sans-serif
+}
+
+div.paragraph {
+	text-align: center;
+	font-size: 18px;
+	color: black;
+	background: white;
+	margin-left: 275px;
+	margin-right: 275px;
+	padding: 5px;
+}
+
+div.shape {
+	padding: 20px;
+	font-size: 24px;
+    background:maroon;
+	text-align: center;
+	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	align-items: center;
+  	justify-content: center;
+	display: flex;
+	margin: 0;
+}
+
+div.header {
+	padding: 60px;
+	text-align: center;
+	background: #1abc9c;
+	color: white;
+	font-size: 30px;
+  }
+
+div.img {
+	text-align: center;
+}
+
+body {
+	margin: 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+a:hover{
+	text-decoration: underline;
+	font-weight: bold;
 }
