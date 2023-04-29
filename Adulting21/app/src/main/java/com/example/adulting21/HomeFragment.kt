@@ -198,11 +198,18 @@ class HomeFragment : Fragment() {
 
             }
         }
-
+        /*
         val button = view.findViewById<LinearLayout>(R.id.layout2)
         button.setOnClickListener {
             val intent = Intent(activity, DrinkInfoFragment::class.java)
             startActivity(intent)
+        }
+
+         */
+
+        val button = view.findViewById<LinearLayout>(R.id.layout2)
+        button.setOnClickListener {
+            replaceFragment(DrinkInfoFragment());
         }
 
         val button1 = view.findViewById<LinearLayout>(R.id.layout1)
@@ -259,7 +266,15 @@ class HomeFragment : Fragment() {
             startActivity(intent9)
         }
 
+
         return view
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
     }
 }
 

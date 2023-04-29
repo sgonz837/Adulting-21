@@ -5,21 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView20"
+    <LinearLayout
+        android:id="@+id/imageIngredient1"
         android:layout_width="96dp"
         android:layout_height="136dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.987"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
-    <ImageView
-        android:id="@+id/imageView19"
+    <LinearLayout
+        android:id="@+id/imageIngredient"
         android:layout_width="96dp"
         android:layout_height="136dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.022"
@@ -41,10 +43,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView18"
+    <LinearLayout
+        android:id="@+id/imageIngredient3"
         android:layout_width="96dp"
         android:layout_height="136dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.657"
@@ -79,4 +82,67 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/kevin"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.651" />
+
+    <TextView
+        android:id="@+id/kevin2"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="241dp"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/kevin3"
+        app:layout_constraintStart_toEndOf="@+id/kevin"
+        app:layout_constraintTop_toBottomOf="@+id/imageIngredient2" />
+
+    <TextView
+        android:id="@+id/kevin3"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="241dp"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/kevin4"
+        app:layout_constraintStart_toEndOf="@+id/kevin2"
+        app:layout_constraintTop_toBottomOf="@+id/imageIngredient3" />
+
+    <TextView
+        android:id="@+id/kevin4"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="241dp"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/kevin3"
+        app:layout_constraintTop_toBottomOf="@+id/imageIngredient1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,8 +12,11 @@
 
 package com.example.adulting21
 
+import android.content.Intent
 import com.example.adulting21.R
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,10 +26,29 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.homepage)
-        //setContentView(R.layout.login_register)
+        //setContentView(R.layout.homepage)
+        setContentView(R.layout.login_register)
+
+            val buttonLogin = findViewById<Button>(R.id.button_login)
+            buttonLogin.setOnClickListener {
+                val intent = Intent(this, login::class.java)
+                startActivity(intent)
+            }
+
+            val buttonRegister = findViewById<Button>(R.id.button_register)
+            buttonRegister.setOnClickListener {
+                val intent = Intent(this, register::class.java)
+                startActivity(intent)
+            }
+        }
+
+        fun buttonLogin(view: View) {
+            val intent = Intent(this, login::class.java)
+            startActivity(intent)
+        }}
 
 
+/*
         //replaceFragment(HomeFragment())
         val fragment = supportFragmentManager.findFragmentByTag("HomeFragment")
 
@@ -36,7 +58,12 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.frame_layout, HomeFragment(), "HomeFragment")
                 .commit()
         }
-
+/*
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.container, DrinkInfoFragment())
+        fragmentTransaction.commit()
+*/
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         //bottomNavigationView.setOnItemSelectedListener { item ->
@@ -51,6 +78,8 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+ */
+/*
     }
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
@@ -59,3 +88,5 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 }
+
+ */

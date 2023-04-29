@@ -7,6 +7,6 @@ class register : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login_page)
+        setContentView(R.layout.register_page)
     }
 }

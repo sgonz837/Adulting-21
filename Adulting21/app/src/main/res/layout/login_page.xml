@@ -75,11 +75,17 @@
         app:layout_constraintVertical_bias="0.975" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/login_btn"
         android:layout_width="160dp"
         android:layout_height="61dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="126dp"
+        android:layout_marginBottom="43dp"
         android:text="login"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="528dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 </androidx.constraintlayout.widget.ConstraintLayout>
