@@ -15,7 +15,7 @@ class DrinkInfoActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomeFragment::class.java)
         startActivity(intent)
         finish()
     }

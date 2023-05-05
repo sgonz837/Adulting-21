@@ -62,9 +62,6 @@ class DrinkInfoFragment : Fragment(){
                         return@forEachIndexed
                     }
 
-
-
-
                     val textView1 = view.findViewById<TextView>(R.id.kevin2)
                     textView1.text = response.joinToString(separator = "\n") {
                         "${it.ingredient2}"

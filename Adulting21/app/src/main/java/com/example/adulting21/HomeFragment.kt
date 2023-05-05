@@ -83,11 +83,13 @@ class HomeFragment : Fragment() {
 
                 val layout9 = view.findViewById<LinearLayout>(R.id.layout10)
                 layout9.removeAllViews()
-
+                /*
                 val textView = view.findViewById<TextView>(R.id.text_view1)
                 textView.text = response.joinToString(separator = "\n") {
                     "${it.name}"
                 }
+
+                 */
 
                 /*
                     Just like in any other programming language, we can use a for loop, but we use
@@ -214,56 +216,47 @@ class HomeFragment : Fragment() {
 
         val button1 = view.findViewById<LinearLayout>(R.id.layout1)
         button1.setOnClickListener {
-            val intent1 = Intent(activity, DrinkInfoActivity::class.java)
-            startActivity(intent1)
+            replaceFragment(DrinkInfoFragment());
         }
 
         val button2 = view.findViewById<LinearLayout>(R.id.layout3)
         button2.setOnClickListener {
-            val intent2 = Intent(activity, DrinkInfoActivity::class.java)
-            startActivity(intent2)
+            replaceFragment(DrinkInfoFragment());
         }
 
         val button3 = view.findViewById<LinearLayout>(R.id.layout4)
         button3.setOnClickListener {
-            val intent3 = Intent(activity, DrinkInfoActivity::class.java)
-            startActivity(intent3)
+            replaceFragment(DrinkInfoFragment());
         }
 
         val button4 = view.findViewById<LinearLayout>(R.id.layout5)
         button4.setOnClickListener {
-            val intent4 = Intent(activity, DrinkInfoActivity::class.java)
-            startActivity(intent4)
+            replaceFragment(DrinkInfoFragment());
         }
 
         val button5 = view.findViewById<LinearLayout>(R.id.layout6)
         button5.setOnClickListener {
-            val intent5 = Intent(activity, DrinkInfoActivity::class.java)
-            startActivity(intent5)
+            replaceFragment(DrinkInfoFragment());
         }
 
         val button6 = view.findViewById<LinearLayout>(R.id.layout7)
         button6.setOnClickListener {
-            val intent6 = Intent(activity, DrinkInfoActivity::class.java)
-            startActivity(intent6)
+            replaceFragment(DrinkInfoFragment());
         }
 
         val button7 = view.findViewById<LinearLayout>(R.id.layout8)
         button7.setOnClickListener {
-            val intent7 = Intent(activity, DrinkInfoActivity::class.java)
-            startActivity(intent7)
+            replaceFragment(DrinkInfoFragment());
         }
 
         val button8 = view.findViewById<LinearLayout>(R.id.layout9)
         button8.setOnClickListener {
-            val intent8 = Intent(activity, DrinkInfoActivity::class.java)
-            startActivity(intent8)
+            replaceFragment(DrinkInfoFragment());
         }
 
         val button9 = view.findViewById<LinearLayout>(R.id.layout10)
         button9.setOnClickListener {
-            val intent9 = Intent(activity, DrinkInfoActivity::class.java)
-            startActivity(intent9)
+            replaceFragment(DrinkInfoFragment());
         }
 
 

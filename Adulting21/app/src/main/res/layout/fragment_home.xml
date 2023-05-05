@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".HomeFragment"
+    android:background="@android:color/white">
 
     <ImageView
         android:id="@+id/imageView15"
@@ -50,18 +51,10 @@
         android:text="Daily Recommendations"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.272" />
-
-    <TextView
-        android:id="@+id/text_view1"
-        android:layout_width="97dp"
-        android:layout_height="54dp"
-
-        tools:layout_editor_absoluteX="251dp"
-        tools:layout_editor_absoluteY="116dp" />
+        app:layout_constraintVertical_bias="0.276" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
@@ -81,16 +74,17 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <LinearLayout
+    <LinearLayout
                 android:id="@+id/layout2"
                 android:layout_width="109dp"
                 android:layout_height="121dp"
                 android:layout_margin="5dp"
                 android:adjustViewBounds="true"
-                android:orientation="vertical"
                 android:scaleType="fitCenter">
 
-            </LinearLayout>
+
+
+       </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layout1"
@@ -109,6 +103,7 @@
                 android:adjustViewBounds="true"
                 android:orientation="vertical"
                 android:scaleType="fitCenter">
+
 
             </LinearLayout>
 
@@ -184,6 +179,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497" />
+        app:layout_constraintVertical_bias="0.51" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
