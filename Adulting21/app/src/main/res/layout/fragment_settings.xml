@@ -12,4 +12,12 @@
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
 
+    <com.example.adulting21.SpeedometerView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:padding="15dp"
+        android:id="@+id/speedometer" />
+
 </FrameLayout>

@@ -11,6 +11,9 @@ import android.view.ViewGroup
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+SpeedometerView Speed;
+
+
 /**
  * A simple [Fragment] subclass.
  * Use the [SettingsFragment.newInstance] factory method to
@@ -56,4 +59,23 @@ class SettingsFragment : Fragment() {
                 }
             }
     }
+
+    Speed = (SpeedometerView)findViewById(R.id.speedometer);
+    Speed.setLabelConverter(new SpeedometerView.LabelConverter() {
+        @Override
+        public String getLabelFor(double progress, double maxProgress) {
+            return String.valueOf((int) Math.round(progress));
+        }
+    });
+
+// configure value range and ticks
+    Speed.setMaxSpeed(100);
+    Speed.setMajorTickStep(25);
+    Speed.setMinorTicks(0);
+
+// Configure value range colors
+    Speed.addColoredRange(0, 50, Color.GREEN);
+    Speed.addColoredRange(50, 75, Color.YELLOW);
+    Speed.addColoredRange(75, 100, Color.RED);
+    Speed.setSpeed(25, 2000, 500);
 }
