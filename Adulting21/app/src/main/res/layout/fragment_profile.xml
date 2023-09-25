@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
         android:id="@+id/button"
@@ -36,31 +36,46 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="163dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.234" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Age:"
-        tools:layout_editor_absoluteX="190dp"
-        tools:layout_editor_absoluteY="230dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView24"
+        app:layout_constraintVertical_bias="0.331" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sex:"
-        tools:layout_editor_absoluteX="192dp"
-        tools:layout_editor_absoluteY="285dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.405" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Favorite Drinks:"
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="332dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView24"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/textView24"
+        app:layout_constraintTop_toTopOf="@+id/textView24"
+        app:layout_constraintVertical_bias="0.477" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
