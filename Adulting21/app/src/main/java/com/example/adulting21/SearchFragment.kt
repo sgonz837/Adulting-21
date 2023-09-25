@@ -1,16 +1,34 @@
 package com.example.adulting21
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
+import java.util.Locale
+import android.Manifest
+import android.content.Context
+import android.graphics.Rect
+import android.view.ViewTreeObserver
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import com.google.android.gms.location.LocationServices
+import com.google.android.material.appbar.AppBarLayout
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,15 +42,29 @@ private const val ARG_PARAM2 = "param2"
  */
 
 
+private const val LOCATION_PERMISSION_REQUEST_CODE = 100
+
 class SearchFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapter,
     GoogleMap.OnInfoWindowClickListener {
 
     private lateinit var mMap: GoogleMap
+    private lateinit var searchBar: EditText
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search, container, false)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        searchBar = view.findViewById(R.id.search_bar)
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map_view) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        // Set the IME (Input Method Editor) options for the search bar
+        searchBar.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                performSearch()
+                true
+            } else {
+                false
+            }
+        }
         return view
     }
 
@@ -42,15 +74,71 @@ class SearchFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapt
         // Set custom info window adapter
         mMap.setInfoWindowAdapter(this)
         mMap.setOnInfoWindowClickListener(this)
-        // Add markers for local bars here
-        val bar1 = LatLng(40.51611649753186, -75.7779062603749)
-        mMap.addMarker(
-            MarkerOptions().position(bar1).title("Shorty's Bar")
-                .snippet("Night Club ")
-        )
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bar1, 15f))
+
+        // Request location permissions and display the current location on the map
+        requestLocationPermissions()
     }
 
+    private fun requestLocationPermissions() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+        } else {
+            // Permissions already granted, proceed to request location updates
+            enableLocationUpdates()
+        }
+    }
+
+    private fun enableLocationUpdates() {
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            mMap.isMyLocationEnabled = true
+
+            // Get the last known location (if available) and move the camera to it
+            val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    val currentLatLng = LatLng(location.latitude, location.longitude)
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
+                }
+            }
+        }
+    }
+
+    private fun performSearch() {
+        val location = searchBar.text.toString()
+        if (location.isNotEmpty()) {
+            val geocoder = Geocoder(requireContext(), Locale.getDefault())
+            try {
+                val addresses = geocoder.getFromLocationName(location, 1)
+                if (addresses != null) {
+                    if (addresses.isNotEmpty()) {
+                        val address = addresses[0]
+                        val latLng = LatLng(address.latitude, address.longitude)
+                        mMap.clear() // Clear previous markers
+                        mMap.addMarker(MarkerOptions().position(latLng).title(address.featureName))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+                    } else {
+                        Toast.makeText(requireContext(), "Location not found", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Error searching location", Toast.LENGTH_SHORT).show()
+                e.printStackTrace()
+            }
+        } else {
+            Toast.makeText(requireContext(), "Please enter a location", Toast.LENGTH_SHORT).show()
+        }
+    }
     override fun getInfoWindow(marker: Marker): View? {
         // Return null here to indicate that we are not using a default info window
         return null
@@ -83,110 +171,7 @@ class SearchFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapt
 
         // Start the intent
         startActivity(intent)
-        /*
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse("geo:${marker.position.latitude},${marker.position.longitude}")
-        startActivity(intent)
-
-         */
     }
 }
 
-/*
-class SearchFragment : Fragment(), OnMapReadyCallback {
-
-    private lateinit var mMap: GoogleMap
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-        return view
-    }
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-        // Add markers for local bars here
-        // Add markers for local bars here
-        val bar1 = LatLng(40.51611649753186, -75.7779062603749)
-        mMap.addMarker(
-            MarkerOptions().position(bar1).title("Local Bar 1")
-                .snippet("Description of Local Bar 1")
-        )
-        // Zoom in to the location of the first bar marker
-        //val zoomLevel = 15f
-        //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(bar1, zoomLevel))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bar1))
-        // Set up info window adapter to customize the contents of the info window
-        mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
-            override fun getInfoWindow(marker: Marker): View? {
-                return null // Use default info window background
-            }
-
-            override fun getInfoContents(marker: Marker): View {
-                val view = layoutInflater.inflate(R.layout.info_window_layout, null)
-
-                val titleTextView = view.findViewById<TextView>(R.id.title_view78)
-                titleTextView.text = marker.title
-
-                val descriptionTextView = view.findViewById<TextView>(R.id.descriptionTextView)
-                descriptionTextView.text = marker.snippet
-
-                return view
-            }
-        })
-
-        // Set click listener to show info window when marker is clicked
-        mMap.setOnMarkerClickListener { marker ->
-            marker.showInfoWindow()
-            true
-        }
-    }
-
- */
-    /*
-        val bar2 = LatLng(37.7694, -122.4862)
-        mMap.addMarker(
-            MarkerOptions().position(bar2).title("Local Bar 2")
-                .snippet("Description of Local Bar 2")
-        )
-
-         */
-/*
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions()
-            .position(sydney)
-            .title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-
- */
-
-/*
-class SearchFragment : Fragment(), OnMapReadyCallback {
-
-    private lateinit var mMap: GoogleMap
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-        return view
-    }
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions()
-            .position(sydney)
-            .title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-    }
-}
-
-
-
- */
 
