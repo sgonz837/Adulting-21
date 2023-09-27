@@ -377,7 +377,7 @@ public class SpeedometerView extends View {
         txtPaint.setTextSize(18);
         txtPaint.setTextAlign(Paint.Align.CENTER);
 
-        //mMask = BitmapFactory.decodeResource(getResources(), R.drawable.spot_mask);
+        mMask = BitmapFactory.decodeResource(getResources(), R.drawable.spot_mask);
         mMask = Bitmap.createBitmap(mMask, 0, 0, mMask.getWidth(), mMask.getHeight()/2);
 
         maskPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
