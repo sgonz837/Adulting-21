@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
 
+    <!--Code has been pulled from https://github.com/codeplayon/AndroidSpeedometer -->
     <com.example.adulting21.SpeedometerView
         android:layout_height="wrap_content"
         android:layout_width="match_parent"

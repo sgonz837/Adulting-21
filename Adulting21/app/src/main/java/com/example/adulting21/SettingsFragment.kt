@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 //import com.github.anastr.speedviewlib.SpeedometerView // Uncomment this import
+//Code has been pulled from https://github.com/codeplayon/AndroidSpeedometer
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
