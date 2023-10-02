@@ -78,7 +78,9 @@
 
         <HorizontalScrollView
             android:id="@+id/horizontalScrollView"
-            android:layout_width="423dp"
+
+        android:layout_width="wrap_content"
+
             android:layout_height="134dp"
             android:layout_marginEnd="1dp"
             android:fillViewport="true"
@@ -87,7 +89,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.229">
+            app:layout_constraintVertical_bias="0.227">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -95,24 +97,60 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/layout2"
+                    android:id="@+id/layout1"
                     android:layout_width="109dp"
-                    android:layout_height="121dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter">
 
+                    <ImageView
+                        android:id="@+id/drinkImage1"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_home_24" />
 
+                    <TextView
+                        android:id="@+id/drinkName1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 1"
+                        app:layout_constraintEnd_toEndOf="@id/drinkImage1"
+                        app:layout_constraintStart_toStartOf="@id/drinkImage1"
+                        app:layout_constraintTop_toBottomOf="@id/drinkImage1" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/layout1"
-                    android:layout_width="109dp"
-                    android:layout_height="121dp"
-                    android:layout_margin="5dp"
-                    android:adjustViewBounds="true"
-                    android:orientation="vertical"
-                    android:scaleType="fitCenter" />
+
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:layout_width="109dp"
+                android:layout_height="121dp"
+                android:layout_margin="5dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter">
+
+                <ImageView
+                    android:id="@+id/drinkImage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/baseline_home_24" />
+
+                <TextView
+                    android:id="@+id/drinkName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Text 1"
+                    app:layout_constraintEnd_toEndOf="@id/imageView1"
+                    app:layout_constraintStart_toStartOf="@id/imageView1"
+                    app:layout_constraintTop_toBottomOf="@id/imageView1"
+                    />
+            </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layout3"
@@ -123,7 +161,24 @@
                     android:orientation="vertical"
                     android:scaleType="fitCenter">
 
+                    <ImageView
+                        android:id="@+id/drinkImage3"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_home_24" />
 
+                    <TextView
+                        android:id="@+id/drinkName3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 1"
+                        app:layout_constraintEnd_toEndOf="@id/imageView1"
+                        app:layout_constraintStart_toStartOf="@id/imageView1"
+                        app:layout_constraintTop_toBottomOf="@id/imageView1"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
@@ -133,7 +188,28 @@
                     android:layout_margin="5dp"
                     android:adjustViewBounds="true"
                     android:orientation="vertical"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter">
+
+
+                <ImageView
+                    android:id="@+id/drinkImage4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/baseline_home_24" />
+
+                <TextView
+                    android:id="@+id/drinkName4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Text 1"
+                    app:layout_constraintEnd_toEndOf="@id/imageView1"
+                    app:layout_constraintStart_toStartOf="@id/imageView1"
+                    app:layout_constraintTop_toBottomOf="@id/imageView1"
+                    />
+            </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layout5"
@@ -142,7 +218,28 @@
                     android:layout_margin="5dp"
                     android:adjustViewBounds="true"
                     android:orientation="vertical"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter" >
+
+                    <ImageView
+                        android:id="@+id/drinkImage5"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_home_24" />
+
+                    <TextView
+                        android:id="@+id/drinkName5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 1"
+                        app:layout_constraintEnd_toEndOf="@id/imageView1"
+                        app:layout_constraintStart_toStartOf="@id/imageView1"
+                        app:layout_constraintTop_toBottomOf="@id/imageView1"
+                        />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layout6"
@@ -151,7 +248,28 @@
                     android:layout_margin="5dp"
                     android:adjustViewBounds="true"
                     android:orientation="vertical"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter" >
+
+                    <ImageView
+                        android:id="@+id/drinkImage6"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_home_24" />
+
+                    <TextView
+                        android:id="@+id/drinkName6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 1"
+                        app:layout_constraintEnd_toEndOf="@id/imageView1"
+                        app:layout_constraintStart_toStartOf="@id/imageView1"
+                        app:layout_constraintTop_toBottomOf="@id/imageView1"
+                        />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layout7"
@@ -160,7 +278,28 @@
                     android:layout_margin="5dp"
                     android:adjustViewBounds="true"
                     android:orientation="vertical"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter" >
+
+                    <ImageView
+                        android:id="@+id/drinkImage7"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_home_24" />
+
+                    <TextView
+                        android:id="@+id/drinkName7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 1"
+                        app:layout_constraintEnd_toEndOf="@id/imageView1"
+                        app:layout_constraintStart_toStartOf="@id/imageView1"
+                        app:layout_constraintTop_toBottomOf="@id/imageView1"
+                        />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layout8"
@@ -169,7 +308,27 @@
                     android:layout_margin="5dp"
                     android:adjustViewBounds="true"
                     android:orientation="vertical"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter" >
+                    <ImageView
+                        android:id="@+id/drinkImage8"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_home_24" />
+
+                    <TextView
+                        android:id="@+id/drinkName8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 1"
+                        app:layout_constraintEnd_toEndOf="@id/imageView1"
+                        app:layout_constraintStart_toStartOf="@id/imageView1"
+                        app:layout_constraintTop_toBottomOf="@id/imageView1"
+                        />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layout9"
@@ -178,7 +337,28 @@
                     android:layout_margin="5dp"
                     android:adjustViewBounds="true"
                     android:orientation="vertical"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter" >
+
+                    <ImageView
+                        android:id="@+id/drinkImage9"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_home_24" />
+
+                    <TextView
+                        android:id="@+id/drinkName9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 1"
+                        app:layout_constraintEnd_toEndOf="@id/imageView1"
+                        app:layout_constraintStart_toStartOf="@id/imageView1"
+                        app:layout_constraintTop_toBottomOf="@id/imageView1"
+                        />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layout10"
@@ -187,7 +367,26 @@
                     android:layout_margin="5dp"
                     android:adjustViewBounds="true"
                     android:orientation="vertical"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter" >
+                    <ImageView
+                        android:id="@+id/drinkImage10"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_home_24" />
+
+                    <TextView
+                        android:id="@+id/drinkName10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 1"
+                        app:layout_constraintEnd_toEndOf="@id/imageView1"
+                        app:layout_constraintStart_toStartOf="@id/imageView1"
+                        app:layout_constraintTop_toBottomOf="@id/imageView1"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -283,6 +482,182 @@
             app:layout_constraintHorizontal_bias="0.458"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Text 1"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView1"
+            android:layout_width="423dp"
+            android:layout_height="134dp"
+            android:layout_marginEnd="1dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.714">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <!-- Item 1 -->
+                <LinearLayout
+                    android:id="@+id/layout20"
+                    android:layout_width="109dp"
+                    android:layout_height="121dp"
+                    android:layout_margin="5dp"
+                    android:adjustViewBounds="true"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter">
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_home_24" />
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 1"
+                        app:layout_constraintEnd_toEndOf="@id/imageView1"
+                        app:layout_constraintStart_toStartOf="@id/imageView1"
+                        app:layout_constraintTop_toBottomOf="@id/imageView1" />
+                </LinearLayout>
+
+                <!-- Item 2 -->
+                <LinearLayout
+                    android:id="@+id/layout21"
+                    android:layout_width="109dp"
+                    android:layout_height="121dp"
+                    android:layout_margin="5dp"
+                    android:adjustViewBounds="true"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_search_24" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 2"
+                        app:layout_constraintEnd_toEndOf="@id/imageView2"
+                        app:layout_constraintStart_toStartOf="@id/imageView2"
+                        app:layout_constraintTop_toBottomOf="@id/imageView2" />
+                </LinearLayout>
+
+                <!-- Item 3 -->
+                <LinearLayout
+                    android:id="@+id/layout22"
+                    android:layout_width="109dp"
+                    android:layout_height="121dp"
+                    android:layout_margin="5dp"
+                    android:adjustViewBounds="true"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter">
+
+                    <ImageView
+                        android:id="@+id/imageView22"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_search_24" />
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 2"
+                        app:layout_constraintEnd_toEndOf="@id/imageView2"
+                        app:layout_constraintStart_toStartOf="@id/imageView2"
+                        app:layout_constraintTop_toBottomOf="@id/imageView2" />
+                </LinearLayout>
+
+                <!-- Item 2 -->
+                <LinearLayout
+                    android:id="@+id/layout23"
+                    android:layout_width="109dp"
+                    android:layout_height="121dp"
+                    android:layout_margin="5dp"
+                    android:adjustViewBounds="true"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter">
+
+                    <ImageView
+                        android:id="@+id/imageView23"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_search_24" />
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 2"
+                        app:layout_constraintEnd_toEndOf="@id/imageView2"
+                        app:layout_constraintStart_toStartOf="@id/imageView2"
+                        app:layout_constraintTop_toBottomOf="@id/imageView2" />
+                </LinearLayout>
+
+                <!-- Item 2 -->
+                <LinearLayout
+                    android:id="@+id/layout24"
+                    android:layout_width="109dp"
+                    android:layout_height="121dp"
+                    android:layout_margin="5dp"
+                    android:adjustViewBounds="true"
+                    android:orientation="vertical"
+                    android:scaleType="fitCenter">
+
+                    <ImageView
+                        android:id="@+id/imageView24"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/baseline_search_24" />
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Text 2"
+                        app:layout_constraintEnd_toEndOf="@id/imageView2"
+                        app:layout_constraintStart_toStartOf="@id/imageView2"
+                        app:layout_constraintTop_toBottomOf="@id/imageView2" />
+                </LinearLayout>
+                <!-- Repeat the above pattern for more items -->
+            </LinearLayout>
+        </HorizontalScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

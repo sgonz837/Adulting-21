@@ -14,7 +14,6 @@ class Navigation : AppCompatActivity() {
 
         setContentView(R.layout.homepage)
 
-        //replaceFragment(HomeFragment())
         val fragment = supportFragmentManager.findFragmentByTag("HomeFragment")
 
         if (fragment == null) {
@@ -22,13 +21,13 @@ class Navigation : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .add(R.id.frame_layout, HomeFragment(), "HomeFragment")
                 .commit()
+        } else {
+            // The fragment already exists, so just show it
+            supportFragmentManager.beginTransaction()
+                .show(fragment)
+                .commit()
         }
-        /*
-                val fragmentManager = supportFragmentManager
-                val fragmentTransaction = fragmentManager.beginTransaction()
-                fragmentTransaction.add(R.id.container, DrinkInfoFragment())
-                fragmentTransaction.commit()
-        */
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         //bottomNavigationView.setOnItemSelectedListener { item ->
