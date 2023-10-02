@@ -1,0 +1,12 @@
+<!-- styles.xml -->
+<resources>
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize the app bar background and text color -->
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+
+        <!-- Other theme attributes -->
+    </style>
+</resources>

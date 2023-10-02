@@ -83,6 +83,9 @@ class HomeFragment : Fragment() {
 
                 val layout9 = view.findViewById<LinearLayout>(R.id.layout10)
                 layout9.removeAllViews()
+
+                val hero = view.findViewById<ImageView>(R.id.heroImage)
+                //hero.removeAllViews()
                 /*
                 val textView = view.findViewById<TextView>(R.id.text_view1)
                 textView.text = response.joinToString(separator = "\n") {
@@ -187,6 +190,7 @@ class HomeFragment : Fragment() {
                         layout8.addView(imageView8)
                         return@forEachIndexed
                     }
+                    /*
                     if (index == 9) {
                         val imageView9 = ImageView(requireContext())
                         Picasso.get()
@@ -194,6 +198,17 @@ class HomeFragment : Fragment() {
                             .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
                             .into(imageView9)
                         layout9.addView(imageView9)
+                        return@forEachIndexed
+                    }
+*/
+                    if (index == 9) {
+                       // val imageView10 = ImageView(requireContext())
+                        Picasso.get()
+                            .load(cocktail.imageUrl)
+                            //.resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
+                            .into(hero)
+                        //hero.addView(heroImageView)
                         return@forEachIndexed
                     }
                 }
