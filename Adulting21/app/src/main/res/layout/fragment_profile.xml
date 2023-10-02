@@ -14,11 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteX="-40dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/log_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log Out"
@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.819" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -40,27 +40,54 @@
         tools:layout_editor_absoluteY="163dp" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Age:"
-        tools:layout_editor_absoluteX="190dp"
-        tools:layout_editor_absoluteY="230dp" />
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="228dp" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sex:"
-        tools:layout_editor_absoluteX="192dp"
-        tools:layout_editor_absoluteY="285dp" />
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="442dp" />
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/fav_drinks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Favorite Drinks:"
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="332dp" />
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <TextView
+        android:id="@+id/e_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Emergency Contact:"
+        tools:layout_editor_absoluteX="257dp"
+        tools:layout_editor_absoluteY="225dp" />
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight:"
+        tools:layout_editor_absoluteX="254dp"
+        tools:layout_editor_absoluteY="288dp" />
+
+    <Spinner
+        android:id="@+id/sex"
+        android:layout_width="63dp"
+        android:layout_height="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.406" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
