@@ -6,7 +6,10 @@
         <item name="colorPrimary">@android:color/white</item>
         <item name="colorPrimaryDark">@android:color/white</item>
         <item name="android:textColorPrimary">@android:color/black</item>
-
         <!-- Other theme attributes -->
+
+    </style>
+    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
     </style>
 </resources>
