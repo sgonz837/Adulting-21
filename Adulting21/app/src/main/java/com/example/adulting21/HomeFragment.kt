@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import com.example.adulting21.R
@@ -34,6 +35,21 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        val drinkButton = view.findViewById<Button>(R.id.drinkBtn)
+
+        // Set click listener for the Button
+        drinkButton.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt("drinkNum", 1) // You can put your desired value here
+            bundle.putString("manualTime", "02:30") // Replace "YourManualTime" with your desired time
+
+            val drinkInfoFragment = DrinkInfoFragment()
+            drinkInfoFragment.arguments = bundle
+            replaceFragment(drinkInfoFragment)
+        }
+
+
         imageViews = listOf(
             view.findViewById(R.id.drinkImage1),
             view.findViewById(R.id.drinkImage2),
