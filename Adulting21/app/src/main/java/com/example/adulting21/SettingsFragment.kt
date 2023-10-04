@@ -53,14 +53,14 @@ class SettingsFragment : Fragment() {
         })
 
         // configure value range and ticks
-        speedometerView.maxSpeed = 100.0
-        speedometerView.majorTickStep = 25.0
+        speedometerView.maxSpeed = 40.0
+        speedometerView.majorTickStep = 2.0
         speedometerView.minorTicks = 0
 
         // Configure value range colors
-        speedometerView.addColoredRange(0.0, 50.0, Color.GREEN)
-        speedometerView.addColoredRange(50.0, 75.0, Color.YELLOW)
-        speedometerView.addColoredRange(75.0, 100.0, Color.RED)
+        speedometerView.addColoredRange(0.0, 6.0, Color.GREEN)
+        speedometerView.addColoredRange(6.0, 20.0, Color.YELLOW)
+        speedometerView.addColoredRange(20.0, 40.0, Color.RED)
 
         // Set the speed
         speedometerView.speed = 25.0

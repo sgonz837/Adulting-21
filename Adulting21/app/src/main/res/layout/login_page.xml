@@ -63,9 +63,9 @@
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="195dp"
-        android:layout_height="83dp"
-        android:text="SLOGAN HERE"
+        android:layout_width="293dp"
+        android:layout_height="74dp"
+        android:text="Adulting21: Your Responsible Drinking Buddy"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"

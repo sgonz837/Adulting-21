@@ -7,19 +7,19 @@
     android:background="@android:color/white">
 
     <TextView
-        android:id="@+id/textView25"
-        android:layout_width="246dp"
-        android:layout_height="59dp"
-        android:text="Enter Email"
+        android:id="@+id/textView29"
+        android:layout_width="297dp"
+        android:layout_height="56dp"
+        android:text="Adulting21: Your Responsible Drinking Buddy"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.608" />
+        app:layout_constraintVertical_bias="0.954" />
 
     <ImageView
         android:id="@+id/imageView12"
@@ -30,8 +30,23 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.056"
+        app:layout_constraintVertical_bias="0.034"
         app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="234dp"
+        android:layout_height="62dp"
+        android:text="Date of Birth"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.551" />
 
     <TextView
         android:id="@+id/textView19"
@@ -43,8 +58,25 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="241dp"
+        android:layout_height="64dp"
+        android:text="Enter Email"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
 
     <TextView
         android:id="@+id/textView20"
@@ -59,21 +91,7 @@
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.709" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="265dp"
-        android:layout_height="84dp"
-        android:text="*Password must be at least 8 characters long and include one uppercase, one number, one special character"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.826" />
+        app:layout_constraintVertical_bias="0.752" />
 
     <Button
         android:id="@+id/button6"
@@ -81,6 +99,9 @@
         android:layout_height="69dp"
         android:text="Submit"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="628dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.868" />
 </androidx.constraintlayout.widget.ConstraintLayout>
