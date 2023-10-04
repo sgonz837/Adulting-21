@@ -29,7 +29,15 @@ public class SpeedometerView extends View {
     public static final int DEFAULT_MINOR_TICKS = 1;
 
     private double maxSpeed = DEFAULT_MAX_SPEED;
-    private double speed = 0;
+    private double speed = 0; //Set BAC formula to a variable here
+    //%BAC = ((A x 14 / ((W x 454) x r)) x 100 )- .015 x H
+    //A = amount of drinks consumed
+    //W = weight
+    //r = sex (M = .68 or F = .55)
+    //H = hours since first drink
+    //14 = standard drink size in US in grams
+    //454 = 1lb of bodyweight in grams
+    //Based off Widmark Formula here: https://gambonelaw.com/faqs/the-widmark-formula-and-calculating-your-bac-level/
     private int defaultColor = Color.rgb(180, 180, 180);
     private double majorTickStep = DEFAULT_MAJOR_TICK_STEP;
     private int minorTicks = DEFAULT_MINOR_TICKS;

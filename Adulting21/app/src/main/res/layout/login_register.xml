@@ -47,9 +47,9 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="286dp"
-        android:layout_height="77dp"
-        android:text="PUT SLOGAN HERE"
+        android:layout_width="313dp"
+        android:layout_height="86dp"
+        android:text="Adulting21: Your Responsible Drinking Buddy"
         android:textAlignment="center"
         android:textColorLink="@color/black"
         android:textSize="24sp"

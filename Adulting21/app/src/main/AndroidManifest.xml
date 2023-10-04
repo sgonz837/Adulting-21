@@ -22,11 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".Navigation"
+            android:theme="@style/AppTheme">
+            <!-- Other activity attributes -->
+        </activity>
         <activity android:name=".DrinkInfoActivity" />
         <activity android:name=".register" />
         <activity android:name=".login" />
-        <activity android:name=".Navigation" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
