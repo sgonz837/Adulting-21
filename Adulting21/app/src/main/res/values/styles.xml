@@ -8,5 +8,7 @@
         <item name="android:textColorPrimary">@android:color/black</item>
 
         <!-- Other theme attributes -->
+
+
     </style>
 </resources>

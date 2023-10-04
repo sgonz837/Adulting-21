@@ -12,6 +12,7 @@
         android:layout_height="95dp"
         android:onClick="buttonRegister"
         android:text="Register"
+        android:background="@color/red"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,8 +36,8 @@
         android:id="@+id/button_login"
         android:layout_width="194dp"
         android:layout_height="95dp"
-
         android:text="Login"
+        android:background="@color/red"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

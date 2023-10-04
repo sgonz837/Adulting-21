@@ -98,6 +98,7 @@
         android:layout_width="155dp"
         android:layout_height="69dp"
         android:text="Submit"
+        android:background="@color/red"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
