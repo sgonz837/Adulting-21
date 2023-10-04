@@ -13,21 +13,23 @@ import org.json.JSONObject
 class CocktailApiService {
     private val client = OkHttpClient()
 
-    //these functions will be unused until we can succesfully implement the popularCocktails
-    // function
     fun getCocktails(): String {
         val url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
         val request = Request.Builder()
             .url(url)
             .build()
 
-        client.newCall(request).execute().use { response ->
-
+        try {
+            val response = client.newCall(request).execute()
+            if (!response.isSuccessful) {
+                return "Error: ${response.code}"
+            }
             val responseBody = response.body
             return responseBody?.string() ?: "Error"
+        } catch (e: Exception) {
+            return "Error: ${e.message}"
         }
     }
-
 
     fun get10Random(): String {
         val url = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php"
@@ -35,33 +37,35 @@ class CocktailApiService {
             .url(url)
             .build()
 
-        client.newCall(request).execute().use { response ->
+        try {
+            val response = client.newCall(request).execute()
+            if (!response.isSuccessful) {
+                return "Error: ${response.code}"
+            }
             val responseBody = response.body
             return responseBody?.string() ?: "Error"
+        } catch (e: Exception) {
+            return "Error: ${e.message}"
         }
     }
 
-    // name typo but I cant be bothered to rewrite the name,
     fun popularCocktails(): List<Cocktail> {
-        //this takes the url and requests the database for a json file
-        //val url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
         val url = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php"
         val request = Request.Builder()
             .url(url)
             .build()
-        //once we get the return json data, we can start to use it using "response"
-        client.newCall(request).execute().use { response ->
+
+        try {
+            val response = client.newCall(request).execute()
+            if (!response.isSuccessful) {
+                return emptyList() // Return an empty list on error
+            }
             val responseBody = response.body
             val jsonString = responseBody?.string() ?: "Error"
 
-            // this is the json parser, simple yet effective
-            // takes the output of this
-            // https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
-            // to a workable format to where we can do a for loop and get what we need
             val json = JSONObject(jsonString)
             val drinks = json.getJSONArray("drinks")
             val ingredientUrl = "https://www.thecocktaildb.com/images/ingredients"
-            //now we add all that we get to a class
             val cocktails = mutableListOf<Cocktail>()
             for (i in 0 until drinks.length()) {
                 val drinkJson = drinks.getJSONObject(i)
@@ -103,15 +107,12 @@ class CocktailApiService {
                 cocktails.add(cocktail)
             }
             return cocktails
+        } catch (e: Exception) {
+            return emptyList() // Return an empty list on error
         }
     }
 }
-//to get image url of ingredient
-// https://www.thecocktaildb.com/images/ingredients + ingredient name + .png
-/*
-    This data class will hold all the information that we get from the api functions and be able
-    to use it on other files
- */
+
 data class Cocktail(
     val id: String,
     val name: String,
@@ -147,3 +148,4 @@ data class Cocktail(
     val ingredient14Img: String,
     val ingredient15Img: String,
 )
+
