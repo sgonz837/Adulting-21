@@ -57,3 +57,12 @@ class ProfileFragment : Fragment() {
             }
     }
 }
+
+val name: String = "";
+val weight: Double = 85.3;
+val sex: String = "m";
+val alcoholConsumedInGrams: Double = 10.5;
+val hoursSinceDrinking: Double = 2.6;
+val age: Double = 35.0;
+val emergency: String = "";
+

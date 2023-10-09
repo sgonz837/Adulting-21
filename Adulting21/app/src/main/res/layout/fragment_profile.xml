@@ -7,7 +7,15 @@
     tools:context=".ProfileFragment"
     android:background="@android:color/white">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: Update blank fragment layout --><![CDATA[
+
+    =======
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+
+
+    ]]>
 
     <TextView
         android:id="@+id/textView24"
@@ -15,7 +23,11 @@
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment"
 
+<<<<<<< Updated upstream
         tools:layout_editor_absoluteX="-40dp"
+=======
+        tools:layout_editor_absoluteX="-16dp"
+>>>>>>> Stashed changes
         tools:layout_editor_absoluteY="0dp" />
 
     <Button
@@ -28,70 +40,129 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.819" />
+        app:layout_constraintVertical_bias="0.819" /><![CDATA[
+
+
+
+<<<<<<< Updated upstream
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="228dp" />
+=======
+    =======
+        app:layout_constraintBottom_toBottomOf="@+id/textView24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView24"
+        app:layout_constraintVertical_bias="0.331" />
+>>>>>>> Stashed changes
+
+
+
+
+
+
+
+
+
+    ]]>
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="147dp"
+        android:layout_height="45dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintBottom_toBottomOf="@+id/textView24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.104" />
-
-    <TextView
-        android:id="@+id/age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Age:"
-
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="228dp" />
-
-
-
-    <TextView
-        android:id="@+id/fav_drinks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Favorite Drinks:"
-
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="356dp" />
-
-    <TextView
-        android:id="@+id/e_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Emergency Contact:"
-        tools:layout_editor_absoluteX="257dp"
-        tools:layout_editor_absoluteY="225dp" />
-
-    <TextView
-        android:id="@+id/weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weight:"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="288dp" />
-
-    <Spinner
-        android:id="@+id/sex"
-        android:layout_width="63dp"
-        android:layout_height="23dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+<<<<<<< Updated upstream
         app:layout_constraintVertical_bias="0.406" />
 
 
+=======
+        app:layout_constraintVertical_bias="0.103" />
+
+    <EditText
+        android:id="@+id/w"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Weight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.739"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.103" />
+
+    <EditText
+        android:id="@+id/ec"
+        android:layout_width="199dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Emergency Contact"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.251" />
+
+    <EditText
+        android:id="@+id/a"
+        android:layout_width="117dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Age"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.37" />
+
+    <EditText
+        android:id="@+id/fav_drinks"
+        android:layout_width="137dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Favorite Drinks"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView24"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.251" />
+
+    <EditText
+        android:id="@+id/s"
+        android:layout_width="142dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Sex"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.371" />
+    =======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView24"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/textView24"
+        app:layout_constraintTop_toTopOf="@+id/textView24"
+        app:layout_constraintVertical_bias="0.477" />
+>>>>>>> Stashed changes
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
