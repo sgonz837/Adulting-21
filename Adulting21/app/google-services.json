@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "329089838611",
+    "project_id": "adult-21",
+    "storage_bucket": "adult-21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329089838611:android:fc526a931b6dc44ee959e6",
+        "android_client_info": {
+          "package_name": "com.example.adulting21"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa0KvPp2WAa_5g2OJtJWHr6xkmVh9Aw6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
