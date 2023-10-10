@@ -31,14 +31,14 @@ class MainActivity : AppCompatActivity() {
 
             val buttonLogin = findViewById<Button>(R.id.button_login)
             buttonLogin.setOnClickListener {
-                val intent = Intent(this, login::class.java)
-                startActivity(intent)
+                //val intent = Intent(this, login::class.java)
+                //startActivity(intent)
             }
 
             val buttonRegister = findViewById<Button>(R.id.button_register)
             buttonRegister.setOnClickListener {
-                val intent = Intent(this, login::class.java)
-                startActivity(intent)
+                //val intent = Intent(this, login::class.java)
+                //startActivity(intent)
             }
         }
 
