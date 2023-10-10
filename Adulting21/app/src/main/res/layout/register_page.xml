@@ -6,21 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/textView29"
-        android:layout_width="297dp"
-        android:layout_height="56dp"
-        android:text="Adulting21: Your Responsible Drinking Buddy"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.954" />
-
+    <!--    logo -->
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="302dp"
@@ -33,20 +19,7 @@
         app:layout_constraintVertical_bias="0.034"
         app:srcCompat="@drawable/logo" />
 
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="234dp"
-        android:layout_height="62dp"
-        android:text="Date of Birth"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551" />
+
 
     <TextView
         android:id="@+id/textView19"
@@ -64,35 +37,136 @@
         app:layout_constraintVertical_bias="0.453" />
 
     <TextView
-        android:id="@+id/textView25"
-        android:layout_width="241dp"
-        android:layout_height="64dp"
-        android:text="Enter Email"
+        android:id="@+id/textView22"
+        android:layout_width="234dp"
+        android:layout_height="62dp"
+        android:text="Date of Birth"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.551" />
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView25"-->
+    <!--        android:layout_width="241dp"-->
+    <!--        android:layout_height="64dp"-->
+    <!--        android:text="Enter Email"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="24sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.511"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.65" />-->
+
+
+    <!--email-->
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:layout_width="241dp"-->
+    <!--        android:layout_height="64dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.511"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.65"-->
+    <!--        />-->
+    <!--    <com.google.android.material.textfield.TextInputEditText-->
+    <!--        android:id="@+id/email"-->
+    <!--        android:hint="@string/email"-->
+    <!--        android:inputType="textEmailAddress"-->
+
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textSize="24sp"-->
+    <!--        android:layout_width="241dp"-->
+    <!--        android:layout_height="64dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.511"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.65"-->
+    <!--        />-->
+
+    <!--another option-->
+    <EditText
+        android:id="@+id/email"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_width="241dp"
+        android:layout_height="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.65"
+        />
 
-    <TextView
-        android:id="@+id/textView20"
+
+
+    <!--google sign in button android:background="@drawable/common_google_signin_btn_icon_dark"-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView20"-->
+    <!--        android:layout_width="244dp"-->
+    <!--        android:layout_height="57dp"-->
+    <!--        android:text="Create Password"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="24sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.52"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.752" />-->
+
+    <!--password-->
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="244dp"
         android:layout_height="57dp"
-        android:text="Create Password"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.752" />
+        app:layout_constraintVertical_bias="0.752"
+        app:passwordToggleEnabled="true"
+        />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/password"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:passwordToggleEnabled="true"
 
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:layout_width="244dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.752"
+        />
+
+
+    <!--  submit button  -->
     <Button
         android:id="@+id/button6"
         android:layout_width="155dp"
@@ -105,4 +179,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.868" />
+
+    <!-- slogan-->
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="297dp"
+        android:layout_height="56dp"
+        android:text="Adulting21: Your Responsible Drinking Buddy"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

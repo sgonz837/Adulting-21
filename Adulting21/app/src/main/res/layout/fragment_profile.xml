@@ -7,162 +7,120 @@
     tools:context=".ProfileFragment"
     android:background="@android:color/white">
 
-    <!-- TODO: Update blank fragment layout --><![CDATA[
-
-    =======
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-
-
-    ]]>
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-
-<<<<<<< Updated upstream
-        tools:layout_editor_absoluteX="-40dp"
-=======
-        tools:layout_editor_absoluteX="-16dp"
->>>>>>> Stashed changes
-        tools:layout_editor_absoluteY="0dp" />
 
     <Button
-        android:id="@+id/log_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button6"
+        android:layout_width="155dp"
+        android:layout_height="69dp"
+        android:background="@color/red"
         android:text="Log Out"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.819" /><![CDATA[
-
-
-
-<<<<<<< Updated upstream
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="228dp" />
-=======
-    =======
-        app:layout_constraintBottom_toBottomOf="@+id/textView24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView24"
-        app:layout_constraintVertical_bias="0.331" />
->>>>>>> Stashed changes
-
-
-
-
-
-
-
-
-
-    ]]>
+        app:layout_constraintVertical_bias="0.87" />
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="147dp"
-        android:layout_height="45dp"
-        android:ems="10"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+
+        android:hint="Name"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toBottomOf="@+id/textView24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-<<<<<<< Updated upstream
-        app:layout_constraintVertical_bias="0.406" />
-
-
-=======
-        app:layout_constraintVertical_bias="0.103" />
-
-    <EditText
-        android:id="@+id/w"
-        android:layout_width="123dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Weight"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.739"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103" />
+        app:layout_constraintVertical_bias="0.078" />
+
+    <EditText
+        android:id="@+id/weight"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+
+        android:hint="Weight"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.264" />
 
     <EditText
         android:id="@+id/ec"
-        android:layout_width="199dp"
-        android:layout_height="40dp"
-        android:ems="10"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:hint="Emergency Contact"
         android:inputType="textPersonName"
-        android:text="Emergency Contact"
+
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.251" />
+        app:layout_constraintVertical_bias="0.512" />
 
     <EditText
-        android:id="@+id/a"
-        android:layout_width="117dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Age"
+        android:id="@+id/age"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:hint="Age"
+        android:inputType="number"
+
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintVertical_bias="0.163" />
 
     <EditText
         android:id="@+id/fav_drinks"
-        android:layout_width="137dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Favorite Drinks"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView24"
-        app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.251" />
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:hint="Favorite Drinks"
+        android:inputType="text"
 
-    <EditText
-        android:id="@+id/s"
-        android:layout_width="142dp"
-        android:layout_height="47dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Sex"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.371" />
-    =======
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView24"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/textView24"
-        app:layout_constraintTop_toTopOf="@+id/textView24"
-        app:layout_constraintVertical_bias="0.477" />
->>>>>>> Stashed changes
+        app:layout_constraintVertical_bias="0.687" />
 
+    <EditText
+        android:id="@+id/sex"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:hint="Sex"
+        android:inputType="text"
+
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.392" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
