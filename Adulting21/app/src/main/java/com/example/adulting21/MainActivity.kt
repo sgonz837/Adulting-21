@@ -30,15 +30,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.login_register)
 
             val buttonLogin = findViewById<Button>(R.id.button_login)
+            //First Page so These Two go to either login or register
             buttonLogin.setOnClickListener {
-                //val intent = Intent(this, login::class.java)
-                //startActivity(intent)
+                val intent = Intent(this, login::class.java)
+                startActivity(intent)
             }
 
             val buttonRegister = findViewById<Button>(R.id.button_register)
             buttonRegister.setOnClickListener {
-                //val intent = Intent(this, login::class.java)
-                //startActivity(intent)
+                val intent = Intent(this, login::class.java)
+                startActivity(intent)
             }
         }
 

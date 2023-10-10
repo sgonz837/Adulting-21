@@ -14,9 +14,13 @@ class login : AppCompatActivity() {
         setContentView(R.layout.login_page)
 
         val button9 = findViewById<Button>(R.id.login_btn)
+        //if login button is clicked, then execute tasks
         button9.setOnClickListener {
-            val intent = Intent(this, Navigation::class.java)
-            startActivity(intent)
+
+            //code here if login button is clicked
+
+            //val intent = Intent(this, Navigation::class.java)
+            //startActivity(intent)
         }
     }
 

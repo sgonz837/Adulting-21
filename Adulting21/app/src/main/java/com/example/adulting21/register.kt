@@ -19,9 +19,14 @@ class register : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         val buttonLogin = findViewById<Button>(R.id.button6)
+        //if login button is clicked, do tasks
         buttonLogin.setOnClickListener {
-            val intent = Intent(this, register::class.java)
-            startActivity(intent)
+
+            //add code code when login button is clicked.
+
+            //this is code to switch to homepage
+            //val intent = Intent(this, register::class.java)
+            //startActivity(intent)
         }
     }
 
