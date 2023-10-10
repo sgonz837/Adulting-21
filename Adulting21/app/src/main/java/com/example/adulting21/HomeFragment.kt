@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import com.example.adulting21.R
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
@@ -44,9 +45,9 @@ class HomeFragment : Fragment() {
             bundle.putInt("drinkNum", 1) // You can put your desired value here
             bundle.putString("manualTime", "02:30") // Replace "YourManualTime" with your desired time
 
-            val drinkInfoFragment = DrinkInfoFragment()
-            drinkInfoFragment.arguments = bundle
-            replaceFragment(drinkInfoFragment)
+            //val drinkInfoFragment = DrinkInfoFragment()
+            //drinkInfoFragment.arguments = bundle
+            //replaceFragment(drinkInfoFragment)
         }
 
 
@@ -62,6 +63,13 @@ class HomeFragment : Fragment() {
             view.findViewById(R.id.drinkImage9),
             view.findViewById(R.id.drinkImage10)
         )
+        val apiService = CocktailApiService()
+        val response = apiService.popularCocktails()
+
+        val textView1 = view.findViewById<TextView>(R.id.drinkName3)
+        textView1.text = response.joinToString(separator = "\n") {
+            "${it.ingredient2}"
+        }
 
         // Set click listeners for the ImageViews
         for (index in 0 until imageViews.size) {

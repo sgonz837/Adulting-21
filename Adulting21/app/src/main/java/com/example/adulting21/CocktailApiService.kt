@@ -48,7 +48,43 @@ class CocktailApiService {
             return "Error: ${e.message}"
         }
     }
+/*
+    fun vodkaDrinks(): List<bottleDrinks> {
+        val url = "www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
+        val request = Request.Builder()
+            .url(url)
+            .build()
 
+        try {
+            val response = client.newCall(request).execute()
+            if (!response.isSuccessful) {
+                return emptyList() // Return an empty list on error
+            }
+            val responseBody = response.body
+            val jsonString = responseBody?.string() ?: "Error"
+
+            val json = JSONObject(jsonString)
+            val drinks = json.getJSONArray("drinks")
+
+            val bottleDrinks = mutableListOf<bottleDrinks>()
+
+            for (i in 0 until drinks.length()) {
+                val drinkJson = drinks.getJSONObject(i)
+                val cocktail = bottleDrinks(
+                    drinkName1 = drinkJson.getString("strDrink"),
+                    drinkImg1 = drinkJson.getString("strDrinkThumb")
+                )
+                bottleDrinks.add(cocktail)
+            }
+            return bottleDrinks
+        } catch (e: Exception) {
+            return emptyList() // Return an empty list on error
+        }
+    }
+
+
+
+ */
     fun popularCocktails(): List<Cocktail> {
         val url = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php"
         val request = Request.Builder()
@@ -149,3 +185,30 @@ data class Cocktail(
     val ingredient15Img: String,
 )
 
+
+data class bottleDrinks(
+    val drinkName1: String,
+    val drinkImg1: String,
+    val drinkName2: String,
+    val drinkImg2: String,
+    val drinkName3: String,
+    val drinkImg3: String,
+    val drinkName4: String,
+    val drinkImg4: String,
+    val drinkName5: String,
+    val drinkImg5: String,
+    val drinkName6: String,
+    val drinkImg6: String,
+    val drinkName7: String,
+    val drinkImg7: String,
+    val drinkName8: String,
+    val drinkImg8: String,
+    val drinkName9: String,
+    val drinkImg9: String,
+    val drinkName10: String,
+    val drinkImg10: String,
+    val drinkName11: String,
+    val drinkImg11: String,
+    val drinkName12: String,
+    val drinkImg12: String,
+    )
