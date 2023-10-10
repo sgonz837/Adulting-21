@@ -6,20 +6,23 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="293dp"
-        android:layout_height="61dp"
-        android:text="Enter Password"
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="244dp"
+        android:layout_height="57dp"
+        android:hint="Enter Password"
+
+        android:inputType="textPassword"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
+        app:layout_constraintVertical_bias="0.623"
+        app:passwordToggleEnabled="true" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -32,20 +35,22 @@
         app:layout_constraintVertical_bias="0.086"
         app:srcCompat="@drawable/logo" />
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="293dp"
-        android:layout_height="61dp"
-        android:text="Enter Username"
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="241dp"
+        android:layout_height="64dp"
+
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52" />
+        app:layout_constraintVertical_bias="0.518" />
 
     <TextView
         android:id="@+id/textView17"
@@ -53,7 +58,7 @@
         android:layout_height="34dp"
         android:text="Forgot Password?"
         android:textAlignment="center"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/red"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
