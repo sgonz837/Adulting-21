@@ -96,7 +96,4 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class login {
-
-}
 
