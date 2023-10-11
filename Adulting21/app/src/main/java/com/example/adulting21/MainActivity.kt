@@ -15,35 +15,88 @@ package com.example.adulting21
 import android.content.Intent
 import com.example.adulting21.R
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
+
+    private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.register_page)
 
-        //setContentView(R.layout.homepage)
-        setContentView(R.layout.login_register)
+        firebaseAuth = FirebaseAuth.getInstance()
 
-            val buttonLogin = findViewById<Button>(R.id.button_login)
-            //First Page so These Two go to either login or register
-            buttonLogin.setOnClickListener {
-                val intent = Intent(this, login::class.java)
-                startActivity(intent)
-            }
+        val buttonLogin = findViewById<Button>(R.id.button6)
+        //if login button is clicked, do tasks
+        buttonLogin.setOnClickListener {
+            Log.d("TAG","Succesful2")
+            register_page(it)
 
-            val buttonRegister = findViewById<Button>(R.id.button_register)
-            buttonRegister.setOnClickListener {
-                val intent = Intent(this, login::class.java)
-                startActivity(intent)
-            }
+            //add code code when login button is clicked.
+
+            //this is code to switch to homepage
+            //val intent = Intent(this, register::class.java)
+            //startActivity(intent)
+        }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        //setContentView(R.layout.homepage)
+//        setContentView(R.layout.register_page)
+//
+//            val buttonLogin = findViewById<Button>(R.id.butoon)
+//            //First Page so These Two go to either login or register
+//            buttonLogin.setOnClickListener {
+//                Log.d("TAG","Test")
+//                val intent = Intent(this, register::class.java)
+//               startActivity(intent)
+//            }
+//
+////            val buttonRegister = findViewById<Button>(R.id.button6)
+////            buttonRegister.setOnClickListener {
+////                val intent = Intent(this, login::class.java)
+////            startActivity(intent)
+////            }
+        }
+    //}
+
+    fun register_page(view: View) {
+        Log.d("TAG","Succesful")
+        val email = findViewById<EditText>(R.id.email).text.toString()
+        val password = findViewById<EditText>(R.id.password).text.toString()
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Email and password are required.", Toast.LENGTH_SHORT).show()
+            return
         }
 
-        fun buttonLogin(view: View) {
-            val intent = Intent(this, login::class.java)
-            startActivity(intent)
-        }}
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val intent = Intent(this, login::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG).show()
+                }
+            }
+            .addOnFailureListener(this) { exception ->
+                Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG).show()
+            }
+    }
+}
+
+class login {
+
+}
+

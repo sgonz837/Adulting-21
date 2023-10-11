@@ -23,7 +23,7 @@
         android:id="@+id/textView19"
         android:layout_width="246dp"
         android:layout_height="59dp"
-        android:text="Create Username"
+        android:text="Create Account"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -33,21 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.453" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="234dp"
-        android:layout_height="62dp"
-        android:text="Date of Birth"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551" />
 
     <!--    <TextView-->
     <!--        android:id="@+id/textView25"-->
@@ -95,6 +80,21 @@
     <!--        />-->
 
     <!--another option-->
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="234dp"
+        android:layout_height="62dp"
+        android:text="Date of Birth"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.556" />
+
     <EditText
         android:id="@+id/email"
         android:hint="Email"
