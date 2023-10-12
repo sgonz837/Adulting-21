@@ -35,6 +35,7 @@ public class SpeedometerView extends View {
     //W = weight
     //r = sex (M = .68 or F = .55)
     //H = hours since first drink
+        //Need timestamp of when first drink consumed and fluctuates on added drink time
     //14 = standard drink size in US in grams
     //454 = 1lb of bodyweight in grams
     //Based off Widmark Formula here: https://gambonelaw.com/faqs/the-widmark-formula-and-calculating-your-bac-level/
