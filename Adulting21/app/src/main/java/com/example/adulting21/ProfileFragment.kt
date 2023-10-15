@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,13 +58,13 @@ class ProfileFragment : Fragment() {
                 }
             }
     }
-}
 
-val name: String = "";
-val weight: Double = 85.3;
-val sex: String = "m";
-val alcoholConsumedInGrams: Double = 10.5;
-val hoursSinceDrinking: Double = 2.6;
-val age: Double = 35.0;
-val emergency: String = "";
+    fun profile_fragment(view: View) {
+        val name = findViewById<EditText>(R.id.name)
+        val age = findViewById<EditText>(R.id.age)
+        val weight = findViewById<EditText>(R.id.weight)
+        val sex = findViewById<EditText>(R.id.sex)
+        val ec = findByViewId<EditText>(R.id.ec)
+    }
+}
 
