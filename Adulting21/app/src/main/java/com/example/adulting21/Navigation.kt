@@ -1,6 +1,116 @@
+
 package com.example.adulting21
 
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.widget.Toolbar
+
+class Navigation : AppCompatActivity() {
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var bottomNavigationView: BottomNavigationView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.homepage)
+
+        // Initialize views
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+
+        // Set up the toolbar
+        setSupportActionBar(toolbar)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.open_nav,
+            R.string.close_nav
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        // Set up initial fragment (e.g., HomeFragment)
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frame_layout, HomeFragment())
+                .commit()
+            navigationView.setCheckedItem(R.id.nav_home)
+        }
+
+        // Set up BottomNavigationView listener
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> replaceFragment(HomeFragment())
+                R.id.profile -> replaceFragment(ProfileFragment())
+                R.id.settings -> replaceFragment(SettingsFragment())
+                R.id.search -> replaceFragment(SearchFragment())
+            }
+            true
+        }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frame_layout, fragment)
+            .commit()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+        return true
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    fun onNavigationItemSelected(item: MenuItem): Boolean {
+        Log.d("TAG", "message")
+        when (item.itemId) {
+
+            R.id.nav_home -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, HomeFragment()).commit()
+            R.id.nav_settings -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, SettingsFragment()).commit()
+            R.id.nav_share -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, HomeFragment()).commit()
+            R.id.nav_bars -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, BarInfo()).commit()
+            R.id.nav_logout -> Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show()
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
+    }
+}
+
+
+/*
+
+/*
+package com.example.adulting21
+
+import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -80,17 +190,20 @@ class Navigation : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        Log.d("TAG", "message")
         when (item.itemId) {
+
             R.id.nav_home -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, HomeFragment()).commit()
             R.id.nav_settings -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, SettingsFragment()).commit()
             R.id.nav_share -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, HomeFragment()).commit()
-            R.id.nav_about -> supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, ProfileFragment()).commit()
+            R.id.nav_bars -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, BarInfo()).commit()
             R.id.nav_logout -> Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show()
         }
+
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
@@ -103,4 +216,7 @@ class Navigation : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
     }
 }
 
+
+ */
+ */
 
