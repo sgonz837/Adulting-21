@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECECEC">
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,6 +17,11 @@
     tools:context=".HomeFragment"
     android:background="#ECECEC"
     android:fillViewport="true">
+
+
+
+        <!-- Loading layout (initially set as invisible) -->
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -513,6 +526,12 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 
-
+    <!-- Loading layout (initially set as invisible) -->
+    <include
+        android:id="@+id/loadingLayout"
+        layout="@layout/loading_layout"
+        android:visibility="invisible" />
+</FrameLayout>

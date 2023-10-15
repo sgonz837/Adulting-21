@@ -25,19 +25,25 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.coroutines.delay
 
 
 class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var imageViews: List<ImageView>
-
+    // Declare a variable for the loading layout
+    private lateinit var loadingLayout: FrameLayout
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        // Initialize the loading layout
+        loadingLayout = view.findViewById(R.id.loadingLayout)
+        // Initially, set the loading layout as invisible
+        loadingLayout.visibility = View.GONE
 
         val drinkButton = view.findViewById<Button>(R.id.drinkBtn)
 
@@ -48,7 +54,6 @@ class HomeFragment : Fragment() {
             bundle.putString("manualTime", "02:30") // Replace "YourManualTime" with your desired time
 
         }
-
 
         imageViews = listOf(
             view.findViewById(R.id.drinkImage1),
@@ -106,7 +111,7 @@ class HomeFragment : Fragment() {
             bundles2.putInt("drinkBottleNum", 2) // You can put your desired value here
             val fragment2 = bottleDrinkInfo()
             fragment2.arguments = bundles2
-            replaceFragment(bottleDrinkInfo())
+            replaceFragment(fragment2)
             //val intent = Intent(this, login::class.java)
             //startActivity(intent)
         }
@@ -118,7 +123,7 @@ class HomeFragment : Fragment() {
 
             val fragment3 = bottleDrinkInfo()
             fragment3.arguments = bundles3
-            replaceFragment(bottleDrinkInfo())
+            replaceFragment(fragment3)
             //val intent = Intent(this, login::class.java)
             //startActivity(intent)
         }
@@ -130,7 +135,7 @@ class HomeFragment : Fragment() {
 
             val fragment4 = bottleDrinkInfo()
             fragment4.arguments = bundles4
-            replaceFragment(bottleDrinkInfo())
+            replaceFragment(fragment4)
             //val intent = Intent(this, login::class.java)
             //startActivity(intent)
         }
@@ -142,6 +147,8 @@ class HomeFragment : Fragment() {
         if (viewModel.cachedCocktails != null) {
             displayCocktails(viewModel.cachedCocktails!!)
         } else {
+            // Inside the onCreateView method, before making the API call
+            loadingLayout.visibility = View.VISIBLE
             // If cached data is not available, make the API call
             GlobalScope.launch(Dispatchers.IO) {
                 val apiService = CocktailApiService()
@@ -149,6 +156,11 @@ class HomeFragment : Fragment() {
                 withContext(Dispatchers.Main) {
                     viewModel.cachedCocktails = response
                     displayCocktails(response)
+
+                    // Wait for 2 seconds (2000 milliseconds)
+                    delay(1000)
+                    // After the API call is complete, set loadingLayout visibility to GONE
+                    loadingLayout.visibility = View.GONE
                 }
             }
         }
