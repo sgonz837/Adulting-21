@@ -52,17 +52,8 @@ class bottleDrinkInfo : Fragment() {
                 4 -> apiService.tequilaDrinks()
                 else -> emptyList() // Handle other cases as needed
             }
-/*
-            // Wait for 2 seconds (2000 milliseconds)
-            delay(1000)
-            // After the API call is complete, set loadingLayout visibility to GONE on the main thread
-            withContext(Dispatchers.Main) {
-                loadingLayout.visibility = View.GONE
-            }
 
- */
 
-            Log.d("TAG", drinkNum.toString())
             withContext(Dispatchers.Main) {
                 imageViews = listOf(
                     view.findViewById(R.id.drinkImages1),

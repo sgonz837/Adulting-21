@@ -14,74 +14,49 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DrinkInfoFragment : Fragment(){
+class DrinkInfoFragment : Fragment() {
     override fun onCreateView(
-        //honestly i don't know what this does but its required for a fragment file
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //attaches to the appropriate layout file
         val view = inflater.inflate(R.layout.drink_details, container, false)
 
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
             val response = apiService.popularCocktails()
             withContext(Dispatchers.Main) {
+                val layoutIngredients = listOf(
+                    R.id.imageIngredient1,
+                    R.id.imageIngredient2,
+                    R.id.imageIngredient3
+                )
 
-                val layout = view.findViewById<LinearLayout>(R.id.imageIngredient2)
-                val layout1 = view.findViewById<LinearLayout>(R.id.imageIngredient)
-                val layout2 = view.findViewById<LinearLayout>(R.id.imageIngredient1)
-                val layout3 = view.findViewById<LinearLayout>(R.id.imageIngredient3)
-                //layout.removeAllViews()
+                for ((index, cocktail) in response.withIndex()) {
+                    if (index < layoutIngredients.size) {
+                        val layoutId = layoutIngredients[index]
+                        val layout = view.findViewById<LinearLayout>(layoutId)
 
-                response.forEachIndexed { index, cocktail ->
-                    if (index == 0) {
                         val imageView = ImageView(requireContext())
                         Picasso.get()
-                            .load(cocktail.ingredient2Img)
+                            .load(cocktail.ingredients[index].imageUrl)
                             .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
                             .into(imageView)
+
                         layout.addView(imageView)
-                        return@forEachIndexed
-                    } else if (index == 1) {
-                        val imageView1 = ImageView(requireContext())
-                        Picasso.get()
-                            .load(cocktail.ingredient1Img)
-                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
-                            .into(imageView1)
-                        layout1.addView(imageView1)
-                        return@forEachIndexed
-                    } else if (index == 2) {
-                        val imageView2 = ImageView(requireContext())
-                        Picasso.get()
-                            .load(cocktail.ingredient1Img)
-                            .resize(1000, 1000) // Set width to 200 pixels and height to maintain aspect ratio
-                            .into(imageView2)
-                        layout2.addView(imageView2)
-                        return@forEachIndexed
-                    }
-
-                    val textView1 = view.findViewById<TextView>(R.id.kevin2)
-                    textView1.text = response.joinToString(separator = "\n") {
-                        "${it.ingredient2}"
-                    }
-
-                    val textView2 = view.findViewById<TextView>(R.id.kevin3)
-                    textView2.text = response.joinToString(separator = "\n") {
-                        "${it.ingredient3}"
-                    }
-
-                    val ingredients = cocktail.ingredient1.split(", ")
-                    val textView = view.findViewById<TextView>(R.id.kevin)
-                    for (ingredient in ingredients) {
-                        println(ingredient) // Do something with each ingredient
-
                     }
                 }
+
+                val textView1 = view.findViewById<TextView>(R.id.kevin2)
+                textView1.text = response.joinToString(separator = "\n") { "${it.ingredients[1].name}" }
+
+                val textView2 = view.findViewById<TextView>(R.id.kevin3)
+                textView2.text = response.joinToString(separator = "\n") { "${it.ingredients[2].name}" }
+
+                val ingredients = response[0].ingredients.map { it.name }
+                val textView = view.findViewById<TextView>(R.id.kevin)
+                textView.text = ingredients.joinToString("\n")
             }
-
-
         }
         return view
     }

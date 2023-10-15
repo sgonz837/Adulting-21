@@ -9,9 +9,6 @@
     android:background="#ECECEC">
 
 <ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment"
@@ -116,6 +113,7 @@
                     android:layout_height="118dp"
                     android:layout_margin="5dp"
                     android:adjustViewBounds="true"
+                    android:orientation="vertical"
                     android:scaleType="fitCenter">
 
                     <ImageView
@@ -144,12 +142,13 @@
                 android:layout_height="121dp"
                 android:layout_margin="5dp"
                 android:adjustViewBounds="true"
+                android:orientation="vertical"
                 android:scaleType="fitCenter">
 
                 <ImageView
                     android:id="@+id/drinkImage2"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="91dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/baseline_home_24" />
 
@@ -162,8 +161,7 @@
                     android:text="Text 1"
                     app:layout_constraintEnd_toEndOf="@id/imageView1"
                     app:layout_constraintStart_toStartOf="@id/imageView1"
-                    app:layout_constraintTop_toBottomOf="@id/imageView1"
-                    />
+                    app:layout_constraintTop_toBottomOf="@id/imageView1" />
             </LinearLayout>
 
                 <LinearLayout

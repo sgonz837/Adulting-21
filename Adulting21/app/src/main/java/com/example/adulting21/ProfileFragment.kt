@@ -58,7 +58,7 @@ class ProfileFragment : Fragment() {
                 }
             }
     }
-
+/*
     fun profile_fragment(view: View) {
         val name = findViewById<EditText>(R.id.name)
         val age = findViewById<EditText>(R.id.age)
@@ -66,5 +66,7 @@ class ProfileFragment : Fragment() {
         val sex = findViewById<EditText>(R.id.sex)
         val ec = findByViewId<EditText>(R.id.ec)
     }
+
+ */
 }
 
