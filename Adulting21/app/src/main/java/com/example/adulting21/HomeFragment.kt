@@ -9,6 +9,7 @@ package com.example.adulting21
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import androidx.lifecycle.ViewModelProvider
+
 
 class HomeFragment : Fragment() {
 
@@ -45,9 +47,6 @@ class HomeFragment : Fragment() {
             bundle.putInt("drinkNum", 1) // You can put your desired value here
             bundle.putString("manualTime", "02:30") // Replace "YourManualTime" with your desired time
 
-            //val drinkInfoFragment = DrinkInfoFragment()
-            //drinkInfoFragment.arguments = bundle
-            //replaceFragment(drinkInfoFragment)
         }
 
 
@@ -77,6 +76,63 @@ class HomeFragment : Fragment() {
             imageView.setOnClickListener {
                 replaceFragment(DrinkInfoFragment())
             }
+        }
+
+
+        // In order to keep the number of fragment pages low,
+        // I will relate a number to a drink and in the bottleDinkInfo page
+        // I will check the integer in drinkBottleNum and display the number that i get
+        // by using a if statement and call the related api call
+
+        // drinkBottleNum = 1 (Vodka)
+        //                  2 (Gin)
+        //                  3 (Rum)
+        //                  4 (Tequilla)
+        val vodkaDrink = view.findViewById<ImageView>(R.id.vodkaBottleImage)
+        vodkaDrink.setOnClickListener {
+            Log.d("TAG", "message")
+            val bundles1 = Bundle()
+            bundles1.putInt("drinkBottleNum", 1) // You can put your desired value here
+
+            val fragment1 = bottleDrinkInfo()
+            fragment1.arguments = bundles1
+            replaceFragment(fragment1)
+        }
+
+
+        val ginDrink = view.findViewById<ImageView>(R.id.ginBottleImage)
+        ginDrink.setOnClickListener {
+            val bundles2 = Bundle()
+            bundles2.putInt("drinkBottleNum", 2) // You can put your desired value here
+            val fragment2 = bottleDrinkInfo()
+            fragment2.arguments = bundles2
+            replaceFragment(bottleDrinkInfo())
+            //val intent = Intent(this, login::class.java)
+            //startActivity(intent)
+        }
+
+        val rumDrink = view.findViewById<ImageView>(R.id.rumBottleImage)
+        rumDrink.setOnClickListener {
+            val bundles3 = Bundle()
+            bundles3.putInt("drinkBottleNum", 3) // You can put your desired value here
+
+            val fragment3 = bottleDrinkInfo()
+            fragment3.arguments = bundles3
+            replaceFragment(bottleDrinkInfo())
+            //val intent = Intent(this, login::class.java)
+            //startActivity(intent)
+        }
+
+        val tequillaDrinkkk = view.findViewById<ImageView>(R.id.tequillaBottleImage)
+        tequillaDrinkkk.setOnClickListener {
+            val bundles4 = Bundle()
+            bundles4.putInt("drinkBottleNum", 4) // You can put your desired value here
+
+            val fragment4 = bottleDrinkInfo()
+            fragment4.arguments = bundles4
+            replaceFragment(bottleDrinkInfo())
+            //val intent = Intent(this, login::class.java)
+            //startActivity(intent)
         }
 
         // Initialize the ViewModel

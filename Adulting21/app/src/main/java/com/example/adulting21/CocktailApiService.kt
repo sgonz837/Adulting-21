@@ -6,6 +6,7 @@
 
 
 package com.example.adulting21
+import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
@@ -85,17 +86,21 @@ class CocktailApiService {
 
 
  */
+
+
     fun popularCocktails(): List<Cocktail> {
         val url = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php"
         val request = Request.Builder()
             .url(url)
             .build()
-
         try {
             val response = client.newCall(request).execute()
             if (!response.isSuccessful) {
+                Log.d("TAG", "Not Succesful")
                 return emptyList() // Return an empty list on error
             }
+
+            Log.d("TAG", "Succesful!")
             val responseBody = response.body
             val jsonString = responseBody?.string() ?: "Error"
 
@@ -144,6 +149,7 @@ class CocktailApiService {
             }
             return cocktails
         } catch (e: Exception) {
+            Log.d("TAG", "Not Succesful")
             return emptyList() // Return an empty list on error
         }
     }
@@ -185,7 +191,7 @@ data class Cocktail(
     val ingredient15Img: String,
 )
 
-
+/*
 data class bottleDrinks(
     val drinkName1: String,
     val drinkImg1: String,
@@ -212,3 +218,6 @@ data class bottleDrinks(
     val drinkName12: String,
     val drinkImg12: String,
     )
+
+
+ */

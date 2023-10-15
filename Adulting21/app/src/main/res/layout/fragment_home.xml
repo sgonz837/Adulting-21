@@ -19,7 +19,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView15"
+            android:id="@+id/rumBottleImage"
             android:layout_width="116dp"
             android:layout_height="147dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
             app:srcCompat="@drawable/rum" />
 
         <ImageView
-            android:id="@+id/imageView14"
+            android:id="@+id/ginBottleImage"
             android:layout_width="131dp"
             android:layout_height="143dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +42,7 @@
             app:srcCompat="@drawable/gin" />
 
         <ImageView
-            android:id="@+id/imageView13"
+            android:id="@+id/vodkaBottleImage"
             android:layout_width="107dp"
             android:layout_height="140dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -54,7 +54,7 @@
             app:srcCompat="@drawable/vodka" />
 
         <ImageView
-            android:id="@+id/imageView17"
+            android:id="@+id/tequillaBottleImage"
             android:layout_width="127dp"
             android:layout_height="185dp"
             android:src="@drawable/tequila"
@@ -432,7 +432,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.091"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView13"
+            app:layout_constraintTop_toTopOf="@+id/vodkaBottleImage"
             app:layout_constraintVertical_bias="0.28" />
 
         <TextView

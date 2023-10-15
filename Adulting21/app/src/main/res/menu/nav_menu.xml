@@ -18,9 +18,9 @@
             android:icon="@drawable/nav_share"
             android:title="Share"/>
         <item
-            android:id="@+id/nav_about"
+            android:id="@+id/nav_bars"
             android:icon="@drawable/nav_home"
-            android:title="About Us"/>
+            android:title="Bars" />
     </group>
     <item
         android:title="">
