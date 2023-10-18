@@ -15,6 +15,7 @@ class SettingsFragment : Fragment() {
     //Here are the variables names for the calculator
     private var username: String? = null
     private var age: Int? = null
+    private var drinkNum: Int? = null
     private var weight: Int? = null
     private var sex: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +23,10 @@ class SettingsFragment : Fragment() {
 
         // Retrieve user data from shared preference
         val sharedPref = requireActivity().getSharedPreferences("user_data", AppCompatActivity.MODE_PRIVATE)
+
         username = sharedPref.getString("username", "DefaultUsername")
         age = sharedPref.getInt("age", 0)
+        drinkNum = sharedPref.getInt("drinkNum", 0)
         weight = sharedPref.getInt("weight", 0)
         sex = sharedPref.getString("sex", "DefaultSex")
 

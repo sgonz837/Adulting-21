@@ -91,7 +91,6 @@ class HomeFragment : Fragment() {
         drinkButton.setOnClickListener {
             val bundle = Bundle()
             bundle.putInt("drinkNum", 1) // You can put your desired value here
-            bundle.putString("manualTime", "02:30") // Replace "YourManualTime" with your desired time
 
         }
 
@@ -260,6 +259,8 @@ class HomeFragment : Fragment() {
         if (viewModel.cachedCocktails != null) {
             displayCocktails(viewModel.cachedCocktails!!)
         } else {
+            viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
             // Inside the onCreateView method, before making the API call
             loadingLayout.visibility = View.VISIBLE
             // If cached data is not available, make the API call
