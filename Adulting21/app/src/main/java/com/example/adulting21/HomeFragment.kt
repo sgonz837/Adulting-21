@@ -87,11 +87,13 @@ class HomeFragment : Fragment() {
                 else -> false
             }
         }
+
+
         // Set click listener for the Button
         drinkButton.setOnClickListener {
             val bundle = Bundle()
-            bundle.putInt("drinkNum", 1) // You can put your desired value here
-
+           // bundle.putInt("drinkNum", +1) // You can put your desired value here
+            bundle.putInt("drinkNum", bundle.getInt("drinkNum") + 1) // Increment the value by 1
         }
 
         imageViews = listOf(
