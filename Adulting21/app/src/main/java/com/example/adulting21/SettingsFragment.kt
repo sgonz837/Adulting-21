@@ -31,6 +31,12 @@ class SettingsFragment : Fragment() {
         sex = sharedPref.getString("sex", "DefaultSex")
 
     }
+    //Update BAC
+    /* private fun updateBAC() {
+         val bac = calcBAC()
+         Log.d("TAG", "BAC: $bac")
+     }*/
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,7 +72,7 @@ class SettingsFragment : Fragment() {
         speedometerView.addColoredRange(20.0, 40.0, Color.RED)
 
         // Set the speed
-        speedometerView.speed = 25.0
+        speedometerView.speed = calcBAC()
     }
 
     companion object {
@@ -81,5 +87,28 @@ class SettingsFragment : Fragment() {
                 }
             }
     }
+
+
+    //calcBAC test
+    fun calcBAC(): Double {
+
+        //r must be double in order to do multiplication
+        val r: Double = if (sex.equals("M", ignoreCase = true)) 0.68 else 0.55
+
+        //formula for bac calculation --> numDrinks, Weight, sex and hours are hard coded
+        //need to multiply by 100 to tailer to meter numbers
+        //val bac =  (((3.0 * 14.0 / (0.68 * (150 * 453.592))) * 100.0 - 1.0 * 0.015) * 100)
+
+        //Test to make sure weight and sex are being passed
+        //val bac = (((3.0 * 14.0 / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
+
+        //formula after A.S. reccomendation for fixes
+        //need to multiply by 100 to tailer to meter numbers
+        //453.592 is 1 lb in kilograms
+        //ISSUE: drinkNum not being passed
+        val bac =  ((((drinkNum?.times(14.0) ?:1.0) / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
+        return if (bac < 0) 0.0 else bac
+    }
+
 
 }
