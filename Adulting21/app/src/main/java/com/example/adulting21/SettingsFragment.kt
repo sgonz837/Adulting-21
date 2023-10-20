@@ -15,7 +15,7 @@ class SettingsFragment : Fragment() {
     //Here are the variables names for the calculator
     private var username: String? = null
     private var age: Int? = null
-    private var drinkNum: Int? = null
+    //private var drinkNumm: Int? = null
     private var weight: Int? = null
     private var sex: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class SettingsFragment : Fragment() {
 
         username = sharedPref.getString("username", "DefaultUsername")
         age = sharedPref.getInt("age", 0)
-        drinkNum = sharedPref.getInt("drinkNum", 0)
+        //drinkNumm = sharedPref.getInt("drinkNum", 0)
         weight = sharedPref.getInt("weight", 0)
         sex = sharedPref.getString("sex", "DefaultSex")
 
@@ -43,7 +43,11 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        Log.d("TAG", "Username: $username, Age: $age, Weight: $weight, Sex: $sex")
+        //val drinkNum = arguments?.getInt("drinkNum", 2) ?: 1
+        val drinkNum = arguments?.getInt("drinkNum") ?: 1
+        Log.d("TAG", "drinkNum in SettingsFragment: $drinkNum")
+
+        Log.d("TAG", "Username: $username, Age: $age, Weight: $weight, Sex: $sex, DrinkNum :$drinkNum")
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false)
@@ -106,8 +110,9 @@ class SettingsFragment : Fragment() {
         //need to multiply by 100 to tailer to meter numbers
         //453.592 is 1 lb in kilograms
         //ISSUE: drinkNum not being passed
-        val bac =  ((((drinkNum?.times(14.0) ?:1.0) / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
-        return if (bac < 0) 0.0 else bac
+        //val bac =  ((((drinkNumm?.times(14.0) ?:1.0) / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
+        //return if (bac < 0) 0.0 else bac
+        return 0.0
     }
 
 
