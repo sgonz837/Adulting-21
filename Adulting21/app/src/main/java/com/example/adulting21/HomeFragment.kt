@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
-
+    private var drinkNum: Int = 1
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -91,9 +91,22 @@ class HomeFragment : Fragment() {
 
         // Set click listener for the Button
         drinkButton.setOnClickListener {
+            drinkNum++
             val bundle = Bundle()
-           // bundle.putInt("drinkNum", +1) // You can put your desired value here
-            bundle.putInt("drinkNum", bundle.getInt("drinkNum") + 1) // Increment the value by 1
+           bundle.putInt("drinkNum", drinkNum) // You can put your desired value here
+            val fragment = SettingsFragment()
+            fragment.arguments = bundle
+           // replaceFragment(fragment)
+
+            //bundle.putInt("drinkNum", bundle.getInt("drinkNum", 0) + 1) // Increment the value by 1 and initialize to 0 if it doesn't exist
+            //drinkNum = bundle.getInt("drinkNum") // Update the drinkNum variable
+            //bundle.putInt("drinkNum", bundle.getInt("drinkNum") + 1) // Increment the value by 1
+            Log.d("TAG", "drinkNum: $drinkNum") // Log the value of drinkNum
+
+
+            Log.d("TAG","button clicked" )
+
+
         }
 
         imageViews = listOf(
