@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn = "navigation_view">
+    tools:showIn="navigation_view">
 
     <group
         android:checkableBehavior="single">
@@ -18,9 +17,19 @@
             android:icon="@drawable/nav_share"
             android:title="Share"/>
         <item
+            android:id="@+id/nav_bars_dropdown_trigger"
+            android:icon="@drawable/nav_home"
+            android:title="Bars"/>
+        <item
             android:id="@+id/nav_bars"
             android:icon="@drawable/nav_home"
             android:title="Bars" />
+        <item
+            android:id="@+id/nav_service1"
+            android:title="Service 1" />
+        <item
+            android:id="@+id/nav_service2"
+            android:title="Service 2" />
     </group>
     <item
         android:title="">

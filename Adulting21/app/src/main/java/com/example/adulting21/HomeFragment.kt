@@ -245,6 +245,22 @@ class HomeFragment : Fragment() {
                     drawerLayout.closeDrawers()
                     true
                 }
+                R.id.nav_bars_dropdown_trigger -> {
+                    // Handle the "Bars" item click by showing the dropdown menu
+                    showBarsDropDownMenu(view)
+                    true
+                }
+/*
+                R.id.nav_bars -> {
+                    // Handle logout item click
+                    Toast.makeText(requireContext(), "Logout clicked", Toast.LENGTH_SHORT).show()
+
+                    menuItem.actionView?.let { showBarsDropDownMenu(it) }
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    true
+                }
+
+ */
 
 
                 R.id.nav_logout -> {
@@ -307,6 +323,23 @@ class HomeFragment : Fragment() {
         fragmentTransaction.commit()
     }
 
+
+    private fun showBarsDropDownMenu(view: View) {
+        val popupMenu = PopupMenu(requireContext(), view)
+        popupMenu.menuInflater.inflate(R.menu.nav_menu, popupMenu.menu)
+        popupMenu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.nav_service1 -> {
+                    // Handle the Service 1 item click
+                }
+                R.id.nav_service2 -> {
+                    // Handle the Service 2 item click
+                }
+            }
+            true
+        }
+        popupMenu.show()
+    }
 }
 
 
