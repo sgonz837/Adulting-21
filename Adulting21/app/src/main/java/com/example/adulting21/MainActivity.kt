@@ -32,21 +32,29 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.register_page)
+        setContentView(R.layout.login_page)
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        val buttonLogin = findViewById<Button>(R.id.button6)
+        val buttonLogin = findViewById<Button>(R.id.login_btn)
         //if login button is clicked, do tasks
         buttonLogin.setOnClickListener {
             Log.d("TAG","Succesful2")
-            register_page(it)
+            login_page(it)
+
+            //register_page(it)
 
             //add code code when login button is clicked.
 
             //this is code to switch to homepage
             //val intent = Intent(this, register::class.java)
             //startActivity(intent)
+        }
+        val buttonreg = findViewById<Button>(R.id.GoToReg)
+        //if login button is clicked, do tasks
+        buttonreg.setOnClickListener {
+            GoToReg(it)
+
         }
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -69,9 +77,8 @@ class MainActivity : AppCompatActivity() {
 ////            }
         }
     //}
-
-    fun register_page(view: View) {
-        Log.d("TAG","Succesful")
+    fun login_page(view: View) {
+        Log.d("TAG", "Succesful")
         val email = findViewById<EditText>(R.id.email).text.toString()
         val password = findViewById<EditText>(R.id.password).text.toString()
 
@@ -79,21 +86,52 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Email and password are required.", Toast.LENGTH_SHORT).show()
             return
         }
-
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
+        // Sign in with the provided email and password
+        firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val intent = Intent(this, login::class.java)
+                    // Login successful, navigate to the main activity
+                    val intent = Intent(this, Navigation::class.java)
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG).show()
+                    // Login failed, display an error message
+                    Toast.makeText(
+                        this, "Login failed", Toast.LENGTH_LONG).show()
                 }
             }
-            .addOnFailureListener(this) { exception ->
-                Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG).show()
-            }
+    }
+    fun GoToReg(view: View) {
+        val intent = Intent(this, register::class.java)
+        startActivity(intent)
+        finish()
     }
 }
+//    fun register_page(view: View) {
+//        Log.d("TAG","Succesful")
+//        val email = findViewById<EditText>(R.id.email).text.toString()
+//        val password = findViewById<EditText>(R.id.password).text.toString()
+//
+//        if (email.isEmpty() || password.isEmpty()) {
+//            Toast.makeText(this, "Email and password are required.", Toast.LENGTH_SHORT).show()
+//            return
+//        }
+//
+//        firebaseAuth.createUserWithEmailAndPassword(email, password)
+//            .addOnCompleteListener(this) { task ->
+//                if (task.isSuccessful) {
+//                    val intent = Intent(this, login::class.java)
+//                    startActivity(intent)
+//                    finish()
+//                } else {
+//                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG).show()
+//                }
+//            }
+//            .addOnFailureListener(this) { exception ->
+//                Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG).show()
+//            }
+//    }
+
+
 
 

@@ -19,20 +19,20 @@
         app:layout_constraintVertical_bias="0.034"
         app:srcCompat="@drawable/logo" />
 
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="246dp"
-        android:layout_height="59dp"
-        android:text="Create Account"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.453" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView19"-->
+<!--        android:layout_width="246dp"-->
+<!--        android:layout_height="59dp"-->
+<!--        android:text="Create Account"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.496"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.453" />-->
 
     <!--    <TextView-->
     <!--        android:id="@+id/textView25"-->
@@ -80,39 +80,21 @@
     <!--        />-->
 
     <!--another option-->
+
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/CreateAccount"
         android:layout_width="234dp"
         android:layout_height="62dp"
-        android:text="Date of Birth"
+        android:text="Create Account"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.556" />
-
-    <EditText
-        android:id="@+id/email"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:layout_width="241dp"
-        android:layout_height="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65"
-        />
-
+        app:layout_constraintVertical_bias="0.475" />
 
 
     <!--google sign in button android:background="@drawable/common_google_signin_btn_icon_dark"-->
@@ -163,40 +145,56 @@
 <!--        app:layout_constraintVertical_bias="0.752"-->
 <!--        />-->
 
+    <!--  submit button  -->
     <EditText
-        android:id="@+id/password"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:passwordToggleEnabled="true"
+        android:id="@+id/email"
+        android:layout_width="241dp"
+        android:layout_height="64dp"
 
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.587" />
+
+    <EditText
+        android:id="@+id/password"
         android:layout_width="244dp"
         android:layout_height="57dp"
+        android:hint="Password"
+
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.752"
-        />
+        app:layout_constraintVertical_bias="0.695"
+        app:passwordToggleEnabled="true" />
 
-    <!--  submit button  -->
+    <!-- slogan-->
+
     <Button
         android:id="@+id/button6"
         android:layout_width="155dp"
         android:layout_height="69dp"
-        android:text="Submit"
         android:background="@color/red"
+        android:text="Submit"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.868" />
-
-    <!-- slogan-->
+        app:layout_constraintVertical_bias="0.835" />
 
     <TextView
         android:id="@+id/textView29"
