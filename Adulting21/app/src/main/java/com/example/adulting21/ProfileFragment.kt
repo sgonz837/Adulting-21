@@ -17,7 +17,7 @@ class ProfileFragment : Fragment() {
     private lateinit var ageEditText: EditText
     private lateinit var weightEditText: EditText
     private lateinit var sexEditText: EditText
-    private lateinit var ecEditText: EditText
+    private lateinit var drinkBox: EditText
     private lateinit var submitButton: Button
 
     override fun onCreateView(
@@ -31,7 +31,7 @@ class ProfileFragment : Fragment() {
         ageEditText = view.findViewById(R.id.age)
         weightEditText = view.findViewById(R.id.weight)
         sexEditText = view.findViewById(R.id.sex)
-        ecEditText = view.findViewById(R.id.ec)
+        drinkBox = view.findViewById(R.id.numDrinksBox)
         submitButton = view.findViewById(R.id.submitBtn)
 
         // Set a click listener for the Submit button
@@ -47,14 +47,15 @@ class ProfileFragment : Fragment() {
         val ageText = ageEditText.text.toString()
         val weightText = weightEditText.text.toString()
         val sex = sexEditText.text.toString()
+        val drinkNum = drinkBox.text.toString()
 
         // Log the values to check if they are being retrieved correctly
-        Log.d("ProfileFragment", "Name: $name, Age: $ageText, Weight: $weightText, Sex: $sex")
+        Log.d("ProfileFragment", "Name: $name, Age: $ageText, Weight: $weightText, Sex: $sex, drinkNumber: $drinkNum")
 
         if (name.isNotEmpty() && ageText.isNotEmpty() && weightText.isNotEmpty() && sex.isNotEmpty()) {
             val age = ageText.toInt()
             val weight = weightText.toInt()
-
+            val number = drinkNum.toInt()
             // Create a shared preference
             val sharedPref = requireActivity().getSharedPreferences("user_data", AppCompatActivity.MODE_PRIVATE)
             val editor = sharedPref.edit()
@@ -64,6 +65,7 @@ class ProfileFragment : Fragment() {
             editor.putInt("age", age)
             editor.putInt("weight", weight)
             editor.putString("sex", sex)
+            editor.putInt("drinkCount", number)
 
             // Apply changes
             editor.apply()
@@ -73,6 +75,7 @@ class ProfileFragment : Fragment() {
             bundle.putInt("age", age)
             bundle.putInt("weight", weight)
             bundle.putString("sex", sex)
+            bundle.putInt("drinkCount",number)
 
             // Create an instance of the SettingsFragment
             val settingsFragment = SettingsFragment()

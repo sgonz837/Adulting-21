@@ -31,6 +31,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var imageViews: List<ImageView>
+    private lateinit var imageViews1: List<ImageView>
     // Declare a variable for the loading layout
     private lateinit var loadingLayout: FrameLayout
 
@@ -49,7 +50,12 @@ class HomeFragment : Fragment() {
         // Initially, set the loading layout as invisible
         loadingLayout.visibility = View.GONE
 
-        val drinkButton = view.findViewById<Button>(R.id.drinkBtn)
+        val sideNavFragment = SideNavigationDrawerFragment()
+        val transaction = childFragmentManager.beginTransaction()
+        transaction.replace(R.id.container_home, sideNavFragment)
+        transaction.commit()
+
+//        val drinkButton = view.findViewById<Button>(R.id.drinkBtn)
 
         drawerLayout = view.findViewById(R.id.drawer_layout)
         toggle = ActionBarDrawerToggle(
@@ -88,7 +94,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-
+/*
         // Set click listener for the Button
         drinkButton.setOnClickListener {
             drinkNum++
@@ -109,6 +115,8 @@ class HomeFragment : Fragment() {
 
         }
 
+ */
+
         imageViews = listOf(
             view.findViewById(R.id.drinkImage1),
             view.findViewById(R.id.drinkImage2),
@@ -122,9 +130,27 @@ class HomeFragment : Fragment() {
             view.findViewById(R.id.drinkImage10)
         )
 
+        imageViews1 = listOf(
+            view.findViewById(R.id.drinkImage11),
+            view.findViewById(R.id.drinkImage22),
+            view.findViewById(R.id.drinkImage33),
+            view.findViewById(R.id.drinkImage44),
+            view.findViewById(R.id.drinkImage55),
+            view.findViewById(R.id.drinkImage66),
+            view.findViewById(R.id.drinkImage77),
+            view.findViewById(R.id.drinkImage88),
+            view.findViewById(R.id.drinkImage99),
+            view.findViewById(R.id.drinkImage100)
+        )
+
+
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
             val response = apiService.popularCocktails()
+
+
+            val popularResponse = apiService.popularDrinks()
+
 
             val randomDrinkName1 = view.findViewById<TextView>(R.id.drinkName1)
             val randomDrinkName2 = view.findViewById<TextView>(R.id.drinkName2)
@@ -132,7 +158,21 @@ class HomeFragment : Fragment() {
             val randomDrinkName4 = view.findViewById<TextView>(R.id.drinkName4)
             val randomDrinkName5 = view.findViewById<TextView>(R.id.drinkName5)
             val randomDrinkName6 = view.findViewById<TextView>(R.id.drinkName6)
+            val randomDrinkName7 = view.findViewById<TextView>(R.id.drinkName7)
+            val randomDrinkName8 = view.findViewById<TextView>(R.id.drinkName8)
+            val randomDrinkName9 = view.findViewById<TextView>(R.id.drinkName9)
+            val randomDrinkName10 = view.findViewById<TextView>(R.id.drinkName10)
 
+            val randomDrinkName11 = view.findViewById<TextView>(R.id.drinkName11)
+            val randomDrinkName22 = view.findViewById<TextView>(R.id.drinkName22)
+            val randomDrinkName33 = view.findViewById<TextView>(R.id.drinkName33)
+            val randomDrinkName44 = view.findViewById<TextView>(R.id.drinkName44)
+            val randomDrinkName55 = view.findViewById<TextView>(R.id.drinkName55)
+            val randomDrinkName66 = view.findViewById<TextView>(R.id.drinkName66)
+            val randomDrinkName77 = view.findViewById<TextView>(R.id.drinkName77)
+            val randomDrinkName88 = view.findViewById<TextView>(R.id.drinkName88)
+            val randomDrinkName99 = view.findViewById<TextView>(R.id.drinkName99)
+            val randomDrinkName100 = view.findViewById<TextView>(R.id.drinkName100)
 
             withContext(Dispatchers.Main) {
                 response.forEachIndexed { index, cocktail ->
@@ -163,6 +203,80 @@ class HomeFragment : Fragment() {
 
                         5 -> {
                             randomDrinkName6.text = cocktail.name
+
+                        }
+
+                        6 -> {
+                            randomDrinkName7.text = cocktail.name
+                        }
+
+                        7 -> {
+                            randomDrinkName8.text = cocktail.name
+
+                        }
+
+                        8 -> {
+                            randomDrinkName9.text = cocktail.name
+
+                        }
+
+                        9 -> {
+                            randomDrinkName10.text = cocktail.name
+
+                        }
+                    }
+                }
+
+
+
+
+                popularResponse.forEachIndexed { index, cocktail ->
+                    when (index) {
+                        0 -> {
+                            randomDrinkName11.text = cocktail.drinkName
+
+                        }
+
+                        1 -> {
+                            randomDrinkName22.text = cocktail.drinkName
+
+                        }
+
+                        2 -> {
+                            randomDrinkName33.text = cocktail.drinkName
+                        }
+
+                        3 -> {
+                            randomDrinkName44.text = cocktail.drinkName
+
+                        }
+
+                        4 -> {
+                            randomDrinkName55.text = cocktail.drinkName
+
+                        }
+
+                        5 -> {
+                            randomDrinkName66.text = cocktail.drinkName
+
+                        }
+
+                        6 -> {
+                            randomDrinkName77.text = cocktail.drinkName
+                        }
+
+                        7 -> {
+                            randomDrinkName88.text = cocktail.drinkName
+
+                        }
+
+                        8 -> {
+                            randomDrinkName99.text = cocktail.drinkName
+
+                        }
+
+                        9 -> {
+                            randomDrinkName100.text = cocktail.drinkName
 
                         }
                     }
@@ -258,11 +372,26 @@ class HomeFragment : Fragment() {
                     drawerLayout.closeDrawers()
                     true
                 }
+/*
                 R.id.nav_bars_dropdown_trigger -> {
                     // Handle the "Bars" item click by showing the dropdown menu
-                    showBarsDropDownMenu(view)
+                    val menuItem = navigationView.menu.findItem(R.id.nav_bars)
+                    menuItem.actionView?.let { showBarsDropDownMenu(it) }
                     true
                 }
+
+ */
+
+
+                R.id.nav_bars_dropdown_trigger -> {
+                    val fragmentSwitch = barInfooo()
+                    replaceFragment(fragmentSwitch)
+                    // Handle the "Bars" item click by showing the dropdown menu
+                    //showBarsDropDownMenu(view)
+                    true
+                }
+
+
 /*
                 R.id.nav_bars -> {
                     // Handle logout item click
@@ -289,6 +418,7 @@ class HomeFragment : Fragment() {
         // Check if cached data is available, and display it if present
         if (viewModel.cachedCocktails != null) {
             displayCocktails(viewModel.cachedCocktails!!)
+            displayCocktails1(viewModel.cachedCocktails1!!)
         } else {
             viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -298,10 +428,12 @@ class HomeFragment : Fragment() {
             GlobalScope.launch(Dispatchers.IO) {
                 val apiService = CocktailApiService()
                 val response = apiService.popularCocktails()
+                val response1 = apiService.popularDrinks()
                 withContext(Dispatchers.Main) {
                     viewModel.cachedCocktails = response
+                    viewModel.cachedCocktails1 = response1
                     displayCocktails(response)
-
+                    displayCocktails1(response1)
                     // Wait for 2 seconds (2000 milliseconds)
                     delay(1000)
                     // After the API call is complete, set loadingLayout visibility to GONE
@@ -329,6 +461,20 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun displayCocktails1(cocktails: List<popularDrinks>) {
+        // Display cocktails using the received data
+        cocktails.take(imageViews1.size).forEachIndexed { index, cocktail ->
+            val imageView = imageViews1[index]
+            Picasso.get()
+                .load(cocktail.drinkImg)
+                .resize(
+                    1000,
+                    1000
+                ) // Set width to 200 pixels and height to maintain aspect ratio
+                .into(imageView)
+        }
+    }
+
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
@@ -336,7 +482,24 @@ class HomeFragment : Fragment() {
         fragmentTransaction.commit()
     }
 
+    private fun showBarsDropDownMenu(anchorView: View) {
+        val popupMenu = PopupMenu(requireContext(), anchorView)
+        popupMenu.menuInflater.inflate(R.menu.nav_menu, popupMenu.menu)
+        popupMenu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.nav_service1 -> {
+                    // Handle the Service 1 item click
+                }
+                R.id.nav_service2 -> {
+                    // Handle the Service 2 item click
+                }
+            }
+            true
+        }
+        popupMenu.show()
+    }
 
+/*
     private fun showBarsDropDownMenu(view: View) {
         val popupMenu = PopupMenu(requireContext(), view)
         popupMenu.menuInflater.inflate(R.menu.nav_menu, popupMenu.menu)
@@ -353,6 +516,8 @@ class HomeFragment : Fragment() {
         }
         popupMenu.show()
     }
+
+ */
 }
 
 

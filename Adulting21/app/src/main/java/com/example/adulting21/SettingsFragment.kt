@@ -15,7 +15,7 @@ class SettingsFragment : Fragment() {
     //Here are the variables names for the calculator
     private var username: String? = null
     private var age: Int? = null
-    //private var drinkNumm: Int? = null
+    private var drinkCount: Int? = null
     private var weight: Int? = null
     private var sex: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class SettingsFragment : Fragment() {
 
         username = sharedPref.getString("username", "DefaultUsername")
         age = sharedPref.getInt("age", 0)
-        //drinkNumm = sharedPref.getInt("drinkNum", 0)
+        drinkCount = sharedPref.getInt("drinkCount", 0)
         weight = sharedPref.getInt("weight", 0)
         sex = sharedPref.getString("sex", "DefaultSex")
 
@@ -44,10 +44,10 @@ class SettingsFragment : Fragment() {
     ): View? {
 
         //val drinkNum = arguments?.getInt("drinkNum", 2) ?: 1
-        val drinkNum = arguments?.getInt("drinkNum") ?: 1
-        Log.d("TAG", "drinkNum in SettingsFragment: $drinkNum")
+        //val drinkNum = arguments?.getInt("drinkNum") ?: 1
+        //Log.d("TAG", "drinkNum in SettingsFragment: $drinkNum")
 
-        Log.d("TAG", "Username: $username, Age: $age, Weight: $weight, Sex: $sex, DrinkNum :$drinkNum")
+        Log.d("TAG", "Username: $username, Age: $age, Weight: $weight, Sex: $sex, DrinkNum :$drinkCount")
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false)
@@ -78,20 +78,23 @@ class SettingsFragment : Fragment() {
         // Set the speed
         speedometerView.speed = calcBAC()
     }
-
+/*
     companion object {
         @JvmStatic
-        fun newInstance(username: String, age: Int, weight: Int, sex: String) =
+        fun newInstance(username: String, age: Int, weight: Int, sex: String,drinkNum: Int) =
             SettingsFragment().apply {
                 arguments = Bundle().apply {
                     putString("username", username)
                     putInt("age", age)
                     putInt("weight", weight)
                     putString("sex", sex)
+                    putInt("drinkNum", drinkNum)
                 }
             }
     }
 
+
+ */
 
     //calcBAC test
     fun calcBAC(): Double {

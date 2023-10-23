@@ -6,30 +6,39 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/nav_home"
-            android:title="Home"/>
+            android:icon="@drawable/baseline_calculate_24"
+            android:title="BAC Calculator" />
+
+        <item
+            android:id="@+id/nav_car_pool"
+            android:icon="@drawable/baseline_directions_car_24"
+            android:title="Car Pool" />
+        <item
+            android:id="@+id/nav_bars_dropdown_trigger"
+            android:icon="@drawable/baseline_local_bar_24"
+            android:title="Bars" />
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/nav_settings"
-            android:title="Settings"/>
+            android:icon="@drawable/baseline_settings_24"
+            android:title="Settings" />
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/nav_share"
             android:title="Share"/>
-        <item
-            android:id="@+id/nav_bars_dropdown_trigger"
-            android:icon="@drawable/nav_home"
-            android:title="Bars"/>
+
         <item
             android:id="@+id/nav_bars"
             android:icon="@drawable/nav_home"
-            android:title="Bars" />
+            android:title="Bars"
+            android:visible="false" />
         <item
             android:id="@+id/nav_service1"
-            android:title="Service 1" />
+            android:title="Service 1"
+            android:visible="false" />
         <item
             android:id="@+id/nav_service2"
-            android:title="Service 2" />
+            android:title="Service 2"
+            android:visible="false" />
     </group>
     <item
         android:title="">

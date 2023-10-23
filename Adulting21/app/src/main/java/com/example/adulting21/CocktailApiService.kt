@@ -204,7 +204,125 @@ class CocktailApiService {
         }
     }
 
+
+    fun popularDrinks(): List<popularDrinks> {
+        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php"
+
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        try {
+            val response = client.newCall(request).execute()
+            if (!response.isSuccessful) {
+                Log.d("TAG", "Not Successful")
+                return emptyList() // Return an empty list on error
+            }
+            Log.d("TAG", "Successful!")
+            val responseBody = response.body
+            val jsonString = responseBody?.string() ?: "Error"
+
+            val json = JSONObject(jsonString)
+            val drinks = json.getJSONArray("drinks")
+
+            val popularDrinksList = mutableListOf<popularDrinks>()
+
+            for (i in 0 until drinks.length()) {
+                val drinkJson = drinks.getJSONObject(i)
+                val drinkName = drinkJson.getString("strDrink")
+                val drinkImg = drinkJson.getString("strDrinkThumb")
+
+                popularDrinksList.add(popularDrinks(drinkName, drinkImg))
+            }
+            println(popularDrinksList)
+            return popularDrinksList
+
+        } catch (e: Exception) {
+            return emptyList() // Return an empty list on error
+        }
+    }
+
+    fun searchCocktails(query: String): List<SearchResults> {
+        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=$query"
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        try {
+            val response = client.newCall(request).execute()
+            if (!response.isSuccessful) {
+                Log.e("TAG", "Search Not Successful. Error message: ${response.message}")
+                return emptyList()
+            }
+
+            val jsonString = response.body?.string() ?: ""
+            Log.d("TAG", "Response JSON: $jsonString")
+            val json = JSONObject(jsonString)
+
+            val drinksArray = json.getJSONArray("drinks")
+            val searchResults = mutableListOf<SearchResults>()
+            Log.d("TAG", url)
+
+            for (i in 0 until drinksArray.length()) {
+                val drinkJson = drinksArray.getJSONObject(i)
+                val resultName = drinkJson.getString("strDrink")
+                val resultImage = drinkJson.getString("strDrinkThumb")
+
+                searchResults.add(SearchResults(resultName, resultImage))
+            }
+
+            Log.d("TAG", "Search Successful!")
+            return searchResults
+        } catch (e: Exception) {
+            Log.e("TAG", "Search Exception: ${e.message}")
+            return emptyList()
+        }
+    }
+
+    /*
+        fun searchCocktails(query: String): List<SearchResults> {
+            val url1 = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=$query"
+            val request = Request.Builder()
+                .url(url1)
+                .build()
+
+            try {
+                val response = client.newCall(request).execute()
+                if (!response.isSuccessful) {
+                    Log.d("TAG", "Search Not Successful: " + response.message)
+                  //  Log.d("TAG", "Searchhh Not Successful")
+                    return emptyList()
+                }
+
+                val jsonString = response.body?.string() ?: ""
+                Log.d("TAG", "Response JSON: $jsonString")
+                val json = JSONObject(jsonString)
+
+                val drinksArray = json.getJSONArray("drinks")
+                val searchResults = mutableListOf<SearchResults>()
+                Log.d("TAG",url1)
+                for (i in 0 until drinksArray.length()) {
+                    val drinkJson = drinksArray.getJSONObject(i)
+                    val resultName = drinkJson.getString("strDrink")
+                    //val resultDescription = drinkJson.getString("strInstructions")
+                    val resultImage = drinkJson.getString("strDrinkThumb")
+
+                    searchResults.add(SearchResults(resultName, resultImage))
+                }
+
+                Log.d("TAG", "Search Successful!")
+                return searchResults
+            } catch (e: Exception) {
+                Log.d("TAG", "Search Not Successful")
+                return emptyList()
+            }
+        }
+
+     */
 }
+
+
+
 
 data class Ingredient(
     val name: String,
@@ -221,4 +339,15 @@ data class Cocktail(
 data class bottleDrinks(
     val drinkName: String,
     val drinkImg: String
+)
+
+data class popularDrinks(
+    val drinkName: String,
+    val drinkImg: String
+)
+
+data class SearchResults(
+    val Name: String,
+//    val resultDescription: String,  // You can adjust the fields as needed
+    val Image: String
 )

@@ -45,10 +45,10 @@
         app:layout_constraintVertical_bias="0.281" />
 
     <EditText
-        android:id="@+id/ec"
+        android:id="@+id/numDrinksBox"
         android:layout_width="230dp"
         android:layout_height="60dp"
-        android:hint="Emergency Contact"
+        android:hint="Number of Drinks"
         android:inputType="textPersonName"
 
         android:textAlignment="center"
