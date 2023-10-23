@@ -16,100 +16,119 @@ import android.content.Intent
 import android.net.Uri
 import com.example.adulting21.R
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
+
+    private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.login_page)
 
-        //setContentView(R.layout.homepage)
-        setContentView(R.layout.login_register)
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        //setContentView(R.layout.bar_info)
-        //Instagram
-/*        val insta = findViewById<ImageView>(R.id.insta)
-        insta.setOnClickListener {
-            val profilePath = "https://instagram.com/shortysbar"
-            val packageName = "come.instagram.android"
-            toAnotherAppOpen(profilePath, packageName)
+        val buttonLogin = findViewById<Button>(R.id.login_btn)
+        //if login button is clicked, do tasks
+        buttonLogin.setOnClickListener {
+            Log.d("TAG","Succesful2")
+            login_page(it)
+
+            //register_page(it)
+
+            //add code code when login button is clicked.
+
+            //this is code to switch to homepage
+            //val intent = Intent(this, register::class.java)
+            //startActivity(intent)
         }
+        val buttonreg = findViewById<Button>(R.id.GoToReg)
+        //if login button is clicked, do tasks
+        buttonreg.setOnClickListener {
+            GoToReg(it)
 
-        //facebook
-        val fb = findViewById<ImageView>(R.id.fb)
-        fb.setOnClickListener {
-            val profilePath = "https://www.facebook.com/shortyskutztown"
-            val packageName = "come.facebook.android"
-            toAnotherAppOpen(profilePath, packageName)
         }
-
-        //tiktok
-        val tiktok = findViewById<ImageView>(R.id.tiktok)
-        tiktok.setOnClickListener {
-            val profilePath = "https://www.tiktok.com/@shortysbar"
-            val packageName = "come.tiktok.android"
-            toAnotherAppOpen(profilePath, packageName)
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        //setContentView(R.layout.homepage)
+//        setContentView(R.layout.register_page)
+//
+//            val buttonLogin = findViewById<Button>(R.id.butoon)
+//            //First Page so These Two go to either login or register
+//            buttonLogin.setOnClickListener {
+//                Log.d("TAG","Test")
+//                val intent = Intent(this, register::class.java)
+//               startActivity(intent)
+//            }
+//
+////            val buttonRegister = findViewById<Button>(R.id.button6)
+////            buttonRegister.setOnClickListener {
+////                val intent = Intent(this, login::class.java)
+////            startActivity(intent)
+////            }
         }
+    //}
+    fun login_page(view: View) {
+        Log.d("TAG", "Succesful")
+        val email = findViewById<EditText>(R.id.email).text.toString()
+        val password = findViewById<EditText>(R.id.password).text.toString()
 
-        //twiiter
-        val twitter = findViewById<ImageView>(R.id.twitter)
-        twitter.setOnClickListener {
-            val profilePath = "https://x.com/ShortysKutztown"
-            val packageName = "come.x.android"
-            toAnotherAppOpen(profilePath, packageName)
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Email and password are required.", Toast.LENGTH_SHORT).show()
+            return
         }
-*/
-
-
-        //val insta
-        //val twitter
-        //val fb
-
-            val buttonLogin = findViewById<Button>(R.id.button_login)
-            buttonLogin.setOnClickListener {
-                val intent = Intent(this, login::class.java)
-                startActivity(intent)
+        // Sign in with the provided email and password
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Login successful, navigate to the main activity
+                    val intent = Intent(this, Navigation::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    // Login failed, display an error message
+                    Toast.makeText(
+                        this, "Login failed", Toast.LENGTH_LONG).show()
+                }
             }
-
-            val buttonRegister = findViewById<Button>(R.id.button_register)
-            buttonRegister.setOnClickListener {
-                val intent = Intent(this, login::class.java)
-                startActivity(intent)
-            }
-
-
-        }
-
-/*
-    //Send linked app
-    private fun toAnotherAppOpen(profilePath: String, openAppPackageName: String) {
-        val uri = Uri.parse(profilePath)
-        try {
-            startActivity(Intent(Intent.ACTION_VIEW, uri).setPackage(openAppPackageName))
-        }catch (e:Exception){
-            startActivity(Intent(Intent.ACTION_VIEW, uri))
-        }
-
-    } */
-
-
-
-    /* //Share an app
-        private fun shareURL() {
-            val packageName = packageName // here your package Name
-            val tiktokURL = "https://play.google.com/store/apps/details?id=$packageName"
-            val sendIntent = Intent(Intent.ACTION_SEND)
-            sendIntent.type = "text/plain"
-            sendIntent.putExtra(Intent.EXTRA_TEXT, tiktokURL)
-            startActivity(Intent.createChooser(sendIntent, "Share Via"))
-        }
-    */
-        fun buttonLogin(view: View) {
-            val intent = Intent(this, login::class.java)
-            startActivity(intent)
-        }}
+    }
+    fun GoToReg(view: View) {
+        val intent = Intent(this, register::class.java)
+        startActivity(intent)
+        finish()
+    }
+}
+//    fun register_page(view: View) {
+//        Log.d("TAG","Succesful")
+//        val email = findViewById<EditText>(R.id.email).text.toString()
+//        val password = findViewById<EditText>(R.id.password).text.toString()
+//
+//        if (email.isEmpty() || password.isEmpty()) {
+//            Toast.makeText(this, "Email and password are required.", Toast.LENGTH_SHORT).show()
+//            return
+//        }
+//
+//        firebaseAuth.createUserWithEmailAndPassword(email, password)
+//            .addOnCompleteListener(this) { task ->
+//                if (task.isSuccessful) {
+//                    val intent = Intent(this, login::class.java)
+//                    startActivity(intent)
+//                    finish()
+//                } else {
+//                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG).show()
+//                }
+//            }
+//            .addOnFailureListener(this) { exception ->
+//                Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG).show()
+//            }
+//    }
