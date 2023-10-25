@@ -7,6 +7,8 @@
 
 package com.example.adulting21
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -27,6 +29,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
 class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
@@ -45,6 +48,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+
+
         // Initialize the loading layout
         loadingLayout = view.findViewById(R.id.loadingLayout)
         // Initially, set the loading layout as invisible
@@ -365,6 +371,26 @@ class HomeFragment : Fragment() {
                     true
                 }
 
+                R.id.nav_car_pool -> {
+                    openUber()
+                    // Handle home item click
+                    Toast.makeText(requireContext(), "Car pool clicked", Toast.LENGTH_SHORT).show()
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    //return@setNavigationItemSelectedListener true
+
+                    true
+                }
+
+                R.id.nav_mocktails -> {
+                    val fragmentSwitch = MocktailFragment()
+                    replaceFragment(fragmentSwitch)
+                    // Handle home item click
+                    Toast.makeText(requireContext(), "Mocktails clicked", Toast.LENGTH_SHORT).show()
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    //return@setNavigationItemSelectedListener true
+
+                    true
+                }
                 R.id.nav_settings -> {
                     // Handle settings item click
                     Toast.makeText(requireContext(), "Settings clicked", Toast.LENGTH_SHORT).show()
@@ -499,6 +525,17 @@ class HomeFragment : Fragment() {
         popupMenu.show()
     }
 
+    private fun openUber() {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse("uber://")
+        if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(intent)
+        } else {
+            val playStoreIntent = Intent(Intent.ACTION_VIEW)
+            playStoreIntent.data = Uri.parse("market://details?id=com.ubercab")
+            startActivity(playStoreIntent)
+        }
+    }
 /*
     private fun showBarsDropDownMenu(view: View) {
         val popupMenu = PopupMenu(requireContext(), view)

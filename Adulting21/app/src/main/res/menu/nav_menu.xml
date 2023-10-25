@@ -18,6 +18,10 @@
             android:icon="@drawable/baseline_local_bar_24"
             android:title="Bars" />
         <item
+            android:id="@+id/nav_mocktails"
+            android:icon="@drawable/baseline_no_drinks_24"
+            android:title="Mocktails" />
+        <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/baseline_settings_24"
             android:title="Settings" />
@@ -31,6 +35,7 @@
             android:icon="@drawable/nav_home"
             android:title="Bars"
             android:visible="false" />
+
         <item
             android:id="@+id/nav_service1"
             android:title="Service 1"
