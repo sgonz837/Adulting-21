@@ -242,8 +242,45 @@ class CocktailApiService {
         }
     }
 
+    fun mocktails(): List<MocktailClass> {
+        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php"
+
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        try {
+            val response = client.newCall(request).execute()
+            if (!response.isSuccessful) {
+                Log.d("TAG", "Not Successful")
+                return emptyList() // Return an empty list on error
+            }
+            Log.d("TAG", "Successful!")
+            val responseBody = response.body
+            val jsonString = responseBody?.string() ?: "Error"
+
+            val json = JSONObject(jsonString)
+            val drinks = json.getJSONArray("drinks")
+
+            val popularDrinksList = mutableListOf<MocktailClass>()
+
+            for (i in 0 until drinks.length()) {
+                val drinkJson = drinks.getJSONObject(i)
+                val drinkName = drinkJson.getString("strDrink")
+                val drinkImg = drinkJson.getString("strDrinkThumb")
+
+                popularDrinksList.add(MocktailClass(drinkName, drinkImg))
+            }
+            println(popularDrinksList)
+            return popularDrinksList
+
+        } catch (e: Exception) {
+            return emptyList() // Return an empty list on error
+        }
+    }
+
     fun searchCocktails(query: String): List<SearchResults> {
-        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=$query"
+        val url = "www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=Non_Alcoholic"
         val request = Request.Builder()
             .url(url)
             .build()
@@ -342,6 +379,11 @@ data class bottleDrinks(
 )
 
 data class popularDrinks(
+    val drinkName: String,
+    val drinkImg: String
+)
+
+data class MocktailClass(
     val drinkName: String,
     val drinkImg: String
 )
