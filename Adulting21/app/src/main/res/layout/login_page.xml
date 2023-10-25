@@ -68,17 +68,16 @@
     <TextView
         android:id="@+id/textView18"
         android:layout_width="293dp"
-        android:layout_height="74dp"
+        android:layout_height="54dp"
         android:text="Adulting21: Your Responsible Drinking Buddy"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/GoToReg"
@@ -96,6 +95,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91" />
+
+    <Button
+        android:id="@+id/GuestContinue"
+        android:layout_width="155dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="126dp"
+        android:layout_marginBottom="43dp"
+        android:background="@color/red"
+        android:text="Continue as Guest"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.982" />
 
     <TextView
         android:id="@+id/textview19"
