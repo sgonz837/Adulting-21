@@ -15,5 +15,24 @@
 
     <string name="open_nav">Open Navigation Drawer</string>
     <string name="close_nav">Close Navigation Drawer</string>
+    <string name="_1_off_craft_drafts_4_double_house_drinks_5_long_islands"><![CDATA[$1 Off Craft Drafts, $4 Double House Drinks & $5 Long Islands]]></string>
+    <string name="_5_double_house_drinks_lits"><![CDATA[$5 Double House Drinks & LITs]]></string>
+    <string name="_3_drafts_8_pitchers_3_bottles_cans_3_drinks_doubles"><![CDATA[$3 Drafts, $8 Pitchers, $3 Bottles & Cans, $3 Drinks (Doubles)]]></string>
+    <string name="friday_saturday"><![CDATA[Friday & Saturday]]></string>
+    <string name="_4_long_island_iced_teas">$4 Long Island Iced Teas</string>
+    <string name="wednesday_thursday"><![CDATA[Wednesday & Thursday]]></string>
+    <string name="open_everyday_4pm_2am">Open Everyday 4PM - 2AM</string>
+    <string name="location">Location:</string>
+    <string name="specials">Specials</string>
+    <string name="_257_w_main_st">257 W Main St,</string>
+    <string name="happy_hour_2_10_2am">Happy Hour #2 10-2am:</string>
+    <string name="happy_hour_1_5_7pm">Happy Hour #1 5-7pm:</string>
+    <string name="_4_double_house_drinks_long_islands"><![CDATA[$4 Double House Drinks & Long Islands,]]></string>
+    <string name="thursday">Thursday</string>
+    <string name="happy_hour_10_12">Happy Hour 10-12:</string>
+    <string name="_2_off_shot_pitchers">$2 off Shot Pitchers</string>
+    <string name="_610_683_9275">(610) 683-9275</string>
+    <string name="_2_drafts_8_pitchers_3_bottles_cans_2_vodka_drinks"><![CDATA[$2 Drafts, $8 Pitchers, $3 Bottles & Cans, $2 Vodka Drinks]]></string>
+    <string name="friday">Friday</string>
 
 </resources>

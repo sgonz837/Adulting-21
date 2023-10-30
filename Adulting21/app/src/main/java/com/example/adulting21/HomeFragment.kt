@@ -384,7 +384,7 @@ class HomeFragment : Fragment() {
 
 
                 R.id.nav_bars_dropdown_trigger -> {
-                    val fragmentSwitch = barInfooo()
+                    val fragmentSwitch = ShortysInfo()
                     replaceFragment(fragmentSwitch)
                     // Handle the "Bars" item click by showing the dropdown menu
                     //showBarsDropDownMenu(view)
