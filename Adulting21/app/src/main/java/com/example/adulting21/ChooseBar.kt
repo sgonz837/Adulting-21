@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,29 +37,32 @@ class ChooseBar : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.choose_bar, container, false)
+        val view = inflater.inflate(R.layout.choose_bar, container, false)
+
+        val shortysBar: ImageView = view.findViewById(R.id.shortysBar)
+        shortysBar.setOnClickListener {
+            // Handle shortys image click, navigate to ShortysInfo Fragment
+           // findNavController().navigate(R.id.action_chooseBar_to_shortysInfo)
+
+        }
+/*
+        val ktownPub: ImageView = view.findViewById(R.id.ktownPub)
+        ktownPub.setOnClickListener {
+            // Handle ktownPub image click, navigate to KtownPubInfo fragment
+            findNavController().navigate(R.id.ktownPub)
+        }
+
+        val kutzTavern: ImageView = view.findViewById(R.id.kutzTavern)
+        kutzTavern.setOnClickListener {
+            // Handle tavern image click, navigate to tavern page
+            findNavController().navigate(R.id.kutzTavern)
+        } */
+
+        return view
 
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ChooseBar.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ChooseBar().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 
 
 

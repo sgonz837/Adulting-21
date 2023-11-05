@@ -7,8 +7,10 @@
 
 package com.example.adulting21
 
+
 import android.content.Intent
 import android.net.Uri
+import MeterBac
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -410,12 +412,14 @@ class HomeFragment : Fragment() {
 
 
                 R.id.nav_bars_dropdown_trigger -> {
-                    val fragmentSwitch = ShortysInfo()
+                    //val fragmentSwitch = ChooseBar()
+                    val fragmentSwitch = MeterBac()
                     replaceFragment(fragmentSwitch)
                     // Handle the "Bars" item click by showing the dropdown menu
                     //showBarsDropDownMenu(view)
                     true
                 }
+
 
 
 /*
