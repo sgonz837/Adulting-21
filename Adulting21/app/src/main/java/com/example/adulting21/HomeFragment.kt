@@ -23,6 +23,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.adulting21.settings.SettingsHub
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
@@ -394,6 +395,8 @@ class HomeFragment : Fragment() {
                     true
                 }
                 R.id.nav_settings -> {
+                    val fragmentSwitch = SettingsHub()
+                    replaceFragment(fragmentSwitch)
                     // Handle settings item click
                     Toast.makeText(requireContext(), "Settings clicked", Toast.LENGTH_SHORT).show()
                     drawerLayout.closeDrawer(GravityCompat.START)

@@ -1,3 +1,5 @@
+/*
+
 package com.example.adulting21
 
 import android.os.Bundle
@@ -24,7 +26,7 @@ class DrinkInfoFragment : Fragment() {
 
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
-            val response = apiService.popularCocktails()
+            val response = apiService.popularDrinks()
             withContext(Dispatchers.Main) {
                 val layoutIngredients = listOf(
                     R.id.imageIngredient1,
@@ -69,8 +71,10 @@ class DrinkInfoFragment : Fragment() {
 }
 
 
+ */
 
-/*
+
+
 
 package com.example.adulting21
 
@@ -136,5 +140,5 @@ class DrinkInfoFragment : Fragment() {
     }
 }
 
- */
+
 

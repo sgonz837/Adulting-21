@@ -1,0 +1,9 @@
+<resources>
+    <style name="AppTheme.Light" parent="Theme.AppCompat.Light">
+        <!-- Define the attributes for the light mode -->
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <!-- Define the attributes for the dark mode -->
+    </style>
+</resources>
