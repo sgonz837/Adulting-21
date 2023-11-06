@@ -366,6 +366,9 @@ class HomeFragment : Fragment() {
             // Handle menu item clicks here
             when (menuItem.itemId) {
                 R.id.nav_home -> {
+
+                    val fragmentSwitch = MeterBac()
+                    replaceFragment(fragmentSwitch)
                     // Handle home item click
                     Toast.makeText(requireContext(), "Home clicked", Toast.LENGTH_SHORT).show()
                     drawerLayout.closeDrawer(GravityCompat.START)
@@ -415,8 +418,8 @@ class HomeFragment : Fragment() {
 
 
                 R.id.nav_bars_dropdown_trigger -> {
-                    //val fragmentSwitch = ChooseBar()
-                    val fragmentSwitch = MeterBac()
+                    val fragmentSwitch = ChooseBar()
+                    //val fragmentSwitch = MeterBac()
                     replaceFragment(fragmentSwitch)
                     // Handle the "Bars" item click by showing the dropdown menu
                     //showBarsDropDownMenu(view)

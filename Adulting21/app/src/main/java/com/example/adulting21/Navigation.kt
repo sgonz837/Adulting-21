@@ -1,6 +1,7 @@
 
 package com.example.adulting21
 
+import MeterBac
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -53,7 +54,7 @@ class Navigation : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
-                R.id.settings -> replaceFragment(SettingsFragment())
+                R.id.settings -> replaceFragment(MeterBac())
                 R.id.search -> replaceFragment(SearchFragment())
                 //R.id.search -> replaceFragment(CarPoolHome())
             }

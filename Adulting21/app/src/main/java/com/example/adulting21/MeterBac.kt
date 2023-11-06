@@ -1,5 +1,10 @@
+/*Author: Savannah Crutchfield
+Page to calculate drink and user input for BAC calculations
+ */
+
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,8 +14,12 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import android.widget.AdapterView.OnItemSelectedListener
 import com.example.adulting21.R
+import com.example.adulting21.SpeedometerView
 
 class MeterBac : Fragment() {
+
+    //Variables for Meter
+
 
     private val TAG = "MeterBacFragment"
     private val PREFS_NAME = "MyPrefs"
@@ -19,10 +28,10 @@ class MeterBac : Fragment() {
     private val DRINK_LIST_KEY = "drinkList"
     private val START_TIME_KEY = "startTime"
 
-    private lateinit var drinkListSelection: MutableList<String>
+   private lateinit var drinkListSelection: MutableList<String>
 
     //to show what drinks have been consumed from drinkList
-    private lateinit var textViewSelectedDrinks: TextView
+    //private lateinit var textViewSelectedDrinks: TextView
 
     // list of drinks
     private val drinkList = arrayListOf(
@@ -72,6 +81,30 @@ class MeterBac : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_b_a_c, container, false)
+
+        //BAC Meter Code
+        val speedometerView = view.findViewById<SpeedometerView>(R.id.speedometer)
+
+        speedometerView.setLabelConverter(object : SpeedometerView.LabelConverter {
+            override fun getLabelFor(progress: Double, maxProgress: Double): String {
+                return (progress.toInt()).toString()
+            }
+        })
+
+        // configure value range and ticks
+        speedometerView.maxSpeed = 40.0
+        speedometerView.majorTickStep = 2.0
+        speedometerView.minorTicks = 0
+
+        // Configure value range colors
+        speedometerView.addColoredRange(0.0, 6.0, Color.GREEN)
+        speedometerView.addColoredRange(6.0, 20.0, Color.YELLOW)
+        speedometerView.addColoredRange(20.0, 40.0, Color.RED)
+
+        // Set the speed
+        //speedometerView.speed = calcBAC()
+        speedometerView.speed = 20.0
+
 
         //new session button
         startNewSessionButton = view.findViewById(R.id.startNewSessionButton)
@@ -129,8 +162,8 @@ class MeterBac : Fragment() {
 
 
         //to show consumed drinks from drinksList
-        textViewSelectedDrinks = view.findViewById(R.id.textViewSelectedDrinks)
-        textViewSelectedDrinks.text = "" // Set initial text to an empty string
+       // textViewSelectedDrinks = view.findViewById(R.id.textViewSelectedDrinks)
+       // textViewSelectedDrinks.text = "" // Set initial text to an empty string
 
         //Drink spinnner
         drinkSpinner = view.findViewById(R.id.spinner)
@@ -153,7 +186,7 @@ class MeterBac : Fragment() {
                 selectedDrink = drinkList[position]
                 val alcValue = drinkBACMap[selectedDrink]
                 if (alcValue != null) {
-                    val message = "$selectedDrink - BAC: $alcValue"
+                    val message = "$selectedDrink - Alcohol Content: $alcValue"
                     Toast.makeText(
                         requireContext(),
                         message,
@@ -176,7 +209,8 @@ class MeterBac : Fragment() {
         //selectedDrink = prefs.getString(SELECTED_DRINK_KEY, "Select Drink") ?: "Select Drink"
 
 
-        // Need drink amount
+        // Have drink counter increment each time add drink button is pressed. Have alc content
+        //value submit when button is pressed
         addDrinkButton.setOnClickListener {
 
             // Set the start time when the user adds the first drink
@@ -184,7 +218,7 @@ class MeterBac : Fragment() {
                 startTime = System.currentTimeMillis()
             }
 
-            // Increment drink count and display it
+            // Increment drink count
             drinkCount++
 
             // Get user's weight from the EditText
@@ -192,10 +226,10 @@ class MeterBac : Fragment() {
             userWeight = if (weightText.isNotEmpty()) weightText.toInt() else 0
 
             // Add the current drink to the list
-            drinkListSelection.add("$selectedDrink - Alc Content: ${drinkBACMap[selectedDrink]}")
+           // drinkListSelection.add("$selectedDrink - Alc Content: ${drinkBACMap[selectedDrink]}")
 
             // Update the TextView with the selected drinks
-            updateSelectedDrinksTextView()
+            //updateSelectedDrinksTextView()
 
             Toast.makeText(
                 requireContext(),
@@ -227,10 +261,10 @@ class MeterBac : Fragment() {
     }
 
     // Helper function to update the TextView with selected drinks
-    private fun updateSelectedDrinksTextView() {
+   /* private fun updateSelectedDrinksTextView() {
         val selectedDrinksText = drinkListSelection.joinToString("\n")
         textViewSelectedDrinks.text = "Selected Drinks:\n$selectedDrinksText"
-    }
+    }*/
 
     override fun onResume() {
         super.onResume()
@@ -239,7 +273,7 @@ class MeterBac : Fragment() {
         drinkSpinner.setSelection(0)
 
         // Update the TextView with selected drinks when the fragment resumes
-        updateSelectedDrinksTextView()
+        //updateSelectedDrinksTextView()
     }
 
     fun calcHoursElapsed(): Double {
@@ -256,4 +290,27 @@ class MeterBac : Fragment() {
 
         return hoursElapsed
     }
+
+   /* fun calcBAC(): Double {
+
+
+        //r must be double in order to do multiplication
+        val r: Double = if (sex.equals("M", ignoreCase = true)) 0.68 else 0.55
+
+        //formula for bac calculation --> numDrinks, Weight, sex and hours are hard coded
+        //need to multiply by 100 to tailer to meter numbers
+        //val bac =  (((3.0 * 14.0 / (0.68 * (150 * 453.592))) * 100.0 - 1.0 * 0.015) * 100)
+
+        //Test to make sure weight and sex are being passed
+        val bac = (((3.0 * 14.0 / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
+
+        //formula after A.S. reccomendation for fixes
+        //need to multiply by 100 to tailer to meter numbers
+        //453.592 is 1 lb in kilograms
+        //ISSUE: drinkNum not being passed
+        //val bac =  ((((drinkNumm?.times(14.0) ?:1.0) / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
+        return if (bac < 0) 0.0 else bac
+        //return 0.0
+
+    }*/
 }

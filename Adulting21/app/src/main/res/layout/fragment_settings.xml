@@ -3,22 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_700"
     tools:context=".SettingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+
 
     <!--Code has been pulled from https://github.com/codeplayon/AndroidSpeedometer -->
     <com.example.adulting21.SpeedometerView
-        android:layout_height="wrap_content"
+        android:id="@+id/speedometer"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:padding="15dp"
-        android:id="@+id/speedometer" />
+        android:padding="15dp" />
 
 </FrameLayout>

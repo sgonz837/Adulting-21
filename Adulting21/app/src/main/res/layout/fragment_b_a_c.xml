@@ -5,10 +5,24 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BAC">
+    tools:context=".MeterBac">
 
     <!-- TODO: Update blank fragment layout -->
 
+
+    <com.example.adulting21.SpeedometerView
+        android:id="@+id/speedometer"
+        android:layout_width="607dp"
+        android:layout_height="342dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991" />
 
     <EditText
         android:id="@+id/editTextWeight"
@@ -23,18 +37,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.33" />
 
-    <TextView
-        android:id="@+id/textViewSelectedDrinks"
-        android:layout_width="334dp"
-        android:layout_height="92dp"
-        android:text="Selected Drinks:"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.324"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
+
 
     <RadioButton
         android:id="@+id/radioMale"
@@ -84,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
+        app:layout_constraintVertical_bias="0.664" />
 
     <Button
         android:id="@+id/startNewSessionButton"
