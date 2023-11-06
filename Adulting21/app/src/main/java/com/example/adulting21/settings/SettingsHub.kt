@@ -30,15 +30,14 @@ class SettingsHub : Fragment() {
             val fragmentSwitch = ProfileFragment()
             replaceFragment(fragmentSwitch)
             Log.d("TAG", "Button Pressed");
-
         }
+
         val darkModeBtn = view.findViewById<Button>(R.id.dark_mode_btn)
         darkModeBtn.setOnClickListener {
             Log.d("TAG", "Button Pressed");
             val fragmentSwitch = DarkModeFragment()
             replaceFragment(fragmentSwitch)
         }
-
 
         return view
     }

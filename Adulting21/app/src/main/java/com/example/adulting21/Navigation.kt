@@ -56,6 +56,7 @@ class Navigation : AppCompatActivity() {
                 R.id.profile -> replaceFragment(ProfileFragment())
                 R.id.settings -> replaceFragment(MeterBac())
                 R.id.search -> replaceFragment(SearchFragment())
+                R.id.panic_button -> replaceFragment(PanicFragment())
                 //R.id.search -> replaceFragment(CarPoolHome())
             }
             true
