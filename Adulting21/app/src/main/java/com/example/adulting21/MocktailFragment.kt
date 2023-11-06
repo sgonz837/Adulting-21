@@ -49,6 +49,21 @@ class MocktailFragment : Fragment() {
                     view.findViewById(R.id.mocktail_img_8)
                 )
 
+
+                for ((index, mocktail) in response.withIndex()) {
+                    if (index < layoutIngredients.size) {
+                        val layoutId = layoutIngredients[index]
+                        val imageView = imageViews[index]
+
+                        // Load the image into the ImageView using Picasso
+                        Picasso.get()
+                            .load(mocktail.drinkImg) // Replace with the actual URL of the image
+                            .resize(1000, 1000) // Set width to 1000 pixels and height to maintain aspect ratio
+                            .into(imageView)
+                    }
+                }
+
+                /*
                 for ((index, mocktail) in response.withIndex()) {
                     if (index < layoutIngredients.size) {
                         val layoutId = layoutIngredients[index]
@@ -63,6 +78,8 @@ class MocktailFragment : Fragment() {
 //                        layout.addView(imageView)
                     }
                 }
+
+                 */
 
                 val textView1 = view.findViewById<TextView>(R.id.mocktail_text_1)
 //                textView1.text = response.joinToString(separator = "\n") { cocktail ->

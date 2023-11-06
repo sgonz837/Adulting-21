@@ -243,7 +243,7 @@ class CocktailApiService {
     }
 
     fun mocktails(): List<MocktailClass> {
-        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php"
+        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=Non_Alcoholic"
 
         val request = Request.Builder()
             .url(url)
