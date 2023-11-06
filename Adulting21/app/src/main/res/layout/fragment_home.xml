@@ -1,184 +1,819 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment"
-    android:background="@android:color/white">
+    android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="false"
+    tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="116dp"
-        android:layout_height="147dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.675"
-        app:srcCompat="@drawable/rum" />
 
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="131dp"
-        android:layout_height="143dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.677"
-        app:srcCompat="@drawable/gin" />
 
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="107dp"
-        android:layout_height="140dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.035"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.674"
-        app:srcCompat="@drawable/vodka" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Daily Recommendations"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
+    <FrameLayout
+        android:id="@+id/container_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ECECEC"/>
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="423dp"
-        android:layout_height="134dp"
-        android:layout_marginEnd="1dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.362">
 
-        <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:gravity="bottom"
+        android:background="@color/white"
+        android:layout_height="85dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            android:background="@color/white"
+            app:layout_scrollFlags="scroll|enterAlways"
+            >
+
+        <!-- Add a FrameLayout to contain the plus sign -->
+        <FrameLayout
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"/>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:background="#ECECEC">
 
-    <LinearLayout
-                android:id="@+id/layout2"
-                android:layout_width="109dp"
-                android:layout_height="121dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter">
-
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ECECEC"
+                android:fillViewport="true"
+                tools:context=".HomeFragment">
 
 
-       </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout1"
-                android:layout_width="109dp"
-                android:layout_height="121dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:orientation="vertical"
-                android:scaleType="fitCenter" />
-
-            <LinearLayout
-                android:id="@+id/layout3"
-                android:layout_width="109dp"
-                android:layout_height="121dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:orientation="vertical"
-                android:scaleType="fitCenter">
+                <!-- Loading layout (initially set as invisible) -->
 
 
-            </LinearLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-            <LinearLayout
-                android:id="@+id/layout4"
-                android:layout_width="109dp"
-                android:layout_height="121dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:orientation="vertical"
-                android:scaleType="fitCenter" />
+                    android:background="#ECECEC"
+                    tools:context=".HomeFragment">
 
-            <LinearLayout
-                android:id="@+id/layout5"
-                android:layout_width="109dp"
-                android:layout_height="121dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:orientation="vertical"
-                android:scaleType="fitCenter" />
-            <LinearLayout
-                android:id="@+id/layout6"
-                android:layout_width="109dp"
-                android:layout_height="121dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:orientation="vertical"
-                android:scaleType="fitCenter" />
-            <LinearLayout
-                android:id="@+id/layout7"
-                android:layout_width="109dp"
-                android:layout_height="121dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:orientation="vertical"
-                android:scaleType="fitCenter" />
-            <LinearLayout
-                android:id="@+id/layout8"
-                android:layout_width="109dp"
-                android:layout_height="121dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:orientation="vertical"
-                android:scaleType="fitCenter" />
-            <LinearLayout
-                android:id="@+id/layout9"
-                android:layout_width="109dp"
-                android:layout_height="121dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:orientation="vertical"
-                android:scaleType="fitCenter" />
-            <LinearLayout
-                android:id="@+id/layout10"
-                android:layout_width="109dp"
-                android:layout_height="121dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:orientation="vertical"
-                android:scaleType="fitCenter" />
-        </LinearLayout>
-    </HorizontalScrollView>
 
-    <TextView
-        android:id="@+id/textView21"
+                    <HorizontalScrollView
+                        android:id="@+id/horizontalScrollView1"
+
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="134dp"
+                        android:layout_marginEnd="1dp"
+                        android:fillViewport="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.52">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/layout11"
+                                android:layout_width="109dp"
+                                android:layout_height="118dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage11"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="80dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName11"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1"
+                                    app:layout_constraintEnd_toEndOf="@id/drinkImage1"
+                                    app:layout_constraintStart_toStartOf="@id/drinkImage1"
+                                    app:layout_constraintTop_toBottomOf="@id/drinkImage1" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/layout22"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage22"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="91dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName22"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout33"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage33"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName33"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout44"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+
+                                <ImageView
+                                    android:id="@+id/drinkImage44"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName44"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout55"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage55"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName55"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout66"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage66"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName66"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout77"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage77"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName77"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout88"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage88"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName88"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout99"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage99"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName99"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout100"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage100"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName100"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                    <ImageView
+                        android:id="@+id/rumBottleImage"
+                        android:layout_width="116dp"
+                        android:layout_height="147dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.92"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.727"
+                        app:srcCompat="@drawable/rum" />
+
+                    <ImageView
+                        android:id="@+id/ginBottleImage"
+                        android:layout_width="131dp"
+                        android:layout_height="143dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.439"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.732"
+                        app:srcCompat="@drawable/gin" />
+
+                    <ImageView
+                        android:id="@+id/vodkaBottleImage"
+                        android:layout_width="107dp"
+                        android:layout_height="140dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.734"
+                        app:srcCompat="@drawable/vodka" />
+
+                    <ImageView
+                        android:id="@+id/tequillaBottleImage"
+                        android:layout_width="127dp"
+                        android:layout_height="185dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/tequila"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.259"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView24" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Random Drinks"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.042"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.169" />
+
+                    <HorizontalScrollView
+                        android:id="@+id/horizontalScrollView"
+
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="134dp"
+                        android:layout_marginEnd="1dp"
+                        android:fillViewport="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.227">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/layout1"
+                                android:layout_width="109dp"
+                                android:layout_height="118dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="80dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1"
+                                    app:layout_constraintEnd_toEndOf="@id/drinkImage1"
+                                    app:layout_constraintStart_toStartOf="@id/drinkImage1"
+                                    app:layout_constraintTop_toBottomOf="@id/drinkImage1" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/layout2"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="91dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout3"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout4"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+
+                                <ImageView
+                                    android:id="@+id/drinkImage4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout5"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout6"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout7"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout8"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout9"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage9"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout10"
+                                android:layout_width="109dp"
+                                android:layout_height="121dp"
+                                android:layout_margin="5dp"
+                                android:adjustViewBounds="true"
+                                android:orientation="vertical"
+                                android:scaleType="fitCenter">
+
+                                <ImageView
+                                    android:id="@+id/drinkImage10"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/baseline_home_24" />
+
+                                <TextView
+                                    android:id="@+id/drinkName10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="Text 1" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
+                        android:text="Most Popular Drinks"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.044"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.431" />
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vodka"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.109"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/vodkaBottleImage"
+                        app:layout_constraintVertical_bias="0.406" />
+
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.45"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.787" />
+
+
+                    <TextView
+                        android:id="@+id/textView27"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rum"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.839"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.789" />
+
+                    <TextView
+                        android:id="@+id/textView28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="960dp"
+                        android:text="Tequila"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.289"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="Add"
+                        android:src="@drawable/baseline_add_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Browse By Bottle"
+                        app:layout_constraintBottom_toTopOf="@+id/vodkaBottleImage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.042"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
+
+            <!-- Loading layout (initially set as invisible) -->
+        </FrameLayout>
+
+        <include
+            android:id="@+id/loadingLayout"
+            layout="@layout/loading_layout"
+            android:visibility="invisible"
+            app:layout_anchor="@+id/frameLayout"
+            app:layout_anchorGravity="center" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="359dp"
-        android:layout_marginBottom="14dp"
-        android:text="Browse by Bottle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.51" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:visibility="invisible"
+        app:headerLayout="@layout/nav_header"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/nav_menu" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
