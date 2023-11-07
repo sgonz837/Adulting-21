@@ -26,7 +26,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:gravity="bottom"
-        android:background="@color/white"
+        android:background="@color/red"
         android:layout_height="85dp">
 
         <androidx.appcompat.widget.Toolbar
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
-            android:background="@color/white"
+            android:background="@color/red"
             app:layout_scrollFlags="scroll|enterAlways"
             >
 

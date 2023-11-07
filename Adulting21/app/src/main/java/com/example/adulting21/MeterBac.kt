@@ -292,24 +292,26 @@ class MeterBac : Fragment() {
     }
 
    /* fun calcBAC(): Double {
-
+        //val alcValue : Double? = drinkBACMap[selectedDrink]
 
         //r must be double in order to do multiplication
-        val r: Double = if (sex.equals("M", ignoreCase = true)) 0.68 else 0.55
+        val r: Double = if (selectedSex.equals("M", ignoreCase = true)) 0.68 else 0.55
+
+        val bacCalc = ((((((drinkCount * 14.0) / (r * (userWeight * 453.597))) * 100.0) - (calcHoursElapsed() * 0.015)) * 100))
 
         //formula for bac calculation --> numDrinks, Weight, sex and hours are hard coded
         //need to multiply by 100 to tailer to meter numbers
         //val bac =  (((3.0 * 14.0 / (0.68 * (150 * 453.592))) * 100.0 - 1.0 * 0.015) * 100)
 
         //Test to make sure weight and sex are being passed
-        val bac = (((3.0 * 14.0 / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
+        //val bac = (((3.0 * 14.0 / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
 
         //formula after A.S. reccomendation for fixes
         //need to multiply by 100 to tailer to meter numbers
         //453.592 is 1 lb in kilograms
         //ISSUE: drinkNum not being passed
         //val bac =  ((((drinkNumm?.times(14.0) ?:1.0) / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
-        return if (bac < 0) 0.0 else bac
+        return if (bacCalc < 0) 0.0 else bacCalc
         //return 0.0
 
     }*/
