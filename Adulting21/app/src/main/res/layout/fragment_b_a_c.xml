@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MeterBac">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <com.example.adulting21.SpeedometerView
+        android:id="@+id/speedometer"
+        android:layout_width="607dp"
+        android:layout_height="342dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991" />
+
+    <EditText
+        android:id="@+id/editTextWeight"
+        android:layout_width="189dp"
+        android:layout_height="38dp"
+        android:hint="Enter Weight"
+        android:inputType="number"
+        android:maxLength="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.33" />
+
+
+
+    <RadioButton
+        android:id="@+id/radioMale"
+        android:layout_width="103dp"
+        android:layout_height="41dp"
+        android:text="Male"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.184" />
+
+    <RadioButton
+        android:id="@+id/radioFemale"
+        android:layout_width="132dp"
+        android:layout_height="41dp"
+        android:text="Female"
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.257" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="182dp"
+        android:layout_height="158dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.516"
+        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+
+    <Button
+        android:id="@+id/addDrinkbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Drink"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.664" />
+
+    <Button
+        android:id="@+id/startNewSessionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start New Session"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

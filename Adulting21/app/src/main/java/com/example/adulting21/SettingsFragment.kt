@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class SettingsFragment : Fragment() {
 
+
     //Here are the variables names for the calculator
     private var username: String? = null
     private var age: Int? = null
@@ -20,6 +21,7 @@ class SettingsFragment : Fragment() {
     private var sex: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         // Retrieve user data from shared preference
         val sharedPref = requireActivity().getSharedPreferences("user_data", AppCompatActivity.MODE_PRIVATE)
@@ -47,7 +49,7 @@ class SettingsFragment : Fragment() {
         //val drinkNum = arguments?.getInt("drinkNum") ?: 1
         //Log.d("TAG", "drinkNum in SettingsFragment: $drinkNum")
 
-        Log.d("TAG", "Username: $username, Age: $age, Weight: $weight, Sex: $sex, DrinkNum :$drinkCount")
+        //Log.d("TAG", "Username: $username, Age: $age, Weight: $weight, Sex: $sex, DrinkNum :$drinkCount")
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false)

@@ -7,8 +7,10 @@
 
 package com.example.adulting21
 
+
 import android.content.Intent
 import android.net.Uri
+import MeterBac
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,6 +23,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.adulting21.settings.SettingsHub
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
@@ -363,6 +366,9 @@ class HomeFragment : Fragment() {
             // Handle menu item clicks here
             when (menuItem.itemId) {
                 R.id.nav_home -> {
+
+                    val fragmentSwitch = MeterBac()
+                    replaceFragment(fragmentSwitch)
                     // Handle home item click
                     Toast.makeText(requireContext(), "Home clicked", Toast.LENGTH_SHORT).show()
                     drawerLayout.closeDrawer(GravityCompat.START)
@@ -392,6 +398,8 @@ class HomeFragment : Fragment() {
                     true
                 }
                 R.id.nav_settings -> {
+                    val fragmentSwitch = SettingsHub()
+                    replaceFragment(fragmentSwitch)
                     // Handle settings item click
                     Toast.makeText(requireContext(), "Settings clicked", Toast.LENGTH_SHORT).show()
                     drawerLayout.closeDrawer(GravityCompat.START)
@@ -410,12 +418,14 @@ class HomeFragment : Fragment() {
 
 
                 R.id.nav_bars_dropdown_trigger -> {
-                    val fragmentSwitch = ShortysInfo()
+                    val fragmentSwitch = ChooseBar()
+                    //val fragmentSwitch = MeterBac()
                     replaceFragment(fragmentSwitch)
                     // Handle the "Bars" item click by showing the dropdown menu
                     //showBarsDropDownMenu(view)
                     true
                 }
+
 
 
 /*
