@@ -2,6 +2,7 @@
 package com.example.adulting21
 
 import MeterBac
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -78,13 +79,21 @@ class Navigation : AppCompatActivity() {
         return true
     }
 
+//    override fun onBackPressed() {
+//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            drawerLayout.closeDrawer(GravityCompat.START)
+//        } else {
+//            super.onBackPressed()
+//        }
+//    }
+    //handles android back arrow press. Directs to Home (Navigation) page
     override fun onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
+        super.onBackPressed()
+        val intent = Intent(this, Navigation::class.java)
+        startActivity(intent)
+        finish()
     }
+
 
     fun onNavigationItemSelected(item: MenuItem): Boolean {
         Log.d("TAG", "message")

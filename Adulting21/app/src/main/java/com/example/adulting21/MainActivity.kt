@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_page)
         //setContentView(R.layout.bar_info)
-
         firebaseAuth = FirebaseAuth.getInstance()
 
         val buttonLogin = findViewById<Button>(R.id.login_btn)
@@ -44,14 +43,6 @@ class MainActivity : AppCompatActivity() {
         buttonLogin.setOnClickListener {
             Log.d("TAG", "Succesful2")
             login_page(it)
-
-            //register_page(it)
-
-            //add code code when login button is clicked.
-
-            //this is code to switch to homepage
-            //val intent = Intent(this, register::class.java)
-            //startActivity(intent)
         }
         val buttonreg = findViewById<Button>(R.id.GoToReg)
         //if login button is clicked, do tasks
@@ -63,28 +54,7 @@ class MainActivity : AppCompatActivity() {
         buttonGC.setOnClickListener {
             guestcont(it)
         }
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        //setContentView(R.layout.homepage)
-//        setContentView(R.layout.register_page)
-//
-//            val buttonLogin = findViewById<Button>(R.id.butoon)
-//            //First Page so These Two go to either login or register
-//            buttonLogin.setOnClickListener {
-//                Log.d("TAG","Test")
-//                val intent = Intent(this, register::class.java)
-//               startActivity(intent)
-//            }
-//
-////            val buttonRegister = findViewById<Button>(R.id.button6)
-////            buttonRegister.setOnClickListener {
-////                val intent = Intent(this, login::class.java)
-////            startActivity(intent)
-////            }
     }
-
-    //}
     fun login_page(view: View) {
         Log.d("TAG", "Succesful")
         val email = findViewById<EditText>(R.id.email).text.toString()
@@ -122,6 +92,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
 
+    }
+    //handles android back arrow press. Keeps user on login page
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
 //    fun register_page(view: View) {

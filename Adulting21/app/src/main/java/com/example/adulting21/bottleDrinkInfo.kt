@@ -53,7 +53,6 @@ class bottleDrinkInfo : Fragment() {
                 else -> emptyList() // Handle other cases as needed
             }
 
-
             withContext(Dispatchers.Main) {
                 imageViews = listOf(
                     view.findViewById(R.id.drinkImages1),
@@ -139,4 +138,5 @@ class bottleDrinkInfo : Fragment() {
         }
         return view
     }
+
 }

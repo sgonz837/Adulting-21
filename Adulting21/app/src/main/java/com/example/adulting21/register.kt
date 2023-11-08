@@ -22,7 +22,7 @@ class register : AppCompatActivity() {
         val buttonLogin = findViewById<Button>(R.id.button6)
         //if login button is clicked, do tasks
         buttonLogin.setOnClickListener {
-            Log.d("TAG","Succesful2")
+            Log.d("TAG", "Succesful2")
             register_page(it)
 
             //add code code when login button is clicked.
@@ -34,7 +34,7 @@ class register : AppCompatActivity() {
     }
 
     fun register_page(view: View) {
-        Log.d("TAG","Succesful")
+        Log.d("TAG", "Succesful")
         val email = findViewById<EditText>(R.id.email).text.toString()
         val password = findViewById<EditText>(R.id.password).text.toString()
 
@@ -49,11 +49,20 @@ class register : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG)
+                        .show()
                 }
             }
             .addOnFailureListener(this) { exception ->
-                Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG)
+                    .show()
             }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

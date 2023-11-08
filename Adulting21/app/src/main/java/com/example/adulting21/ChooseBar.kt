@@ -1,5 +1,6 @@
 package com.example.adulting21
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -68,21 +69,13 @@ class ChooseBar : Fragment() {
             // Handle tavern image click, navigate to tavern page
             findNavController().navigate(R.id.kutzTavern)
         } */
-
         return view
-
     }
-
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
     }
-
-
-
-
-
 
 }
