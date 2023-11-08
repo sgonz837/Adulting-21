@@ -65,6 +65,11 @@ class MeterBac : Fragment() {
 
     private var selectedDrink: String = "Select Drink"
 
+    //total alcohol content for drinks consumed
+    private var totalAlcValue: Double = 0.0
+
+    private var hoursElapsed: Double = 0.0
+
 
 
     //Variables for sex input
@@ -102,8 +107,9 @@ class MeterBac : Fragment() {
         speedometerView.addColoredRange(20.0, 40.0, Color.RED)
 
         // Set the speed
-        //speedometerView.speed = calcBAC()
-        speedometerView.speed = 20.0
+        speedometerView.speed = calcBAC(totalAlcValue, drinkCount, selectedSex, userWeight, hoursElapsed)
+        //speedometerView.speed = 20.0
+
 
 
         //new session button
@@ -114,6 +120,8 @@ class MeterBac : Fragment() {
         //radio buttons for sex selection
         radioMale = view.findViewById(R.id.radioMale)
         radioFemale = view.findViewById(R.id.radioFemale)
+
+        val bacValueTextView = view.findViewById<TextView>(R.id.bacValueTextView)
 
         radioMale.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -141,15 +149,42 @@ class MeterBac : Fragment() {
 
         // Set up the "Start New Session" button
         startNewSessionButton.setOnClickListener {
-            // Reset start time and drink count
+            Log.d(TAG, "Start New Session button clicked")
+            // Reset start time, drink count, and other relevant variables
             startTime = System.currentTimeMillis()
             drinkCount = 0
+            selectedDrink = "Select Drink"
+            userWeight = 0
+            selectedSex = "Male"
+            drinkListSelection.clear() // Clear the list of consumed drinks
 
-            // Save updated start time and drink count to SharedPreferences
+            // Reset BAC-related variables
+            totalAlcValue = 0.0
+            hoursElapsed = 0.0
+
+            // Save updated data to SharedPreferences
             val editor: SharedPreferences.Editor = prefs.edit()
             editor.putLong(START_TIME_KEY, startTime)
             editor.putInt(DRINK_COUNT_KEY, drinkCount)
+            editor.putString(SELECTED_DRINK_KEY, selectedDrink)
+            editor.putStringSet(DRINK_LIST_KEY, HashSet(drinkListSelection))
+            editor.putString("selectedSex", selectedSex)
+            editor.putInt("userWeight", userWeight)
             editor.apply()
+
+            // Log reset values
+            Log.d(TAG, "After reset: drinkCount=$drinkCount, selectedDrink=$selectedDrink, totalAlcValue=$totalAlcValue")
+
+            // Reset the displayed BAC
+            val bacValueTextView = view.findViewById<TextView>(R.id.bacValueTextView)
+            bacValueTextView.text = "BAC: 0.0%"
+
+            // Reset the speedometer
+            val speedometerView = view.findViewById<SpeedometerView>(R.id.speedometer)
+            speedometerView.speed = 0.0
+
+            // Call the function to update the BAC value
+            updateBACValue()
 
             // Notify the user that a new session has started
             Toast.makeText(
@@ -212,7 +247,6 @@ class MeterBac : Fragment() {
         // Have drink counter increment each time add drink button is pressed. Have alc content
         //value submit when button is pressed
         addDrinkButton.setOnClickListener {
-
             // Set the start time when the user adds the first drink
             if (startTime == 0L) {
                 startTime = System.currentTimeMillis()
@@ -225,11 +259,31 @@ class MeterBac : Fragment() {
             val weightText = editTextWeight.text.toString()
             userWeight = if (weightText.isNotEmpty()) weightText.toInt() else 0
 
-            // Add the current drink to the list
-           // drinkListSelection.add("$selectedDrink - Alc Content: ${drinkBACMap[selectedDrink]}")
+            // Get the selected drink's alcohol content
+            val alcValue: Double? = drinkBACMap[selectedDrink]
 
-            // Update the TextView with the selected drinks
-            //updateSelectedDrinksTextView()
+            // Update total alcohol content
+            if (alcValue != null) {
+                totalAlcValue += alcValue
+            }
+
+            // Calculate hours elapsed
+            hoursElapsed = calcHoursElapsed()
+
+            // Calculate the new BAC value
+            val newBAC = calcBAC(totalAlcValue, drinkCount, selectedSex, userWeight, hoursElapsed)
+            speedometerView.invalidate()
+
+            // Update the BAC value on the TextView
+            bacValueTextView.text = "BAC: $newBAC%"
+
+            // Update the TextView with the selected drinks (if needed)
+            // updateSelectedDrinksTextView()
+
+            // Update the BAC value on the speedometer
+            speedometerView.speed = newBAC
+            // Call the function to update the BAC value
+            updateBACValue()
 
             Toast.makeText(
                 requireContext(),
@@ -237,7 +291,7 @@ class MeterBac : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
 
-            // Save updated drink count and selected drink to SharedPreferences
+            // Save updated data to SharedPreferences
             val prefs: SharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = prefs.edit()
             editor.putLong(START_TIME_KEY, startTime)
@@ -291,28 +345,39 @@ class MeterBac : Fragment() {
         return hoursElapsed
     }
 
-   /* fun calcBAC(): Double {
-        //val alcValue : Double? = drinkBACMap[selectedDrink]
+    fun calcBAC(totalAlcValue: Double, drinkCount: Int, selectedSex: String, userWeight: Int, hoursElapsed: Double): Double {
+        // Convert user weight to kilograms
+        val weightKg = userWeight * 0.453592
 
-        //r must be double in order to do multiplication
-        val r: Double = if (selectedSex.equals("M", ignoreCase = true)) 0.68 else 0.55
+        // Calculate BAC using Widmark Formula
+        val r: Double = if (selectedSex.equals("Male", ignoreCase = true)) 0.68 else 0.55
+        //val bacCalc = ((totalAlcValue * drinkCount / (r * weightKg)) - (hoursElapsed * 0.015) * 100)
+        val bacCalc = ((((totalAlcValue * drinkCount) / (r * weightKg))) - (hoursElapsed * 0.015))
 
-        val bacCalc = ((((((drinkCount * 14.0) / (r * (userWeight * 453.597))) * 100.0) - (calcHoursElapsed() * 0.015)) * 100))
+        // Log values for debugging
+        Log.d(TAG, "totalAlcValue: $totalAlcValue, drinkCount: $drinkCount, selectedSex: $selectedSex, userWeight: $userWeight, hoursElapsed: $hoursElapsed, weightKg: $weightKg, bacCalc: $bacCalc")
 
-        //formula for bac calculation --> numDrinks, Weight, sex and hours are hard coded
-        //need to multiply by 100 to tailer to meter numbers
-        //val bac =  (((3.0 * 14.0 / (0.68 * (150 * 453.592))) * 100.0 - 1.0 * 0.015) * 100)
 
-        //Test to make sure weight and sex are being passed
-        //val bac = (((3.0 * 14.0 / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
 
-        //formula after A.S. reccomendation for fixes
-        //need to multiply by 100 to tailer to meter numbers
-        //453.592 is 1 lb in kilograms
-        //ISSUE: drinkNum not being passed
-        //val bac =  ((((drinkNumm?.times(14.0) ?:1.0) / (r * (weight?.times(453.592)!!))) * 100.0 - 1.0 * 0.015) * 100)
+        // Ensure BAC is non-negative
         return if (bacCalc < 0) 0.0 else bacCalc
-        //return 0.0
+    }
 
-    }*/
+    // Function to update the BAC value
+    private fun updateBACValue() {
+        // Calculate the new BAC value
+        val newBAC = calcBAC(totalAlcValue, drinkCount, selectedSex, userWeight, hoursElapsed)
+
+        // Update the BAC value on the TextView
+        val bacValueTextView = view?.findViewById<TextView>(R.id.bacValueTextView)
+        if (bacValueTextView != null) {
+            bacValueTextView.text = "BAC: $newBAC%"
+        }
+
+        // Update the BAC value on the speedometer
+        val speedometerView = view?.findViewById<SpeedometerView>(R.id.speedometer)
+        if (speedometerView != null) {
+            speedometerView.speed = newBAC
+        }
+    }
 }
