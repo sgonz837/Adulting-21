@@ -152,12 +152,14 @@ class HomeFragment : Fragment() {
             view.findViewById(R.id.drinkImage100)
         )
 
-
+        // Declare the cocktails list outside of GlobalScope.launch
+        var cocktails: List<Cocktail>? = null
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
             val response = apiService.popularCocktails()
-
-
+           // val cocktails = apiService.popularDrinks()
+            cocktails = apiService.popularDrinks()
+            //cocktails = apiService.popularCocktails()
             val popularResponse = apiService.popularDrinks()
 
 
@@ -242,50 +244,50 @@ class HomeFragment : Fragment() {
                 popularResponse.forEachIndexed { index, cocktail ->
                     when (index) {
                         0 -> {
-                            randomDrinkName11.text = cocktail.drinkName
+                            randomDrinkName11.text = cocktail.name
 
                         }
 
                         1 -> {
-                            randomDrinkName22.text = cocktail.drinkName
+                            randomDrinkName22.text = cocktail.name
 
                         }
 
                         2 -> {
-                            randomDrinkName33.text = cocktail.drinkName
+                            randomDrinkName33.text = cocktail.name
                         }
 
                         3 -> {
-                            randomDrinkName44.text = cocktail.drinkName
+                            randomDrinkName44.text = cocktail.name
 
                         }
 
                         4 -> {
-                            randomDrinkName55.text = cocktail.drinkName
+                            randomDrinkName55.text = cocktail.name
 
                         }
 
                         5 -> {
-                            randomDrinkName66.text = cocktail.drinkName
+                            randomDrinkName66.text = cocktail.name
 
                         }
 
                         6 -> {
-                            randomDrinkName77.text = cocktail.drinkName
+                            randomDrinkName77.text = cocktail.name
                         }
 
                         7 -> {
-                            randomDrinkName88.text = cocktail.drinkName
+                            randomDrinkName88.text = cocktail.name
 
                         }
 
                         8 -> {
-                            randomDrinkName99.text = cocktail.drinkName
+                            randomDrinkName99.text = cocktail.name
 
                         }
 
                         9 -> {
-                            randomDrinkName100.text = cocktail.drinkName
+                            randomDrinkName100.text = cocktail.name
 
                         }
                     }
@@ -294,6 +296,67 @@ class HomeFragment : Fragment() {
         }
 
 
+// Inside your loop where you set click listeners for ImageViews
+        for (index in 0 until imageViews.size) {
+            val imageView = imageViews[index]
+
+            imageView.setOnClickListener {
+                if (index < cocktails?.size ?: 0) {
+                    val cocktailId = cocktails?.get(index)?.id
+
+                    val bundle = Bundle()
+                    bundle.putString("cocktailId", cocktailId)
+
+                    val drinkInfoFragment = DrinkInfoFragment()
+                    drinkInfoFragment.arguments = bundle
+
+                    replaceFragment(drinkInfoFragment)
+                }
+            }
+        }
+
+/*
+        // Inside your loop where you set click listeners for ImageViews
+        for (index in 0 until imageViews.size) {
+            val imageView = imageViews[index]
+
+            imageView.setOnClickListener {
+                if (index < cocktail.size) {
+                    val cocktailId = cocktail[index].id
+
+                    val bundle = Bundle()
+                    bundle.putString("cocktailId", cocktailId)
+
+                    val drinkInfoFragment = DrinkInfoFragment()
+                    drinkInfoFragment.arguments = bundle
+
+                    replaceFragment(drinkInfoFragment)
+                }
+            }
+        }
+
+ */
+
+/*
+        // Inside the loop where you set click listeners for ImageViews
+        for (index in 0 until imageViews.size) {
+            val imageView = imageViews[index]
+            val cocktailId = "your_cocktail_id_here" // Replace with the actual cocktail ID
+
+            imageView.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("cocktailId", cocktailId)
+
+                val drinkInfoFragment = DrinkInfoFragment()
+                drinkInfoFragment.arguments = bundle
+
+                replaceFragment(drinkInfoFragment)
+            }
+        }
+
+ */
+
+/*
         // Set click listeners for the ImageViews
         for (index in 0 until imageViews.size) {
             val imageView = imageViews[index]
@@ -301,6 +364,8 @@ class HomeFragment : Fragment() {
                 replaceFragment(DrinkInfoFragment())
             }
         }
+
+ */
 
 
         // In order to keep the number of fragment pages low,
@@ -464,9 +529,9 @@ class HomeFragment : Fragment() {
                 val response1 = apiService.popularDrinks()
                 withContext(Dispatchers.Main) {
                     viewModel.cachedCocktails = response
-                    viewModel.cachedCocktails1 = response1
+                    //viewModel.cachedCocktails1 = response
                     displayCocktails(response)
-                    displayCocktails1(response1)
+                    //displayCocktails1(response1)
                     // Wait for 2 seconds (2000 milliseconds)
                     delay(1000)
                     // After the API call is complete, set loadingLayout visibility to GONE
