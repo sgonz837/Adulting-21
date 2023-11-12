@@ -7,8 +7,13 @@
 
 package com.example.adulting21
 import android.util.Log
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 
 class CocktailApiService {
@@ -386,46 +391,51 @@ class CocktailApiService {
         }
     }
 
-    fun searchCocktails(query: String): List<SearchResults> {
-        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=Non_Alcoholic"
-        val request = Request.Builder()
-            .url(url)
-            .build()
 
+// Function to parse JSON and return the search results
+    fun parseJson(json: JSONObject): List<SearchResults> {
         try {
-            val response = client.newCall(request).execute()
-            if (!response.isSuccessful) {
-                Log.e("TAG", "Search Not Successful. Error message: ${response.message}")
+            // Check if "drinks" key exists in the JSON object
+            if (json.has("drinks")) {
+                // Check if the value associated with "drinks" is not null
+                val drinksArray = json.getJSONArray("drinks")
+                return parseSearchResults(drinksArray)
+            } else {
+                // Handle the case where "drinks" key is missing or its value is null
                 return emptyList()
             }
-
-            val jsonString = response.body?.string() ?: ""
-            Log.d("TAG", "Response JSON: $jsonString")
-            val json = JSONObject(jsonString)
-
-            val drinksArray = json.getJSONArray("drinks")
-            val searchResults = mutableListOf<SearchResults>()
-            Log.d("TAG", url)
-
-            for (i in 0 until drinksArray.length()) {
-                val drinkJson = drinksArray.getJSONObject(i)
-                val resultName = drinkJson.getString("strDrink")
-                val resultImage = drinkJson.getString("strDrinkThumb")
-
-                searchResults.add(SearchResults(resultName, resultImage))
-            }
-
-            Log.d("TAG", "Search Successful!")
-            return searchResults
-        } catch (e: Exception) {
-            Log.e("TAG", "Search Exception: ${e.message}")
+        } catch (e: JSONException) {
+            // Handle JSON parsing exception
+            Log.e("TAG", "Error parsing JSON", e)
             return emptyList()
         }
     }
 
-    /*
-        fun searchCocktails(query: String): List<SearchResults> {
-            val url1 = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=$query"
+    fun parseSearchResults(drinksArray: JSONArray): List<SearchResults> {
+        val searchResults = mutableListOf<SearchResults>()
+
+        for (i in 0 until drinksArray.length()) {
+            val drinkJson = drinksArray.getJSONObject(i)
+            // Extract relevant information and create SearchResults object
+            val resultName = drinkJson.getString("strDrink")
+            val resultImage = drinkJson.getString("strDrinkThumb")
+            searchResults.add(SearchResults(resultName, resultImage))
+        }
+
+        return searchResults
+    }
+
+
+
+    interface SearchCallback {
+        fun onSearchSuccess(results: List<SearchResults>)
+        fun onSearchError(error: String)
+    }
+    fun searchCocktails(query: String, callback: SearchCallback) {
+        val url1 = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=$query"
+
+        // Use coroutines to perform the network request in the background
+        GlobalScope.launch(Dispatchers.IO) {
             val request = Request.Builder()
                 .url(url1)
                 .build()
@@ -434,39 +444,24 @@ class CocktailApiService {
                 val response = client.newCall(request).execute()
                 if (!response.isSuccessful) {
                     Log.d("TAG", "Search Not Successful: " + response.message)
-                  //  Log.d("TAG", "Searchhh Not Successful")
-                    return emptyList()
+                    callback.onSearchError("Search not successful: ${response.message}")
+                    return@launch
                 }
 
                 val jsonString = response.body?.string() ?: ""
                 Log.d("TAG", "Response JSON: $jsonString")
                 val json = JSONObject(jsonString)
 
-                val drinksArray = json.getJSONArray("drinks")
-                val searchResults = mutableListOf<SearchResults>()
-                Log.d("TAG",url1)
-                for (i in 0 until drinksArray.length()) {
-                    val drinkJson = drinksArray.getJSONObject(i)
-                    val resultName = drinkJson.getString("strDrink")
-                    //val resultDescription = drinkJson.getString("strInstructions")
-                    val resultImage = drinkJson.getString("strDrinkThumb")
-
-                    searchResults.add(SearchResults(resultName, resultImage))
-                }
-
-                Log.d("TAG", "Search Successful!")
-                return searchResults
+                // The rest of your code for parsing the JSON and handling the results...
+                val searchResults = parseJson(json)
+                callback.onSearchSuccess(searchResults)
             } catch (e: Exception) {
-                Log.d("TAG", "Search Not Successful")
-                return emptyList()
+                Log.e("TAG", "Search Not Successful", e)
+                callback.onSearchError("Search not successful: ${e.message}")
             }
         }
-
-     */
+    }
 }
-
-
-
 
 data class Ingredient(
     val name: String,
