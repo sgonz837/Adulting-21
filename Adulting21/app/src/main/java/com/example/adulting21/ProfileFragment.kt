@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
+import com.google.firebase.database.FirebaseDatabase
 
 class ProfileFragment : Fragment() {
     private lateinit var nameEditText: EditText
@@ -41,13 +41,15 @@ class ProfileFragment : Fragment() {
 
         return view
     }
-
+    // Initialize Firebase database reference
+    private val databaseReference = FirebaseDatabase.getInstance().getReference("user_data")
     private fun handleFormSubmission() {
         val name = nameEditText.text.toString()
         val ageText = ageEditText.text.toString()
         val weightText = weightEditText.text.toString()
         val sex = sexEditText.text.toString()
         val drinkNum = drinkBox.text.toString()
+
 
         // Log the values to check if they are being retrieved correctly
         Log.d("ProfileFragment", "Name: $name, Age: $ageText, Weight: $weightText, Sex: $sex, drinkNumber: $drinkNum")
@@ -90,6 +92,17 @@ class ProfileFragment : Fragment() {
 
             // Add the transaction to the back stack, allowing the user to navigate back
             transaction.addToBackStack(null)
+
+            // Save user data to Firebase
+            val user = HashMap<String, Any>()
+            user["username"] = name
+            user["age"] = age
+            user["weight"] = weight
+            user["sex"] = sex
+            user["drinkCount"] = number
+
+            // Push data to Firebase
+            databaseReference.push().setValue(user)
 
             // Commit the transaction
             transaction.commit()
