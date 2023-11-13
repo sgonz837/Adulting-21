@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import androidx.appcompat.app.AppCompatActivity
 
 class PanicFragment : Fragment() {
 
@@ -19,17 +21,14 @@ class PanicFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_panic, container, false)
 
-        GlobalScope.launch(Dispatchers.IO) {
-            // Add a button or any UI element that triggers the confirmation dialog
-            //val confirmButton = view.findViewById(R.id.confirmButton) // Replace with your button ID
-            /*
-            confirmButton.setOnClickListener {
+
+        val confirmButton = view.findViewById<Button>(R.id.confirmButton)
+
+
+        confirmButton.setOnClickListener {
                 showConfirmationDialog()
             }
 
-             */
-
-        }
         return view
     }
 
