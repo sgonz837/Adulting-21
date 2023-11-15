@@ -52,8 +52,6 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-
-
         // Initialize the loading layout
         loadingLayout = view.findViewById(R.id.loadingLayout)
         // Initially, set the loading layout as invisible
@@ -154,12 +152,13 @@ class HomeFragment : Fragment() {
 
         // Declare the cocktails list outside of GlobalScope.launch
         var cocktails: List<Cocktail>? = null
+        //var popularDrinks: List<popularDrinks> = null
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
             val response = apiService.popularCocktails()
-           // val cocktails = apiService.popularDrinks()
-            cocktails = apiService.popularDrinks()
-            //cocktails = apiService.popularCocktails()
+          //val cocktails = apiService.popularDrinks()
+            //cocktails = apiService.popularDrinks()
+            cocktails = apiService.popularCocktails()
             val popularResponse = apiService.popularDrinks()
 
 
@@ -297,8 +296,15 @@ class HomeFragment : Fragment() {
 
 
 // Inside your loop where you set click listeners for ImageViews
+
+        /*
+
+        This is where We will retrieve and send the id key for the use of
+        both database and the drinkInfo Page
+         */
         for (index in 0 until imageViews.size) {
             val imageView = imageViews[index]
+
 
             imageView.setOnClickListener {
                 if (index < cocktails?.size ?: 0) {
@@ -314,58 +320,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
-/*
-        // Inside your loop where you set click listeners for ImageViews
-        for (index in 0 until imageViews.size) {
-            val imageView = imageViews[index]
-
-            imageView.setOnClickListener {
-                if (index < cocktail.size) {
-                    val cocktailId = cocktail[index].id
-
-                    val bundle = Bundle()
-                    bundle.putString("cocktailId", cocktailId)
-
-                    val drinkInfoFragment = DrinkInfoFragment()
-                    drinkInfoFragment.arguments = bundle
-
-                    replaceFragment(drinkInfoFragment)
-                }
-            }
-        }
-
- */
-
-/*
-        // Inside the loop where you set click listeners for ImageViews
-        for (index in 0 until imageViews.size) {
-            val imageView = imageViews[index]
-            val cocktailId = "your_cocktail_id_here" // Replace with the actual cocktail ID
-
-            imageView.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString("cocktailId", cocktailId)
-
-                val drinkInfoFragment = DrinkInfoFragment()
-                drinkInfoFragment.arguments = bundle
-
-                replaceFragment(drinkInfoFragment)
-            }
-        }
-
- */
-
-/*
-        // Set click listeners for the ImageViews
-        for (index in 0 until imageViews.size) {
-            val imageView = imageViews[index]
-            imageView.setOnClickListener {
-                replaceFragment(DrinkInfoFragment())
-            }
-        }
-
- */
 
 
         // In order to keep the number of fragment pages low,
@@ -529,9 +483,9 @@ class HomeFragment : Fragment() {
                 val response1 = apiService.popularDrinks()
                 withContext(Dispatchers.Main) {
                     viewModel.cachedCocktails = response
-                    //viewModel.cachedCocktails1 = response
+                    viewModel.cachedCocktails1 = response1
                     displayCocktails(response)
-                    //displayCocktails1(response1)
+                    displayCocktails1(response1)
                     // Wait for 2 seconds (2000 milliseconds)
                     delay(1000)
                     // After the API call is complete, set loadingLayout visibility to GONE
@@ -542,8 +496,6 @@ class HomeFragment : Fragment() {
 
         return view
     }
-
-
 
     private fun displayCocktails(cocktails: List<Cocktail>) {
         // Display cocktails using the received data
@@ -559,12 +511,14 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun displayCocktails1(cocktails: List<popularDrinks>) {
+    //private fun displayCocktails1(cocktails: List<popularDrinks>) {
+    private fun displayCocktails1(cocktails: List<Cocktail>) {
         // Display cocktails using the received data
         cocktails.take(imageViews1.size).forEachIndexed { index, cocktail ->
             val imageView = imageViews1[index]
             Picasso.get()
-                .load(cocktail.drinkImg)
+                //.load(cocktail.drinkImg)
+                .load(cocktail.imageUrl)
                 .resize(
                     1000,
                     1000

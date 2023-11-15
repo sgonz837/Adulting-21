@@ -431,6 +431,8 @@ class CocktailApiService {
         fun onSearchSuccess(results: List<SearchResults>)
         fun onSearchError(error: String)
     }
+
+
     fun searchCocktails(query: String, callback: SearchCallback) {
         val url1 = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=$query"
 
@@ -461,6 +463,43 @@ class CocktailApiService {
             }
         }
     }
+
+
+/*
+    fun searchCocktailsById(query: String, callback: SearchCallback) {
+        val url1 = "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=$query"
+
+        // Use coroutines to perform the network request in the background
+        GlobalScope.launch(Dispatchers.IO) {
+            val request = Request.Builder()
+                .url(url1)
+                .build()
+
+            try {
+                val response = client.newCall(request).execute()
+                if (!response.isSuccessful) {
+                    Log.d("TAG", "Search Not Successful: " + response.message)
+                    callback.onSearchError("Search not successful: ${response.message}")
+                    return@launch
+                }
+
+                val jsonString = response.body?.string() ?: ""
+                Log.d("TAG", "Response JSON: $jsonString")
+                val json = JSONObject(jsonString)
+
+                // The rest of your code for parsing the JSON and handling the results...
+                val searchResults = parseJson(json)
+                callback.onSearchSuccess(searchResults)
+            } catch (e: Exception) {
+                Log.e("TAG", "Search Not Successful", e)
+                callback.onSearchError("Search not successful: ${e.message}")
+            }
+        }
+    }
+
+ */
+
+
 }
 
 data class Ingredient(
