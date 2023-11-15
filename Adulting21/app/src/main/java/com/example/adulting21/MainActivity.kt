@@ -26,6 +26,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -66,12 +67,33 @@ class MainActivity : AppCompatActivity() {
         }
         // Sign in with the provided email and password
         firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
+
+
+
+            ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Login successful, navigate to the main activity
+                    // Login successful, navigate to the main page
                     val intent = Intent(this, Navigation::class.java)
                     startActivity(intent)
+
+                    //inputs email information into firebase realtime database
+                    val user = firebaseAuth.currentUser
+                    val userId = user?.uid
+
+                    // Save user data to Firebase Realtime Database
+                    val databaseReference = FirebaseDatabase.getInstance().getReference("users")
+
+                    val userData = HashMap<String, Any>()
+                    userData["email"] = email
+                    //userData["additionalField"] = additionalValue // Add other user data here
+
+                    // Store under a unique ID (user ID in this case)
+                    userId?.let {
+                        databaseReference.child(it).setValue(userData)
+                    }
+
                     finish()
+
                 } else {
                     // Login failed, display an error message
                     Toast.makeText(

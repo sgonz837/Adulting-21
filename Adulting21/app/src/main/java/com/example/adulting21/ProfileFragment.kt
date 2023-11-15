@@ -10,15 +10,21 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 
 class ProfileFragment : Fragment() {
+    private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var nameEditText: EditText
     private lateinit var ageEditText: EditText
     private lateinit var weightEditText: EditText
     private lateinit var sexEditText: EditText
     private lateinit var drinkBox: EditText
     private lateinit var submitButton: Button
+
+    private val databaseReference = FirebaseDatabase.getInstance().getReference("user_data")
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +49,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun handleFormSubmission() {
+
         val name = nameEditText.text.toString()
         val ageText = ageEditText.text.toString()
         val weightText = weightEditText.text.toString()
@@ -91,6 +98,15 @@ class ProfileFragment : Fragment() {
             // Add the transaction to the back stack, allowing the user to navigate back
             transaction.addToBackStack(null)
 
+            val user = HashMap<String, Any>()
+            user["username"] = name
+            user["age"] = age
+            user["weight"] = weight
+            user["sex"] = sex
+            user["drinkCount"] = number
+
+            // Push data to Firebase
+            databaseReference.push().setValue(user)
             // Commit the transaction
             transaction.commit()
             val message = "User data submitted successfully."
@@ -106,79 +122,3 @@ class ProfileFragment : Fragment() {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }
-
-/*
-
-class ProfileFragment : Fragment() {
-    private lateinit var nameEditText: EditText
-    private lateinit var ageEditText: EditText
-    private lateinit var weightEditText: EditText
-    private lateinit var sexEditText: EditText
-    private lateinit var ecEditText: EditText
-    private lateinit var submitButton: Button
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
-
-        // Initialize the views
-        nameEditText = view.findViewById(R.id.name)
-        ageEditText = view.findViewById(R.id.age)
-        weightEditText = view.findViewById(R.id.weight)
-        sexEditText = view.findViewById(R.id.sex)
-        ecEditText = view.findViewById(R.id.ec)
-        submitButton = view.findViewById(R.id.submitBtn)
-
-        // Set a click listener for the Submit button
-        submitButton.setOnClickListener {
-            handleFormSubmission()
-        }
-
-
-
-        return view
-    }
-
-    private fun handleFormSubmission() {
-        val name = nameEditText.text.toString()
-        val ageText = ageEditText.text.toString()
-        val weightText = weightEditText.text.toString()
-        val sex = sexEditText.text.toString()
-        //val ec = ecEditText.text.toString()
-
-        if (name.isNotEmpty() && ageText.isNotEmpty() && weightText.isNotEmpty() && sex.isNotEmpty() ) {
-
-            val age = ageText.toInt()
-            val weight = weightText.toInt()
-            val bundle = Bundle()
-
-            bundle.putString("username", name)
-            bundle.putInt("age", age)
-            bundle.putInt("weight", weight)
-            bundle.putString("sex",sex)
-
-            val settingsFragment = SettingsFragment()
-            settingsFragment.arguments = bundle
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, settingsFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-            val message = "User data submitted successfully."
-            showToast(message)
-        } else {
-            // Handle the case when any of the fields is empty (e.g., display an error message)
-            val errorMessage = "Please fill in all fields."
-            showToast(errorMessage)
-        }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
-}
-
-
-
- */

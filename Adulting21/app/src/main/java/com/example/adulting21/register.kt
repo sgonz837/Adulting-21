@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class register : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
@@ -43,17 +44,35 @@ class register : AppCompatActivity() {
             return
         }
         firebaseAuth.createUserWithEmailAndPassword(email, password)
+
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    //navigates to the main page
                     val intent = Intent(this, Navigation::class.java)
                     startActivity(intent)
+
+                    //inputs email information into firebase realtime database
+                    val user = firebaseAuth.currentUser
+                    val userId = user?.uid
+
+                    // Save user data to Firebase Realtime Database
+                    val databaseReference = FirebaseDatabase.getInstance().getReference("users")
+
+                    val userData = HashMap<String, Any>()
+                    userData["email"] = email
+                    //userData["additionalField"] = additionalValue // Add other user data here
+
+                    // Store under a unique ID (user ID in this case)
+                    userId?.let {
+                        databaseReference.child(it).setValue(userData)
+                    }
                     finish()
                 } else {
                     Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG)
                         .show()
                 }
             }
-            .addOnFailureListener(this) { exception ->
+            ?.addOnFailureListener(this) { exception ->
                 Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG)
                     .show()
             }
