@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment
 import android.widget.AdapterView.OnItemSelectedListener
 import com.example.adulting21.R
 import com.example.adulting21.SpeedometerView
+import kotlin.math.max
 
 class MeterBac : Fragment() {
 
@@ -35,7 +37,6 @@ class MeterBac : Fragment() {
 
     // list of drinks
     private val drinkList = arrayListOf(
-        "Select Drink",
         "Small Beer",
         "Can Beer",
         "Pint Beer",
@@ -45,12 +46,11 @@ class MeterBac : Fragment() {
 
     // set values to drink selection
     private val drinkBACMap = mapOf(
-        "Select Drink" to null,
-        "Small Beer" to 8.0,
-        "Can Beer" to 12.0,
-        "Pint Beer" to 18.0,
-        "Single Shot" to 1.5,
-        "Double Shot" to 3.0
+        "Small Beer" to 14.0,
+        "Can Beer" to 14.0,
+        "Pint Beer" to 14.0,
+        "Single Shot" to 14.0,
+        "Double Shot" to 14.0
     )
 
     private lateinit var drinkSpinner: Spinner
@@ -80,6 +80,36 @@ class MeterBac : Fragment() {
     //Variables for intering user weight
     private lateinit var editTextWeight: EditText
     private var userWeight: Int = 0
+
+    private val handler = Handler()
+    private val updateIntervalMillis = 1000L // Update every 5 seconds
+
+    private val updateRunnable: Runnable = object : Runnable {
+        override fun run() {
+            // Simulate a decrease in BAC over time
+            //val metabolicRate = 0.015 //number per 1 hour
+            //val metabolicRate = 0.0025 //number per 10 minutes
+            val metabolicRate = 0.00025 //number per 1 minute
+            totalAlcValue -= metabolicRate * hoursElapsed
+
+            // Ensure BAC is non-negative
+            totalAlcValue = max(0.0, totalAlcValue)
+
+            // Calculate the new BAC value
+            val newBAC = calcBAC(totalAlcValue, drinkCount, selectedSex, userWeight, hoursElapsed)
+
+            // Update the BAC value on the TextView
+            val bacValueTextView = view?.findViewById<TextView>(R.id.bacValueTextView)
+            bacValueTextView?.text = "BAC: $newBAC%"
+
+            // Update the BAC value on the speedometer
+            val speedometerView = view?.findViewById<SpeedometerView>(R.id.speedometer)
+            speedometerView?.speed = newBAC
+
+            // Schedule the next update
+            handler.postDelayed(this, updateIntervalMillis)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -150,8 +180,7 @@ class MeterBac : Fragment() {
         // Set up the "Start New Session" button
         startNewSessionButton.setOnClickListener {
             Log.d(TAG, "Start New Session button clicked")
-            // Reset start time, drink count, and other relevant variables
-            startTime = System.currentTimeMillis()
+            // Reset drink count and other relevant variables
             drinkCount = 0
             selectedDrink = "Select Drink"
             userWeight = 0
@@ -164,7 +193,11 @@ class MeterBac : Fragment() {
 
             // Save updated data to SharedPreferences
             val editor: SharedPreferences.Editor = prefs.edit()
-            editor.putLong(START_TIME_KEY, startTime)
+            if (startTime == 0L) {
+                // Set the start time only if it's the first session
+                startTime = System.currentTimeMillis()
+                editor.putLong(START_TIME_KEY, startTime)
+            }
             editor.putInt(DRINK_COUNT_KEY, drinkCount)
             editor.putString(SELECTED_DRINK_KEY, selectedDrink)
             editor.putStringSet(DRINK_LIST_KEY, HashSet(drinkListSelection))
@@ -176,11 +209,9 @@ class MeterBac : Fragment() {
             Log.d(TAG, "After reset: drinkCount=$drinkCount, selectedDrink=$selectedDrink, totalAlcValue=$totalAlcValue")
 
             // Reset the displayed BAC
-            val bacValueTextView = view.findViewById<TextView>(R.id.bacValueTextView)
             bacValueTextView.text = "BAC: 0.0%"
 
             // Reset the speedometer
-            val speedometerView = view.findViewById<SpeedometerView>(R.id.speedometer)
             speedometerView.speed = 0.0
 
             // Call the function to update the BAC value
@@ -250,6 +281,9 @@ class MeterBac : Fragment() {
             // Set the start time when the user adds the first drink
             if (startTime == 0L) {
                 startTime = System.currentTimeMillis()
+
+                //Start the periodic update when the user adds the first drink
+                handler.postDelayed(updateRunnable, updateIntervalMillis)
             }
 
             // Increment drink count
@@ -273,6 +307,9 @@ class MeterBac : Fragment() {
             // Calculate the new BAC value
             val newBAC = calcBAC(totalAlcValue, drinkCount, selectedSex, userWeight, hoursElapsed)
             speedometerView.invalidate()
+
+            // Log alcohol content
+            Log.d(TAG, "Alcohol Content: ${totalAlcValue * drinkCount}")
 
             // Update the BAC value on the TextView
             bacValueTextView.text = "BAC: $newBAC%"
@@ -311,6 +348,7 @@ class MeterBac : Fragment() {
 
         // Set up other UI interactions, if needed
 
+
         return view
     }
 
@@ -328,6 +366,15 @@ class MeterBac : Fragment() {
 
         // Update the TextView with selected drinks when the fragment resumes
         //updateSelectedDrinksTextView()
+        // Start the periodic update when the fragment resumes
+        handler.postDelayed(updateRunnable, updateIntervalMillis)
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        // Stop the periodic update when the fragment is paused
+        handler.removeCallbacks(updateRunnable)
     }
 
     fun calcHoursElapsed(): Double {

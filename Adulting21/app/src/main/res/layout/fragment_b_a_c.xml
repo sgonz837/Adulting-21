@@ -12,8 +12,8 @@
 
     <com.example.adulting21.SpeedometerView
         android:id="@+id/speedometer"
-        android:layout_width="607dp"
-        android:layout_height="342dp"
+        android:layout_width="485dp"
+        android:layout_height="385dp"
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:padding="15dp"
@@ -24,10 +24,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.991" />
 
+
     <EditText
         android:id="@+id/editTextWeight"
-        android:layout_width="189dp"
-        android:layout_height="38dp"
+        android:layout_width="185dp"
+        android:layout_height="46dp"
         android:hint="Enter Weight"
         android:inputType="number"
         android:maxLength="3"
@@ -35,64 +36,64 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
-
-
+        app:layout_constraintVertical_bias="0.349" />
 
     <RadioButton
         android:id="@+id/radioMale"
-        android:layout_width="103dp"
-        android:layout_height="41dp"
+        android:layout_width="117dp"
+        android:layout_height="53dp"
         android:text="Male"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.184" />
+        app:layout_constraintVertical_bias="0.144" />
 
     <RadioButton
         android:id="@+id/radioFemale"
-        android:layout_width="132dp"
-        android:layout_height="41dp"
+        android:layout_width="141dp"
+        android:layout_height="52dp"
         android:text="Female"
         android:textAlignment="viewStart"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.257" />
+        app:layout_constraintVertical_bias="0.237" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="182dp"
-        android:layout_height="158dp"
+        android:layout_width="167dp"
+        android:layout_height="144dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516"
+        app:layout_constraintVertical_bias="0.499"
         tools:listitem="@android:layout/simple_spinner_dropdown_item" />
 
     <Button
         android:id="@+id/addDrinkbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/red"
         android:text="Add Drink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.664" />
+        app:layout_constraintVertical_bias="0.639" />
 
     <Button
         android:id="@+id/startNewSessionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="156dp"
+        android:layout_height="53dp"
+        android:background="@color/red"
         android:text="Start New Session"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
