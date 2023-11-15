@@ -79,6 +79,7 @@ class DrinkInfoFragment : Fragment() {
 package com.example.adulting21
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -103,6 +104,28 @@ class DrinkInfoFragment : Fragment() {
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
             val response = apiService.popularCocktails()
+
+            //In order to correctly display the correct drink, we need the api code so we will send
+            //and receive that api key all over
+            val cocktailId = arguments?.getString("cocktailId", "")
+            val drinkApi = arguments?.getInt(
+                "drinkApiKey",
+                0
+            ) // 0 is a default value if the key is not found
+
+            if (cocktailId != null) {
+                Log.d("TAG", cocktailId)
+            };
+/*
+            val response = when (drinkNum) {
+                1 -> apiService.vodkaDrinks()
+                2 -> apiService.ginDrinks()
+                3 -> apiService.rumDrinks()
+                4 -> apiService.tequilaDrinks()
+                else -> emptyList() // Handle other cases as needed
+            }
+
+ */
             withContext(Dispatchers.Main) {
                 val layoutIngredients = listOf(
                     R.id.imageIngredient1,
