@@ -104,14 +104,49 @@ class DrinkInfoFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.drink_details, container, false)
 
+
+/*
+        val favoriteButton = view.findViewById<ImageView>(R.id.FavoriteButton)
+
+        favoriteButton.setOnClickListener(
+            val bundles1 = Bundle();
+            bundles1.putString("FavoriteIdKey", 1)
+            bundles1.putString("FavoriteDrinkName", 1)
+
+        )
+
+ */
+
+
+
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
 
-            // Retrieve cocktail details by ID
+            // For Mike:
+            // These two variable hold the id and drinkName
+            // Use as you wish
             val cocktailId = arguments?.getString("cocktailId", "")
+
+            val cocktailName = arguments?.getString("drinkName", "")
+
+
+            val favoriteButton = view.findViewById<ImageView>(R.id.FavoriteButton)
+
+            favoriteButton.setOnClickListener {
+                val bundles1 = Bundle()
+                bundles1.putString("FavoriteIdKey", cocktailId)
+                bundles1.putString("FavoriteDrinkName", cocktailName)
+
+                // Add your logic to handle the favorite button click with the created bundle
+            }
+            if (cocktailName != null) {
+                Log.d("TAG",cocktailName)
+            }
+
+
             if (cocktailId != null && cocktailId.isNotEmpty()) {
 
-
+                Log.d("TAG",cocktailId)
 
 
                 lifecycleScope.launch {
