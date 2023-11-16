@@ -266,93 +266,7 @@ class CocktailApiService {
         }
     }
 
-/*
-    fun popularDrinks(): List<Cocktail> {
-        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php"
-        val request = Request.Builder()
-            .url(url)
-            .build()
 
-        try {
-            val response = client.newCall(request).execute()
-            if (!response.isSuccessful) {
-                Log.d("TAG", "Not Successful")
-                return emptyList() // Return an empty list on error
-            }
-            Log.d("TAG", "Successful!")
-            val responseBody = response.body
-            val jsonString = responseBody?.string() ?: "Error"
-
-            val ingredientUrl = "https://www.thecocktaildb.com/images/ingredients"
-            val json = JSONObject(jsonString)
-            val drinks = json.getJSONArray("drinks")
-
-            val popularDrinksList = mutableListOf<Cocktail>()
-
-            for (i in 0 until drinks.length()) {
-                val drinkJson = drinks.getJSONObject(i)
-
-                val ingredients = (1..15).map { j ->
-                    val ingredientName = drinkJson.getString("strIngredient$j")
-                    val ingredientImage = "$ingredientUrl/$ingredientName.png"
-                    Ingredient(ingredientName, ingredientImage)
-                }
-                val id = drinkJson.getString("idDrink")
-                val name = drinkJson.getString("strDrink")
-                val imageUrl = drinkJson.getString("strDrinkThumb")
-                ingredients = ingredients
-
-                val cocktail = Cocktail(id, name, imageUrl,null)
-                popularDrinksList.add(cocktail)
-            }
-            return popularDrinksList
-
-        } catch (e: Exception) {
-            Log.d("TAG", "Error: ${e.message}")
-            return emptyList() // Return an empty list on error
-        }
-    }
-
- */
-/*
-    fun popularDrinks(): List<popularDrinks> {
-        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php"
-
-        val request = Request.Builder()
-            .url(url)
-            .build()
-
-        try {
-            val response = client.newCall(request).execute()
-            if (!response.isSuccessful) {
-                Log.d("TAG", "Not Successful")
-                return emptyList() // Return an empty list on error
-            }
-            Log.d("TAG", "Successful!")
-            val responseBody = response.body
-            val jsonString = responseBody?.string() ?: "Error"
-
-            val json = JSONObject(jsonString)
-            val drinks = json.getJSONArray("drinks")
-
-            val popularDrinksList = mutableListOf<popularDrinks>()
-
-            for (i in 0 until drinks.length()) {
-                val drinkJson = drinks.getJSONObject(i)
-                val drinkName = drinkJson.getString("strDrink")
-                val drinkImg = drinkJson.getString("strDrinkThumb")
-
-                popularDrinksList.add(popularDrinks(drinkName, drinkImg))
-            }
-            println(popularDrinksList)
-            return popularDrinksList
-
-        } catch (e: Exception) {
-            return emptyList() // Return an empty list on error
-        }
-    }
-
- */
 
     fun mocktails(): List<MocktailClass> {
         val url = "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?a=Non_Alcoholic"
@@ -424,13 +338,44 @@ class CocktailApiService {
 
         return searchResults
     }
+/*
+    fun parseJson1(json: JSONObject): Cocktail? {
+        try {
+            // Check if "drinks" key exists in the JSON object
+            if (json.has("drinks")) {
+                // Check if the value associated with "drinks" is not null
+                val drinksArray = json.getJSONArray("drinks")
+                return parseSearchResults1(drinksArray)
+            } else {
+                // Handle the case where "drinks" key is missing or its value is null
+                return emptyList()
+            }
+        } catch (e: JSONException) {
+            // Handle JSON parsing exception
+            Log.e("TAG", "Error parsing JSON", e)
+            return emptyList()
+        }
+        // Your parsing logic for a single Cocktail
+    }
 
+    fun parseSearchResults1(drinksArray: JSONArray): List<Cocktail> {
+        // Your parsing logic for a list of Cocktails
+    }
+
+
+ */
 
 
     interface SearchCallback {
         fun onSearchSuccess(results: List<SearchResults>)
         fun onSearchError(error: String)
     }
+
+    interface SearchCallback1 {
+        fun onSearchSuccess(result: Cocktail)
+        fun onSearchError(error: String)
+    }
+
 
 
     fun searchCocktails(query: String, callback: SearchCallback) {
@@ -465,8 +410,8 @@ class CocktailApiService {
     }
 
 
-/*
-    fun searchCocktailsById(query: String, callback: SearchCallback) {
+
+    fun searchCocktailsById(query: String, callback: SearchCallback1) {
         val url1 = "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=$query"
 
         // Use coroutines to perform the network request in the background
@@ -489,7 +434,7 @@ class CocktailApiService {
 
                 // The rest of your code for parsing the JSON and handling the results...
                 val searchResults = parseJson(json)
-                callback.onSearchSuccess(searchResults)
+                //callback.onSearchSuccess(searchResults)
             } catch (e: Exception) {
                 Log.e("TAG", "Search Not Successful", e)
                 callback.onSearchError("Search not successful: ${e.message}")
@@ -497,7 +442,7 @@ class CocktailApiService {
         }
     }
 
- */
+
 
 
 }
