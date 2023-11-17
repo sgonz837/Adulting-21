@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment"
+    tools:context=".TipFragment"
     android:background="@android:color/white">
 
 
@@ -12,11 +12,12 @@
         android:id="@+id/editTextDrinkPrice"
         android:layout_width="166dp"
         android:layout_height="76dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="132dp"
         android:hint="Enter drink price"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

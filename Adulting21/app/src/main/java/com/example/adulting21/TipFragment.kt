@@ -1,7 +1,6 @@
 package com.example.adulting21
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 
 
-
-class ProfileFragment : Fragment() {
+class TipFragment : Fragment() {
 
     private lateinit var buttonCalculate: Button
     private lateinit var editTextDrinkPrice: EditText
@@ -25,7 +21,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        val view = inflater.inflate(R.layout.fragment_tip, container, false)
         return view
     }
 

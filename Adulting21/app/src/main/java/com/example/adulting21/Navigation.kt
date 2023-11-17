@@ -54,7 +54,7 @@ class Navigation : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
-                R.id.profile -> replaceFragment(ProfileFragment())
+                R.id.profile -> replaceFragment(TipFragment())
                 R.id.settings -> replaceFragment(MeterBac())
                 R.id.search -> replaceFragment(SearchFragment())
                 R.id.panic_button -> replaceFragment(PanicFragment())

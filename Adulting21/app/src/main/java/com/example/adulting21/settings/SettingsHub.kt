@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import com.example.adulting21.ProfileFragment
+import com.example.adulting21.TipFragment
 import com.example.adulting21.R
 
 /**
@@ -27,7 +27,7 @@ class SettingsHub : Fragment() {
 
         val accountBtn = view.findViewById<Button>(R.id.account_info_btn)
         accountBtn.setOnClickListener {
-            val fragmentSwitch = ProfileFragment()
+            val fragmentSwitch = TipFragment()
             replaceFragment(fragmentSwitch)
             Log.d("TAG", "Button Pressed");
         }
