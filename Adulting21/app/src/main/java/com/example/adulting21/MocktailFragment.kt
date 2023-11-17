@@ -58,7 +58,7 @@ class MocktailFragment : Fragment() {
                         // Load the image into the ImageView using Picasso
                         Picasso.get()
                             .load(mocktail.drinkImg) // Replace with the actual URL of the image
-                            .resize(1000, 1000) // Set width to 1000 pixels and height to maintain aspect ratio
+                            .resize(275, 275) // Set width to 1000 pixels and height to maintain aspect ratio
                             .into(imageView)
                     }
                 }

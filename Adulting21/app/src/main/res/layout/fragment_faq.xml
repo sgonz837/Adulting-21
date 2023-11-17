@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FAQFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/disclaimer_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Disclaimer"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/disclaimer_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="By using Adulting21, you agree to the following terms and conditions:
+
+Accuracy of BAC Measurement: Adulting21 provides a BAC (Blood Alcohol Content) meter for informational purposes only. The BAC readings provided by the app are not guaranteed to be 100% accurate and should not be relied upon for making decisions that may affect your safety or the safety of others.
+
+Age Requirement: Users of Adulting21 must be at least 21 years old. By using the app, you affirm that you meet this age requirement.
+
+Misinformation Disclaimer: Adulting21 is not liable for any misinformation provided by the app. While we strive to provide accurate and up-to-date information, the dynamic nature of the subject matter may result in occasional inaccuracies.
+
+Drink Information: Information regarding drinks, including but not limited to alcohol content, ingredients, and serving sizes, provided by Adulting21, may not be 100% accurate. Users are encouraged to verify information independently and drink responsibly.
+
+No Legal or Medical Advice: Adulting21 does not provide legal or medical advice. Users are advised to consult with qualified professionals for legal or medical concerns.
+
+Assumption of Risk: The use of Adulting21 is at your own risk. Adulting21 is not responsible for any consequences or damages arising from the use of the app.
+
+Changes to Terms: Adulting21 reserves the right to modify or update these terms and conditions at any time. Users are encouraged to review the terms regularly.
+
+By using Adulting21, you acknowledge that you have read, understood, and agreed to the terms and conditions outlined in this disclaimer. If you do not agree with these terms, please refrain from using the app.
+" />
+
+        <TextView
+            android:id="@+id/q1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:text="How much should I tip on a drink?"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/a1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="It is a good rule of thumb to tip at least $1 per drink, or 15% on your total tab. You can also refer to our drink calculator if you want a specific percentage." />
+
+        <TextView
+            android:id="@+id/q2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:text="How much alcohol is in a drink?"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/a2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="For 1 US Standard Drink, there is approximately 14 grams of pure alcohol." />
+
+        <TextView
+            android:id="@+id/q3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:text="How quick will my body process alcohol?"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/a3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="The average metobolic rate for alcohol is 0.015 per hour." />
+
+        <TextView
+            android:id="@+id/q4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:text="I want to go out to a bar but I don't want to drink alcohol, what should I order?"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/a4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="You can order any popular Mocktail. If you do not see a drink fit to your craving, we suggest ordering any cocktail without the alcohol. As a substitute, use water in place of alcohol or ask your bartender what they suggest." />
+
+        <TextView
+            android:id="@+id/q5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:text="How often should you drink water when drinking alcohol?"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/a5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="You should use the 1-for-1 Rule. For each alcoholic drink you consume, drink one glass of water after." />
+
+        <TextView
+            android:id="@+id/q6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:text="Does the BAC Meter feature show my exact BAC level?"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/a6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Our BAC Meter gives an approximation. This meter is not 100% and is used for educational purposes. Please refer to our disclaimer." />
+
+    </LinearLayout>
+</ScrollView>
+
+

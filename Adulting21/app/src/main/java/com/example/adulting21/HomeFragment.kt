@@ -394,6 +394,18 @@ class HomeFragment : Fragment() {
 
                     true
                 }
+
+                R.id.faq -> {
+                    val fragmentSwitch = FAQFragment()
+                    replaceFragment(fragmentSwitch)
+                    // Handle home item click
+                    Toast.makeText(requireContext(), "FAQ clicked", Toast.LENGTH_SHORT).show()
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    //return@setNavigationItemSelectedListener true
+
+                    true
+                }
+
                 R.id.nav_settings -> {
                     val fragmentSwitch = SettingsHub()
                     replaceFragment(fragmentSwitch)
