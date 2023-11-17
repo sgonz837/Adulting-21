@@ -4,7 +4,30 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0171287-e981-401b-9d49-2a0fa232c791" name="Changes" comment="" />
+    <list default="true" id="c0171287-e981-401b-9d49-2a0fa232c791" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/java/com/example/adulting21/settings/DarkModeFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/java/com/example/adulting21/settings/SettingsHub.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/drawable/baseline_dark_mode_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/drawable/baseline_light_mode_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/drawable/baseline_pan_tool_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/drawable/button_outline.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/layout/fragment_dark_mode.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/layout/fragment_settings_hub.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/layout/menu_panic_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/menu/main_menu.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/values/dark_mode_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/app/src/main/java/com/example/adulting21/DrinkInfoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/app/src/main/java/com/example/adulting21/DrinkInfoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/app/src/main/res/menu/bottom_nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adulting21/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Adulting21/gradle.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/money/OneDrive - Kutztown University/Documents/GitHub/Adulting-21",
+    "last_opened_file_path": "C:/Users/Kevin/Documents/GitHub/Adulting-21",
     "settings.editor.selected.configurable": "experimental"
   }
 }]]></component>

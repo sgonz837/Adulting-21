@@ -7,32 +7,21 @@
     android:background="@android:color/white">
 
     <!--    logo -->
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="302dp"
-        android:layout_height="270dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034"
-        app:srcCompat="@drawable/logo" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView19"-->
-<!--        android:layout_width="246dp"-->
-<!--        android:layout_height="59dp"-->
-<!--        android:text="Create Account"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="24sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.496"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.453" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView19"-->
+    <!--        android:layout_width="246dp"-->
+    <!--        android:layout_height="59dp"-->
+    <!--        android:text="Create Account"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="24sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.496"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.453" />-->
 
     <!--    <TextView-->
     <!--        android:id="@+id/textView25"-->
@@ -81,6 +70,18 @@
 
     <!--another option-->
 
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="302dp"
+        android:layout_height="270dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067"
+        app:srcCompat="@drawable/logo" />
+
     <TextView
         android:id="@+id/CreateAccount"
         android:layout_width="234dp"
@@ -88,10 +89,10 @@
         android:text="Create Account"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.475" />
@@ -115,35 +116,35 @@
     <!--        app:layout_constraintVertical_bias="0.752" />-->
 
     <!--password-->
-<!--    <com.google.android.material.textview.MaterialTextView-->
-<!--        android:layout_width="244dp"-->
-<!--        android:layout_height="57dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.52"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.752"-->
-<!--        app:passwordToggleEnabled="true"-->
-<!--        />-->
-<!--    <com.google.android.material.textfield.TextInputEditText-->
-<!--        android:id="@+id/password"-->
-<!--        android:hint="Password"-->
-<!--        android:inputType="textPassword"-->
-<!--        app:passwordToggleEnabled="true"-->
+    <!--    <com.google.android.material.textview.MaterialTextView-->
+    <!--        android:layout_width="244dp"-->
+    <!--        android:layout_height="57dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.52"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.752"-->
+    <!--        app:passwordToggleEnabled="true"-->
+    <!--        />-->
+    <!--    <com.google.android.material.textfield.TextInputEditText-->
+    <!--        android:id="@+id/password"-->
+    <!--        android:hint="Password"-->
+    <!--        android:inputType="textPassword"-->
+    <!--        app:passwordToggleEnabled="true"-->
 
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textAlignment="center"-->
-<!--        android:layout_width="244dp"-->
-<!--        android:layout_height="57dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.52"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.752"-->
-<!--        />-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="24sp"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:layout_width="244dp"-->
+    <!--        android:layout_height="57dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.52"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.752"-->
+    <!--        />-->
 
     <!--  submit button  -->
     <EditText

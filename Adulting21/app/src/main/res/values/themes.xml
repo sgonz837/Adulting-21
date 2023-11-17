@@ -14,7 +14,8 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/red</item>
+        <!-- Navigation bar color. -->
+        <item name="android:navigationBarColor">@color/red</item>
     </style>
 </resources>

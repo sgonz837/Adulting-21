@@ -8,119 +8,56 @@
     android:background="@android:color/white">
 
 
+    <EditText
+        android:id="@+id/editTextDrinkPrice"
+        android:layout_width="166dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="120dp"
+        android:hint="Enter drink price"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/name"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-
-        android:hint="Name"
-        android:inputType="textPersonName"
-
+        android:id="@+id/editTextPercentage"
+        android:layout_width="184dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="60dp"
+        android:hint="Enter percentage"
+        android:inputType="numberDecimal"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
-
-    <EditText
-        android:id="@+id/weight"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-
-        android:hint="Weight"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.281" />
-
-    <EditText
-        android:id="@+id/numDrinksBox"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:hint="Number of Drinks"
-        android:inputType="textPersonName"
-
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.512" />
-
-    <EditText
-        android:id="@+id/age"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:hint="Age"
-        android:inputType="number"
-
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.177" />
-
-    <EditText
-        android:id="@+id/fav_drinks"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:hint="Favorite Drinks"
-        android:inputType="text"
-
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
-
-    <EditText
-        android:id="@+id/sex"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:hint="Sex"
-        android:inputType="text"
-
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.392" />
+        app:layout_constraintTop_toBottomOf="@id/editTextDrinkPrice" />
 
     <Button
-        android:id="@+id/submitBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/buttonCalculate"
+        android:layout_width="128dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/red"
+        android:onClick="onCalculateButtonClicked"
+        android:text="Calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fav_drinks"
-        app:layout_constraintVertical_bias="0.401" />
+        app:layout_constraintTop_toBottomOf="@id/editTextPercentage" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="317dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonCalculate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

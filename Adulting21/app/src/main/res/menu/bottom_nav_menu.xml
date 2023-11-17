@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white">
 
     <item
@@ -8,17 +8,19 @@
         android:icon="@drawable/baseline_home_24" />
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/baseline_person_24"
-        android:title="Profile" />
-
-
+        android:icon="@drawable/baseline_monetization_on_24"
+        android:title="Tip Calculator" />
+    <item
+        android:id="@+id/panic_button"
+        android:icon="@drawable/baseline_pan_tool_24"
+        android:title="Panic" />
     <item
         android:id="@+id/settings"
-
-        android:title="Settings" />
+        android:icon="@drawable/baseline_calculate_24_new"
+        android:title="BAC Calculator" />
     <item
         android:id="@+id/search"
-
         android:icon="@drawable/baseline_search_24"
         android:title="Search" />
+
 </menu>

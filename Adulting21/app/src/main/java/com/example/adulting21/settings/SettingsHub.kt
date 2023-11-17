@@ -17,7 +17,6 @@ import com.example.adulting21.R
  */
 class SettingsHub : Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
