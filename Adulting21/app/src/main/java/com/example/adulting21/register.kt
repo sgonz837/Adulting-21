@@ -38,6 +38,9 @@ class register : AppCompatActivity() {
         Log.d("TAG", "Succesful")
         val email = findViewById<EditText>(R.id.email).text.toString()
         val password = findViewById<EditText>(R.id.password).text.toString()
+        val ContactName = findViewById<EditText>(R.id.ContactName).text.toString()
+        val phoneNumber = findViewById<EditText>(R.id.phoneNumber).text.toString()
+
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Email and password are required.", Toast.LENGTH_SHORT).show()
@@ -60,6 +63,8 @@ class register : AppCompatActivity() {
 
                     val userData = HashMap<String, Any>()
                     userData["email"] = email
+                    userData["CotName"] = ContactName
+                    userData["CotNumber"] = phoneNumber
                     //userData["additionalField"] = additionalValue // Add other user data here
 
                     // Store under a unique ID (user ID in this case)

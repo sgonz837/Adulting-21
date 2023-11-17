@@ -34,12 +34,21 @@
         android:textAlignment="center" />
 
     <Button
+        android:id="@+id/saveContact"
+        android:layout_width="132dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phoneNumberEditText"
+        android:background="@color/red"
+        android:text="Save Contact"
+        android:layout_marginBottom="16dp"/>
+    <Button
         android:id="@+id/confirmButton"
         android:layout_width="132dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/phoneNumberEditText"
         android:background="@color/red"
         android:text="Confirm Call" />
+
 
     <!-- TextView for displaying entered phone number -->
 </LinearLayout>

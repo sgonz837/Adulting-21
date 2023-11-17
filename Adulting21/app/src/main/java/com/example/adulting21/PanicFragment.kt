@@ -13,15 +13,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class SharedViewModel(application: Application) : AndroidViewModel(application) {
     private val sharedPreferences = application.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
     private val phoneNumberKey = "PHONE_NUMBER_KEY"
     private val emergencyContactNameKey = "EMERGENCY_CONTACT_NAME_KEY"
+
+    private lateinit var firebaseAuth: FirebaseAuth
 
     var phoneNumber: String
         get() = sharedPreferences.getString(phoneNumberKey, "") ?: ""
@@ -58,19 +61,11 @@ class PanicFragment : Fragment() {
             // Store the phone number and emergency contact name in the ViewModel
             sharedViewModel.phoneNumber = phoneNumberEditText.text.toString()
             sharedViewModel.emergencyContactName = emergencyContactNameEditText.text.toString()
-            
-
-
 
             showConfirmationDialog()
         }
-
         return view
     }
-
-
-
-
 
 
 
