@@ -10,6 +10,11 @@
             android:title="BAC Calculator" />
 
         <item
+            android:id="@+id/nav_favorite"
+            android:icon="@drawable/baseline_favorite_24"
+            android:title="Favorite Drinks" />
+
+        <item
             android:id="@+id/nav_car_pool"
             android:icon="@drawable/baseline_directions_car_24"
             android:title="Car Pool" />

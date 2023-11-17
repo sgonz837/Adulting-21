@@ -15,7 +15,7 @@
         android:layout_marginStart="118dp"
         android:layout_marginEnd="205dp"
         android:background="@drawable/button_outline"
-        android:text="Account Settings"
+        android:text="Tip Calculator"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

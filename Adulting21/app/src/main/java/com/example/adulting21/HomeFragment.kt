@@ -44,6 +44,30 @@ class HomeFragment : Fragment() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
+
+
+    // Declare TextViews at the beginning of your class
+    private lateinit var randomDrinkName1: TextView
+    private lateinit var randomDrinkName2: TextView
+    private lateinit var randomDrinkName3: TextView
+    private lateinit var randomDrinkName4: TextView
+    private lateinit var randomDrinkName5: TextView
+    private lateinit var randomDrinkName6: TextView
+    private lateinit var randomDrinkName7: TextView
+    private lateinit var randomDrinkName8: TextView
+    private lateinit var randomDrinkName9: TextView
+    private lateinit var randomDrinkName10: TextView
+
+    private lateinit var randomDrinkName11: TextView
+    private lateinit var randomDrinkName22: TextView
+    private lateinit var randomDrinkName33: TextView
+    private lateinit var randomDrinkName44: TextView
+    private lateinit var randomDrinkName55: TextView
+    private lateinit var randomDrinkName66: TextView
+    private lateinit var randomDrinkName77: TextView
+    private lateinit var randomDrinkName88: TextView
+    private lateinit var randomDrinkName99: TextView
+    private lateinit var randomDrinkName100: TextView
     private var drinkNum: Int = 1
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,8 +75,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
-
 
         // Initialize the loading layout
         loadingLayout = view.findViewById(R.id.loadingLayout)
@@ -64,7 +86,6 @@ class HomeFragment : Fragment() {
         transaction.replace(R.id.container_home, sideNavFragment)
         transaction.commit()
 
-//        val drinkButton = view.findViewById<Button>(R.id.drinkBtn)
 
         drawerLayout = view.findViewById(R.id.drawer_layout)
         toggle = ActionBarDrawerToggle(
@@ -103,28 +124,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-/*
-        // Set click listener for the Button
-        drinkButton.setOnClickListener {
-            drinkNum++
-            val bundle = Bundle()
-           bundle.putInt("drinkNum", drinkNum) // You can put your desired value here
-            val fragment = SettingsFragment()
-            fragment.arguments = bundle
-           // replaceFragment(fragment)
-
-            //bundle.putInt("drinkNum", bundle.getInt("drinkNum", 0) + 1) // Increment the value by 1 and initialize to 0 if it doesn't exist
-            //drinkNum = bundle.getInt("drinkNum") // Update the drinkNum variable
-            //bundle.putInt("drinkNum", bundle.getInt("drinkNum") + 1) // Increment the value by 1
-            Log.d("TAG", "drinkNum: $drinkNum") // Log the value of drinkNum
-
-
-            Log.d("TAG","button clicked" )
-
-
-        }
-
- */
 
         imageViews = listOf(
             view.findViewById(R.id.drinkImage1),
@@ -154,218 +153,37 @@ class HomeFragment : Fragment() {
 
         // Declare the cocktails list outside of GlobalScope.launch
         var cocktails: List<Cocktail>? = null
+        //var popularDrinks: List<popularDrinks> = null
+
+        randomDrinkName1 = view.findViewById<TextView>(R.id.drinkName1)
+        randomDrinkName2 = view.findViewById<TextView>(R.id.drinkName2)
+       // val randomDrinkName1 = view.findViewById<TextView>(R.id.drinkName1)
+       // val randomDrinkName2 = view.findViewById<TextView>(R.id.drinkName2)
+        randomDrinkName3 = view.findViewById<TextView>(R.id.drinkName3)
+        randomDrinkName4 = view.findViewById<TextView>(R.id.drinkName4)
+        randomDrinkName5 = view.findViewById<TextView>(R.id.drinkName5)
+        randomDrinkName6 = view.findViewById<TextView>(R.id.drinkName6)
+        randomDrinkName7 = view.findViewById<TextView>(R.id.drinkName7)
+        randomDrinkName8 = view.findViewById<TextView>(R.id.drinkName8)
+        randomDrinkName9 = view.findViewById<TextView>(R.id.drinkName9)
+        randomDrinkName10 = view.findViewById<TextView>(R.id.drinkName10)
+
+        randomDrinkName11 = view.findViewById<TextView>(R.id.drinkName11)
+        randomDrinkName22 = view.findViewById<TextView>(R.id.drinkName22)
+        randomDrinkName33 = view.findViewById<TextView>(R.id.drinkName33)
+        randomDrinkName44 = view.findViewById<TextView>(R.id.drinkName44)
+        randomDrinkName55 = view.findViewById<TextView>(R.id.drinkName55)
+        randomDrinkName66 = view.findViewById<TextView>(R.id.drinkName66)
+        randomDrinkName77 = view.findViewById<TextView>(R.id.drinkName77)
+        randomDrinkName88 = view.findViewById<TextView>(R.id.drinkName88)
+        randomDrinkName99 = view.findViewById<TextView>(R.id.drinkName99)
+        randomDrinkName100 = view.findViewById<TextView>(R.id.drinkName100)
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
-            val response = apiService.popularCocktails()
-           // val cocktails = apiService.popularDrinks()
-            cocktails = apiService.popularDrinks()
-            //cocktails = apiService.popularCocktails()
-            val popularResponse = apiService.popularDrinks()
+            cocktails = apiService.popularCocktails()
 
-
-            val randomDrinkName1 = view.findViewById<TextView>(R.id.drinkName1)
-            val randomDrinkName2 = view.findViewById<TextView>(R.id.drinkName2)
-            val randomDrinkName3 = view.findViewById<TextView>(R.id.drinkName3)
-            val randomDrinkName4 = view.findViewById<TextView>(R.id.drinkName4)
-            val randomDrinkName5 = view.findViewById<TextView>(R.id.drinkName5)
-            val randomDrinkName6 = view.findViewById<TextView>(R.id.drinkName6)
-            val randomDrinkName7 = view.findViewById<TextView>(R.id.drinkName7)
-            val randomDrinkName8 = view.findViewById<TextView>(R.id.drinkName8)
-            val randomDrinkName9 = view.findViewById<TextView>(R.id.drinkName9)
-            val randomDrinkName10 = view.findViewById<TextView>(R.id.drinkName10)
-
-            val randomDrinkName11 = view.findViewById<TextView>(R.id.drinkName11)
-            val randomDrinkName22 = view.findViewById<TextView>(R.id.drinkName22)
-            val randomDrinkName33 = view.findViewById<TextView>(R.id.drinkName33)
-            val randomDrinkName44 = view.findViewById<TextView>(R.id.drinkName44)
-            val randomDrinkName55 = view.findViewById<TextView>(R.id.drinkName55)
-            val randomDrinkName66 = view.findViewById<TextView>(R.id.drinkName66)
-            val randomDrinkName77 = view.findViewById<TextView>(R.id.drinkName77)
-            val randomDrinkName88 = view.findViewById<TextView>(R.id.drinkName88)
-            val randomDrinkName99 = view.findViewById<TextView>(R.id.drinkName99)
-            val randomDrinkName100 = view.findViewById<TextView>(R.id.drinkName100)
-
-            withContext(Dispatchers.Main) {
-                response.forEachIndexed { index, cocktail ->
-                    when (index) {
-                        0 -> {
-                            randomDrinkName1.text = cocktail.name
-
-                        }
-
-                        1 -> {
-                            randomDrinkName2.text = cocktail.name
-
-                        }
-
-                        2 -> {
-                            randomDrinkName3.text = cocktail.name
-                        }
-
-                        3 -> {
-                            randomDrinkName4.text = cocktail.name
-
-                        }
-
-                        4 -> {
-                            randomDrinkName5.text = cocktail.name
-
-                        }
-
-                        5 -> {
-                            randomDrinkName6.text = cocktail.name
-
-                        }
-
-                        6 -> {
-                            randomDrinkName7.text = cocktail.name
-                        }
-
-                        7 -> {
-                            randomDrinkName8.text = cocktail.name
-
-                        }
-
-                        8 -> {
-                            randomDrinkName9.text = cocktail.name
-
-                        }
-
-                        9 -> {
-                            randomDrinkName10.text = cocktail.name
-
-                        }
-                    }
-                }
-
-
-
-
-                popularResponse.forEachIndexed { index, cocktail ->
-                    when (index) {
-                        0 -> {
-                            randomDrinkName11.text = cocktail.name
-
-                        }
-
-                        1 -> {
-                            randomDrinkName22.text = cocktail.name
-
-                        }
-
-                        2 -> {
-                            randomDrinkName33.text = cocktail.name
-                        }
-
-                        3 -> {
-                            randomDrinkName44.text = cocktail.name
-
-                        }
-
-                        4 -> {
-                            randomDrinkName55.text = cocktail.name
-
-                        }
-
-                        5 -> {
-                            randomDrinkName66.text = cocktail.name
-
-                        }
-
-                        6 -> {
-                            randomDrinkName77.text = cocktail.name
-                        }
-
-                        7 -> {
-                            randomDrinkName88.text = cocktail.name
-
-                        }
-
-                        8 -> {
-                            randomDrinkName99.text = cocktail.name
-
-                        }
-
-                        9 -> {
-                            randomDrinkName100.text = cocktail.name
-
-                        }
-                    }
-                }
-            }
         }
 
-
-// Inside your loop where you set click listeners for ImageViews
-        for (index in 0 until imageViews.size) {
-            val imageView = imageViews[index]
-
-            imageView.setOnClickListener {
-                if (index < cocktails?.size ?: 0) {
-                    val cocktailId = cocktails?.get(index)?.id
-
-                    val bundle = Bundle()
-                    bundle.putString("cocktailId", cocktailId)
-
-                    val drinkInfoFragment = DrinkInfoFragment()
-                    drinkInfoFragment.arguments = bundle
-
-                    replaceFragment(drinkInfoFragment)
-                }
-            }
-        }
-
-/*
-        // Inside your loop where you set click listeners for ImageViews
-        for (index in 0 until imageViews.size) {
-            val imageView = imageViews[index]
-
-            imageView.setOnClickListener {
-                if (index < cocktail.size) {
-                    val cocktailId = cocktail[index].id
-
-                    val bundle = Bundle()
-                    bundle.putString("cocktailId", cocktailId)
-
-                    val drinkInfoFragment = DrinkInfoFragment()
-                    drinkInfoFragment.arguments = bundle
-
-                    replaceFragment(drinkInfoFragment)
-                }
-            }
-        }
-
- */
-
-/*
-        // Inside the loop where you set click listeners for ImageViews
-        for (index in 0 until imageViews.size) {
-            val imageView = imageViews[index]
-            val cocktailId = "your_cocktail_id_here" // Replace with the actual cocktail ID
-
-            imageView.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString("cocktailId", cocktailId)
-
-                val drinkInfoFragment = DrinkInfoFragment()
-                drinkInfoFragment.arguments = bundle
-
-                replaceFragment(drinkInfoFragment)
-            }
-        }
-
- */
-
-/*
-        // Set click listeners for the ImageViews
-        for (index in 0 until imageViews.size) {
-            val imageView = imageViews[index]
-            imageView.setOnClickListener {
-                replaceFragment(DrinkInfoFragment())
-            }
-        }
-
- */
 
 
         // In order to keep the number of fragment pages low,
@@ -396,8 +214,6 @@ class HomeFragment : Fragment() {
             val fragment2 = bottleDrinkInfo()
             fragment2.arguments = bundles2
             replaceFragment(fragment2)
-            //val intent = Intent(this, login::class.java)
-            //startActivity(intent)
         }
 
         val rumDrink = view.findViewById<ImageView>(R.id.rumBottleImage)
@@ -408,8 +224,6 @@ class HomeFragment : Fragment() {
             val fragment3 = bottleDrinkInfo()
             fragment3.arguments = bundles3
             replaceFragment(fragment3)
-            //val intent = Intent(this, login::class.java)
-            //startActivity(intent)
         }
 
         val tequillaDrinkkk = view.findViewById<ImageView>(R.id.tequillaBottleImage)
@@ -420,8 +234,6 @@ class HomeFragment : Fragment() {
             val fragment4 = bottleDrinkInfo()
             fragment4.arguments = bundles4
             replaceFragment(fragment4)
-            //val intent = Intent(this, login::class.java)
-            //startActivity(intent)
         }
 
         // Initialize the ViewModel
@@ -438,6 +250,14 @@ class HomeFragment : Fragment() {
                     Toast.makeText(requireContext(), "Home clicked", Toast.LENGTH_SHORT).show()
                     drawerLayout.closeDrawer(GravityCompat.START)
                     //return@setNavigationItemSelectedListener true
+
+                    true
+                }
+
+                R.id.nav_favorite -> {
+                    val fragmentSwitch = FavoriteDrinksFragment()
+                    replaceFragment(fragmentSwitch)
+                    drawerLayout.closeDrawer(GravityCompat.START)
 
                     true
                 }
@@ -471,15 +291,6 @@ class HomeFragment : Fragment() {
                     drawerLayout.closeDrawers()
                     true
                 }
-/*
-                R.id.nav_bars_dropdown_trigger -> {
-                    // Handle the "Bars" item click by showing the dropdown menu
-                    val menuItem = navigationView.menu.findItem(R.id.nav_bars)
-                    menuItem.actionView?.let { showBarsDropDownMenu(it) }
-                    true
-                }
-
- */
 
 
                 R.id.nav_bars_dropdown_trigger -> {
@@ -490,21 +301,6 @@ class HomeFragment : Fragment() {
                     //showBarsDropDownMenu(view)
                     true
                 }
-
-
-
-/*
-                R.id.nav_bars -> {
-                    // Handle logout item click
-                    Toast.makeText(requireContext(), "Logout clicked", Toast.LENGTH_SHORT).show()
-
-                    menuItem.actionView?.let { showBarsDropDownMenu(it) }
-                    drawerLayout.closeDrawer(GravityCompat.START)
-                    true
-                }
-
- */
-
 
                 R.id.nav_logout -> {
                     // Handle logout item click
@@ -532,9 +328,9 @@ class HomeFragment : Fragment() {
                 val response1 = apiService.popularDrinks()
                 withContext(Dispatchers.Main) {
                     viewModel.cachedCocktails = response
-                    //viewModel.cachedCocktails1 = response
+                    viewModel.cachedCocktails1 = response1
                     displayCocktails(response)
-                    //displayCocktails1(response1)
+                    displayCocktails1(response1)
                     // Wait for 2 seconds (2000 milliseconds)
                     delay(1000)
                     // After the API call is complete, set loadingLayout visibility to GONE
@@ -546,12 +342,11 @@ class HomeFragment : Fragment() {
         return view
     }
 
-
-
     private fun displayCocktails(cocktails: List<Cocktail>) {
         // Display cocktails using the received data
         cocktails.take(imageViews.size).forEachIndexed { index, cocktail ->
             val imageView = imageViews[index]
+            Log.d("DisplayCocktails", "Index: $index, Name: ${cocktail.name}, ImageURL: ${cocktail.imageUrl}")
             Picasso.get()
                 .load(cocktail.imageUrl)
                 .resize(
@@ -559,22 +354,82 @@ class HomeFragment : Fragment() {
                     1000
                 ) // Set width to 200 pixels and height to maintain aspect ratio
                 .into(imageView)
+
+            // Set click listener for each ImageView
+            imageView.setOnClickListener {
+                // Handle the click event
+                val cocktailId = cocktail.id
+
+                val bundle = Bundle()
+                bundle.putString("cocktailId", cocktailId)
+                bundle.putString("drinkName", cocktail.name)
+
+                val drinkInfoFragment = DrinkInfoFragment()
+                drinkInfoFragment.arguments = bundle
+
+                replaceFragment(drinkInfoFragment)
+            }
+
+            // Set text for each randomDrinkName TextView
+            when (index) {
+                0 -> randomDrinkName1.text = cocktail.name
+                1 -> randomDrinkName2.text = cocktail.name
+                2 -> randomDrinkName3.text = cocktail.name
+                3 -> randomDrinkName4.text = cocktail.name
+                4 -> randomDrinkName5.text = cocktail.name
+                5 -> randomDrinkName6.text = cocktail.name
+                6 -> randomDrinkName7.text = cocktail.name
+                7 -> randomDrinkName8.text = cocktail.name
+                8 -> randomDrinkName9.text = cocktail.name
+                9 -> randomDrinkName10.text = cocktail.name
+            }
         }
     }
 
-    private fun displayCocktails1(cocktails: List<popularDrinks>) {
+    private fun displayCocktails1(cocktails: List<Cocktail>) {
         // Display cocktails using the received data
         cocktails.take(imageViews1.size).forEachIndexed { index, cocktail ->
             val imageView = imageViews1[index]
+            Log.d("DisplayCocktails", "Index: $index, Name: ${cocktail.name}, ImageURL: ${cocktail.imageUrl}")
             Picasso.get()
-                .load(cocktail.drinkImg)
+                .load(cocktail.imageUrl)
                 .resize(
                     1000,
                     1000
                 ) // Set width to 200 pixels and height to maintain aspect ratio
                 .into(imageView)
+
+            // Set click listener for each ImageView
+            imageView.setOnClickListener {
+                // Handle the click event
+                val cocktailId = cocktail.id
+
+                val bundle = Bundle()
+                bundle.putString("cocktailId", cocktailId)
+                bundle.putString("drinkName", cocktail.name)
+
+                val drinkInfoFragment = DrinkInfoFragment()
+                drinkInfoFragment.arguments = bundle
+
+                replaceFragment(drinkInfoFragment)
+            }
+
+            // Set text for each randomDrinkName TextView
+            when (index) {
+                0 -> randomDrinkName11.text = cocktail.name
+                1 -> randomDrinkName22.text = cocktail.name
+                2 -> randomDrinkName33.text = cocktail.name
+                3 -> randomDrinkName44.text = cocktail.name
+                4 -> randomDrinkName55.text = cocktail.name
+                5 -> randomDrinkName66.text = cocktail.name
+                6 -> randomDrinkName77.text = cocktail.name
+                7 -> randomDrinkName88.text = cocktail.name
+                8 -> randomDrinkName99.text = cocktail.name
+                9 -> randomDrinkName100.text = cocktail.name
+            }
         }
     }
+
 
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = requireActivity().supportFragmentManager
@@ -611,25 +466,6 @@ class HomeFragment : Fragment() {
             startActivity(playStoreIntent)
         }
     }
-/*
-    private fun showBarsDropDownMenu(view: View) {
-        val popupMenu = PopupMenu(requireContext(), view)
-        popupMenu.menuInflater.inflate(R.menu.nav_menu, popupMenu.menu)
-        popupMenu.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.nav_service1 -> {
-                    // Handle the Service 1 item click
-                }
-                R.id.nav_service2 -> {
-                    // Handle the Service 2 item click
-                }
-            }
-            true
-        }
-        popupMenu.show()
-    }
-
- */
 }
 
 
