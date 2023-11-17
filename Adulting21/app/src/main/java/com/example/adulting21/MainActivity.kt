@@ -26,6 +26,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_page)
         //setContentView(R.layout.bar_info)
-
         firebaseAuth = FirebaseAuth.getInstance()
 
         val buttonLogin = findViewById<Button>(R.id.login_btn)
@@ -44,14 +44,6 @@ class MainActivity : AppCompatActivity() {
         buttonLogin.setOnClickListener {
             Log.d("TAG", "Succesful2")
             login_page(it)
-
-            //register_page(it)
-
-            //add code code when login button is clicked.
-
-            //this is code to switch to homepage
-            //val intent = Intent(this, register::class.java)
-            //startActivity(intent)
         }
         val buttonreg = findViewById<Button>(R.id.GoToReg)
         //if login button is clicked, do tasks
@@ -63,28 +55,7 @@ class MainActivity : AppCompatActivity() {
         buttonGC.setOnClickListener {
             guestcont(it)
         }
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        //setContentView(R.layout.homepage)
-//        setContentView(R.layout.register_page)
-//
-//            val buttonLogin = findViewById<Button>(R.id.butoon)
-//            //First Page so These Two go to either login or register
-//            buttonLogin.setOnClickListener {
-//                Log.d("TAG","Test")
-//                val intent = Intent(this, register::class.java)
-//               startActivity(intent)
-//            }
-//
-////            val buttonRegister = findViewById<Button>(R.id.button6)
-////            buttonRegister.setOnClickListener {
-////                val intent = Intent(this, login::class.java)
-////            startActivity(intent)
-////            }
     }
-
-    //}
     fun login_page(view: View) {
         Log.d("TAG", "Succesful")
         val email = findViewById<EditText>(R.id.email).text.toString()
@@ -96,12 +67,33 @@ class MainActivity : AppCompatActivity() {
         }
         // Sign in with the provided email and password
         firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
+
+
+
+            ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Login successful, navigate to the main activity
+                    // Login successful, navigate to the main page
                     val intent = Intent(this, Navigation::class.java)
                     startActivity(intent)
+
+                    //inputs email information into firebase realtime database
+                    val user = firebaseAuth.currentUser
+                    val userId = user?.uid
+
+                    // Save user data to Firebase Realtime Database
+                    val databaseReference = FirebaseDatabase.getInstance().getReference("users")
+
+                    val userData = HashMap<String, Any>()
+                    userData["email"] = email
+                    //userData["additionalField"] = additionalValue // Add other user data here
+
+                    // Store under a unique ID (user ID in this case)
+                    userId?.let {
+                        databaseReference.child(it).setValue(userData)
+                    }
+
                     finish()
+
                 } else {
                     // Login failed, display an error message
                     Toast.makeText(
@@ -123,28 +115,11 @@ class MainActivity : AppCompatActivity() {
         finish()
 
     }
+    //handles android back arrow press. Keeps user on login page
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }
-//    fun register_page(view: View) {
-//        Log.d("TAG","Succesful")
-//        val email = findViewById<EditText>(R.id.email).text.toString()
-//        val password = findViewById<EditText>(R.id.password).text.toString()
-//
-//        if (email.isEmpty() || password.isEmpty()) {
-//            Toast.makeText(this, "Email and password are required.", Toast.LENGTH_SHORT).show()
-//            return
-//        }
-//
-//        firebaseAuth.createUserWithEmailAndPassword(email, password)
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    val intent = Intent(this, login::class.java)
-//                    startActivity(intent)
-//                    finish()
-//                } else {
-//                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG).show()
-//                }
-//            }
-//            .addOnFailureListener(this) { exception ->
-//                Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG).show()
-//            }
-//    }

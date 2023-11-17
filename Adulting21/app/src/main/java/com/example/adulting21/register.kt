@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class register : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
@@ -22,7 +23,7 @@ class register : AppCompatActivity() {
         val buttonLogin = findViewById<Button>(R.id.button6)
         //if login button is clicked, do tasks
         buttonLogin.setOnClickListener {
-            Log.d("TAG","Succesful2")
+            Log.d("TAG", "Succesful2")
             register_page(it)
 
             //add code code when login button is clicked.
@@ -34,22 +35,53 @@ class register : AppCompatActivity() {
     }
 
     fun register_page(view: View) {
-        Log.d("TAG","Succesful")
+        Log.d("TAG", "Succesful")
         val email = findViewById<EditText>(R.id.email).text.toString()
         val password = findViewById<EditText>(R.id.password).text.toString()
 
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Email and password are required.", Toast.LENGTH_SHORT).show()
+            return
+        }
         firebaseAuth.createUserWithEmailAndPassword(email, password)
+
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    //navigates to the main page
                     val intent = Intent(this, Navigation::class.java)
                     startActivity(intent)
+
+                    //inputs email information into firebase realtime database
+                    val user = firebaseAuth.currentUser
+                    val userId = user?.uid
+
+                    // Save user data to Firebase Realtime Database
+                    val databaseReference = FirebaseDatabase.getInstance().getReference("users")
+
+                    val userData = HashMap<String, Any>()
+                    userData["email"] = email
+                    //userData["additionalField"] = additionalValue // Add other user data here
+
+                    // Store under a unique ID (user ID in this case)
+                    userId?.let {
+                        databaseReference.child(it).setValue(userData)
+                    }
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG)
+                        .show()
                 }
             }
-            .addOnFailureListener(this) { exception ->
-                Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG).show()
+            ?.addOnFailureListener(this) { exception ->
+                Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG)
+                    .show()
             }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

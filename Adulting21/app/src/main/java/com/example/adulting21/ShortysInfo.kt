@@ -58,6 +58,7 @@ class ShortysInfo : Fragment() {
 
         return view
     }
+
 }
 
 

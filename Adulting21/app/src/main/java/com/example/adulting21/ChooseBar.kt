@@ -1,5 +1,6 @@
 package com.example.adulting21
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -41,9 +42,20 @@ class ChooseBar : Fragment() {
 
         val shortysBar: ImageView = view.findViewById(R.id.shortysBar)
         shortysBar.setOnClickListener {
-            // Handle shortys image click, navigate to ShortysInfo Fragment
-           // findNavController().navigate(R.id.action_chooseBar_to_shortysInfo)
+            val fragmentSwitch = ShortysInfo()
+            replaceFragment(fragmentSwitch)
+        }
 
+        val ktownPub: ImageView = view.findViewById(R.id.ktownPub)
+        ktownPub.setOnClickListener {
+            val fragmentSwitch = KtownPubInfo()
+            replaceFragment(fragmentSwitch)
+        }
+
+        val kutzTavern: ImageView = view.findViewById(R.id.kutzTavern)
+        kutzTavern.setOnClickListener {
+            val fragmentSwitch = KutztownTavernInfo()
+            replaceFragment(fragmentSwitch)
         }
 /*
         val ktownPub: ImageView = view.findViewById(R.id.ktownPub)
@@ -57,14 +69,13 @@ class ChooseBar : Fragment() {
             // Handle tavern image click, navigate to tavern page
             findNavController().navigate(R.id.kutzTavern)
         } */
-
         return view
-
     }
-
-
-
-
-
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
+    }
 
 }

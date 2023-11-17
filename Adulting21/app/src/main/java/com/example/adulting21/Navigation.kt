@@ -1,6 +1,8 @@
 
 package com.example.adulting21
 
+import MeterBac
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -52,9 +54,10 @@ class Navigation : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
-                R.id.profile -> replaceFragment(ProfileFragment())
-                R.id.settings -> replaceFragment(SettingsFragment())
+                R.id.profile -> replaceFragment(TipFragment())
+                R.id.settings -> replaceFragment(MeterBac())
                 R.id.search -> replaceFragment(SearchFragment())
+                R.id.panic_button -> replaceFragment(PanicFragment())
                 //R.id.search -> replaceFragment(CarPoolHome())
             }
             true
@@ -76,13 +79,21 @@ class Navigation : AppCompatActivity() {
         return true
     }
 
+//    override fun onBackPressed() {
+//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            drawerLayout.closeDrawer(GravityCompat.START)
+//        } else {
+//            super.onBackPressed()
+//        }
+//    }
+    //handles android back arrow press. Directs to Home (Navigation) page
     override fun onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
+        super.onBackPressed()
+        val intent = Intent(this, Navigation::class.java)
+        startActivity(intent)
+        finish()
     }
+
 
     fun onNavigationItemSelected(item: MenuItem): Boolean {
         Log.d("TAG", "message")
