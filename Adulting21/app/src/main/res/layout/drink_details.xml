@@ -135,15 +135,33 @@
         app:layout_constraintStart_toEndOf="@+id/kevin3"
         app:layout_constraintTop_toBottomOf="@+id/imageIngredient1" />
 
-    <ImageView
+<!--    <ImageView-->
+<!--        android:id="@+id/FavoriteButton"-->
+<!--        android:layout_width="58dp"-->
+<!--        android:layout_height="85dp"-->
+<!--        android:layout_marginTop="200dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/baseline_star_border_24" />-->
+
+    <Button
         android:id="@+id/FavoriteButton"
-        android:layout_width="58dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="160dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="126dp"
+        android:layout_marginBottom="43dp"
+        android:background="@color/red"
+        android:text="favorite!?"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_star_border_24" />
+        app:layout_constraintVertical_bias="0.721" />
 
     <TextView
         android:id="@+id/cocktailNameTextView"

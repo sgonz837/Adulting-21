@@ -73,9 +73,6 @@ class DrinkInfoFragment : Fragment() {
 
  */
 
-
-
-
 package com.example.adulting21
 
 import android.os.Bundle
@@ -83,6 +80,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -93,9 +91,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+
 
 class DrinkInfoFragment : Fragment() {
-    // ...
+    val firebaseAuth = FirebaseAuth.getInstance()
+
+    // current user UID
+    val currentUser = firebaseAuth.currentUser
+    val userUID = currentUser?.uid
+
+    // Reference the "favorites" node in the database for the current user
+    val favoritesRef = FirebaseDatabase.getInstance().reference.child("users").child(userUID ?: "").child("favorites")
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -103,7 +112,6 @@ class DrinkInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.drink_details, container, false)
-
 
 /*
         val favoriteButton = view.findViewById<ImageView>(R.id.FavoriteButton)
@@ -116,38 +124,43 @@ class DrinkInfoFragment : Fragment() {
         )
 
  */
-
-
-
         GlobalScope.launch(Dispatchers.IO) {
             val apiService = CocktailApiService()
 
             // For Mike:
             // These two variable hold the id and drinkName
-            // Use as you wish
             val cocktailId = arguments?.getString("cocktailId", "")
-
             val cocktailName = arguments?.getString("drinkName", "")
 
+            val favoriteButton = view.findViewById<Button>(R.id.FavoriteButton)
 
-            val favoriteButton = view.findViewById<ImageView>(R.id.FavoriteButton)
-
-            favoriteButton.setOnClickListener {
-                val bundles1 = Bundle()
-                bundles1.putString("FavoriteIdKey", cocktailId)
-                bundles1.putString("FavoriteDrinkName", cocktailName)
-
-                // Add your logic to handle the favorite button click with the created bundle
-            }
+            //probbaly dont need these error checks, but they're here anyway
             if (cocktailName != null) {
                 Log.d("TAG",cocktailName)
             }
-
-
             if (cocktailId != null && cocktailId.isNotEmpty()) {
 
                 Log.d("TAG",cocktailId)
 
+                //function when clicking favorite button
+                favoriteButton.setOnClickListener {
+                    val cocktailId = arguments?.getString("cocktailId", "")
+                    val cocktailName = arguments?.getString("drinkName", "")
+
+                    if (!cocktailId.isNullOrEmpty() && !cocktailName.isNullOrEmpty() && userUID != null) {
+                        // Create a new node under the user's favorites with cocktailId as the key
+                        favoritesRef.child(cocktailId).setValue(cocktailName)
+                            .addOnSuccessListener {
+                                // Successfully added favorite to the database
+                                // You can add any UI updates or actions here if needed
+                                Log.d("TAG", "Favorite added to database")
+                            }
+                            .addOnFailureListener {
+                                // Failed to add favorite
+                                Log.e("TAG", "Failed to add favorite to database: ${it.message}")
+                            }
+                    }
+                }
 
                 lifecycleScope.launch {
 /*
