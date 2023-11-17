@@ -58,7 +58,7 @@ class PanicFragment : Fragment() {
             // Store the phone number and emergency contact name in the ViewModel
             sharedViewModel.phoneNumber = phoneNumberEditText.text.toString()
             sharedViewModel.emergencyContactName = emergencyContactNameEditText.text.toString()
-            
+
 
 
 
