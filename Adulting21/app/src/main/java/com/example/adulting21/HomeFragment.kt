@@ -254,6 +254,14 @@ class HomeFragment : Fragment() {
                     true
                 }
 
+                R.id.nav_favorite -> {
+                    val fragmentSwitch = FavoriteDrinksFragment()
+                    replaceFragment(fragmentSwitch)
+                    drawerLayout.closeDrawer(GravityCompat.START)
+
+                    true
+                }
+
                 R.id.nav_car_pool -> {
                     openUber()
                     // Handle home item click
