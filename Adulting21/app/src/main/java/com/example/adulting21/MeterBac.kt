@@ -37,20 +37,20 @@ class MeterBac : Fragment() {
 
     // list of drinks
     private val drinkList = arrayListOf(
-        "Small Beer",
-        "Can Beer",
-        "Pint Beer",
+        "Beer",
+        "Wine",
         "Single Shot",
-        "Double Shot"
+        "Mixed Drink",
+        "Cider"
     )
 
     // set values to drink selection
     private val drinkBACMap = mapOf(
-        "Small Beer" to 14.0,
-        "Can Beer" to 14.0,
-        "Pint Beer" to 14.0,
+        "Beer" to 14.0,
+        "Wine" to 14.0,
         "Single Shot" to 14.0,
-        "Double Shot" to 14.0
+        "Mixed Drink" to 14.0,
+        "Cider" to 14.0
     )
 
     private lateinit var drinkSpinner: Spinner
@@ -346,7 +346,18 @@ class MeterBac : Fragment() {
 
 
 
-        // Set up other UI interactions, if needed
+
+        // Retrieve saved instance state
+        savedInstanceState?.let {
+            drinkCount = it.getInt(DRINK_COUNT_KEY, 0)
+            selectedDrink = it.getString(SELECTED_DRINK_KEY, "Select Drink") ?: "Select Drink"
+            drinkListSelection = it.getStringArrayList(DRINK_LIST_KEY)?.toMutableList() ?: mutableListOf()
+            startTime = it.getLong(START_TIME_KEY, 0)
+            userWeight = it.getInt("userWeight", 0)
+            selectedSex = it.getString("selectedSex", "Male") ?: "Male"
+            totalAlcValue = it.getDouble("totalAlcValue", 0.0)
+            hoursElapsed = it.getDouble("hoursElapsed", 0.0)
+        }
 
 
         return view
@@ -376,6 +387,8 @@ class MeterBac : Fragment() {
         // Stop the periodic update when the fragment is paused
         handler.removeCallbacks(updateRunnable)
     }
+
+
 
     fun calcHoursElapsed(): Double {
         // Retrieve the start time from SharedPreferences
