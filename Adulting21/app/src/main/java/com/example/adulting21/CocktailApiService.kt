@@ -307,6 +307,7 @@ class CocktailApiService {
 
 
 // Function to parse JSON and return the search results
+
     fun parseJson(json: JSONObject): List<SearchResults> {
         try {
             // Check if "drinks" key exists in the JSON object
@@ -325,21 +326,7 @@ class CocktailApiService {
         }
     }
 
-    fun parseSearchResults(drinksArray: JSONArray): List<SearchResults> {
-        val searchResults = mutableListOf<SearchResults>()
-
-        for (i in 0 until drinksArray.length()) {
-            val drinkJson = drinksArray.getJSONObject(i)
-            // Extract relevant information and create SearchResults object
-            val resultName = drinkJson.getString("strDrink")
-            val resultImage = drinkJson.getString("strDrinkThumb")
-            searchResults.add(SearchResults(resultName, resultImage))
-        }
-
-        return searchResults
-    }
-/*
-    fun parseJson1(json: JSONObject): Cocktail? {
+    private fun parseJson1(json: JSONObject): List<Cocktail> {
         try {
             // Check if "drinks" key exists in the JSON object
             if (json.has("drinks")) {
@@ -355,15 +342,63 @@ class CocktailApiService {
             Log.e("TAG", "Error parsing JSON", e)
             return emptyList()
         }
-        // Your parsing logic for a single Cocktail
-    }
-
-    fun parseSearchResults1(drinksArray: JSONArray): List<Cocktail> {
-        // Your parsing logic for a list of Cocktails
     }
 
 
- */
+    fun parseSearchResults(drinksArray: JSONArray): List<SearchResults> {
+        val searchResults = mutableListOf<SearchResults>()
+
+        for (i in 0 until drinksArray.length()) {
+            val drinkJson = drinksArray.getJSONObject(i)
+            // Extract relevant information and create SearchResults object
+            val resultName = drinkJson.getString("strDrink")
+            val resultImage = drinkJson.getString("strDrinkThumb")
+            searchResults.add(SearchResults(resultName, resultImage))
+        }
+
+        return searchResults
+    }
+
+
+    private fun parseSearchResults1(drinksArray: JSONArray): List<Cocktail> {
+        val searchResults1 = mutableListOf<Cocktail>()
+
+        for (i in 0 until drinksArray.length()) {
+            val drinkJson = drinksArray.getJSONObject(i)
+            // Extract relevant information and create Cocktail object
+            val resultId = drinkJson.getString("idDrink")
+            val resultName = drinkJson.getString("strDrink")
+            val resultImage = drinkJson.getString("strDrinkThumb")
+
+            // Call your function to parse ingredients here
+            val ingredients = parseIngredients(drinkJson)
+
+            val cocktail = Cocktail(resultId, resultName, resultImage, ingredients)
+            searchResults1.add(cocktail)
+        }
+
+        return searchResults1
+    }
+
+    private fun parseIngredients(drinkJson: JSONObject): List<Ingredient> {
+        val ingredients = mutableListOf<Ingredient>()
+        val ingredientUrl = "https://www.thecocktaildb.com/images/ingredients"
+        // Loop through "strIngredientX" fields
+        for (i in 1..15) { // Assuming a maximum of 15 ingredients, adjust as needed
+            val ingredientName = drinkJson.optString("strIngredient$i", "")
+            if (ingredientName.isNotEmpty()) {
+                // If the ingredient name is not empty, create an Ingredient object
+                val ingredientImage = "$ingredientUrl/$ingredientName.png" // Update with the correct image URL logic
+                ingredients.add(Ingredient(ingredientName, ingredientImage))
+            } else {
+                // Stop the loop if there are no more ingredients
+                break
+            }
+        }
+
+        return ingredients
+    }
+
 
 
     interface SearchCallback {
@@ -371,10 +406,12 @@ class CocktailApiService {
         fun onSearchError(error: String)
     }
 
+
     interface SearchCallback1 {
         fun onSearchSuccess(result: Cocktail)
         fun onSearchError(error: String)
     }
+
 
 
 
@@ -409,8 +446,6 @@ class CocktailApiService {
         }
     }
 
-
-
     fun searchCocktailsById(query: String, callback: SearchCallback1) {
         val url1 = "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=$query"
 
@@ -432,18 +467,18 @@ class CocktailApiService {
                 Log.d("TAG", "Response JSON: $jsonString")
                 val json = JSONObject(jsonString)
 
-                // The rest of your code for parsing the JSON and handling the results...
-                val searchResults = parseJson(json)
-                //callback.onSearchSuccess(searchResults)
+                val searchResults = parseJson1(json)
+                if (searchResults.isNotEmpty()) {
+                    callback.onSearchSuccess(searchResults[0])
+                } else {
+                    callback.onSearchError("No result found.")
+                }
             } catch (e: Exception) {
                 Log.e("TAG", "Search Not Successful", e)
                 callback.onSearchError("Search not successful: ${e.message}")
             }
         }
     }
-
-
-
 
 }
 

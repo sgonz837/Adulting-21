@@ -20,20 +20,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/imageIngredient1"
-        android:layout_width="96dp"
-        android:layout_height="136dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.987"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+
+<!--
 
     <LinearLayout
-        android:id="@+id/imageIngredient2"
+        android:id="@+id/imageIngredient21"
         android:layout_width="109dp"
         android:layout_height="121dp"
         android:layout_margin="5dp"
@@ -45,9 +36,10 @@
         app:layout_constraintHorizontal_bias="0.341"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        -->
 
     <LinearLayout
-        android:id="@+id/imageIngredient3"
+        android:id="@+id/imageIngredient31"
         android:layout_width="96dp"
         android:layout_height="136dp"
         android:orientation="vertical"
@@ -101,7 +93,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/kevin3"
         app:layout_constraintStart_toEndOf="@+id/kevin"
-        app:layout_constraintTop_toBottomOf="@+id/imageIngredient2" />
+ />
 
     <TextView
         android:id="@+id/kevin3"
@@ -117,7 +109,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/kevin4"
         app:layout_constraintStart_toEndOf="@+id/kevin2"
-        app:layout_constraintTop_toBottomOf="@+id/imageIngredient3" />
+/>
 
     <TextView
         android:id="@+id/kevin4"
@@ -133,7 +125,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/kevin3"
-        app:layout_constraintTop_toBottomOf="@+id/imageIngredient1" />
+ />
 
 <!--    <ImageView-->
 <!--        android:id="@+id/FavoriteButton"-->
@@ -161,7 +153,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721" />
+        app:layout_constraintVertical_bias="0.913" />
 
     <TextView
         android:id="@+id/cocktailNameTextView"
@@ -174,6 +166,111 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/textView23"/>
+
+    <LinearLayout
+        android:id="@+id/layoutIngredientNames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Other views inside the LinearLayout -->
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layoutIngredient1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineTop1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imageIngredient1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/ingredientName1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+    <!-- Add this structure for each ingredient
+    <LinearLayout
+        android:id="@+id/layoutIngredient1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/imageIngredient1">
+
+        <ImageView
+            android:id="@+id/imageIngredient1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/ingredientName1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/imageIngredient1"/>
+
+    </LinearLayout>
+    -->
+
+    <LinearLayout
+        android:id="@+id/layoutIngredient2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageIngredient2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/ingredientName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutIngredient3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageIngredient3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/ingredientName3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
