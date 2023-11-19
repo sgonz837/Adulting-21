@@ -20,9 +20,6 @@ import kotlin.math.max
 
 class MeterBac : Fragment() {
 
-    //Variables for Meter
-
-
     private val TAG = "MeterBacFragment"
     private val PREFS_NAME = "MyPrefs"
     private val DRINK_COUNT_KEY = "drinkCount"
@@ -37,6 +34,7 @@ class MeterBac : Fragment() {
 
     // list of drinks
     private val drinkList = arrayListOf(
+        "--Select Drink--",
         "Beer",
         "Wine",
         "Single Shot",
@@ -46,6 +44,7 @@ class MeterBac : Fragment() {
 
     // set values to drink selection
     private val drinkBACMap = mapOf(
+        "--Select Drink--" to null,
         "Beer" to 14.0,
         "Wine" to 14.0,
         "Single Shot" to 14.0,

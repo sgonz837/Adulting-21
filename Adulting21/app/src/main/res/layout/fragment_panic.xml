@@ -8,20 +8,22 @@
     android:gravity="center">
 
     <TextView
-        android:id="@+id/currentEmergencyContactTextView"
-        android:layout_width="161dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:textColor="@android:color/black"
-        android:textSize="16sp" />
+        android:text="Panic Button"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Your Emergency Contact"
-        android:textStyle="bold"
+        android:textColor="#000000"
         android:textSize="18sp"
-        android:layout_marginBottom="16dp" />
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/emergencyContactNameEditText"
