@@ -1,37 +1,22 @@
+/*Author: Savannah Crutchfield
+* This page navigates you from choose bar page to bar info pages.
+* Kutztown tavern does not have enough info for page so navigates to webpage */
+
 package com.example.adulting21
 
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.fragment.findNavController
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ChooseBar.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ChooseBar : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,42 +25,55 @@ class ChooseBar : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.choose_bar, container, false)
 
+        //Take user to Shortys info page
         val shortysBar: ImageView = view.findViewById(R.id.shortysBar)
         shortysBar.setOnClickListener {
             val fragmentSwitch = ShortysInfo()
             replaceFragment(fragmentSwitch)
         }
 
+        //Take user to KTown Pub info page
         val ktownPub: ImageView = view.findViewById(R.id.ktownPub)
         ktownPub.setOnClickListener {
             val fragmentSwitch = KtownPubInfo()
             replaceFragment(fragmentSwitch)
         }
 
-        val kutzTavern: ImageView = view.findViewById(R.id.kutzTavern)
-        kutzTavern.setOnClickListener {
-            val fragmentSwitch = KutztownTavernInfo()
-            replaceFragment(fragmentSwitch)
-        }
-/*
-        val ktownPub: ImageView = view.findViewById(R.id.ktownPub)
-        ktownPub.setOnClickListener {
-            // Handle ktownPub image click, navigate to KtownPubInfo fragment
-            findNavController().navigate(R.id.ktownPub)
+        //Take user to Kutztown Taven Website
+        val kutzTavern = view.findViewById<ImageView>(R.id.kutzTavern)
+        kutzTavern.setOnClickListener{
+            val profilePath = "https://www.kutztowntavern.com/"
+            val packageName = "com.google.android"
+            toAnotherAppOpen(requireContext(), profilePath, packageName)
         }
 
-        val kutzTavern: ImageView = view.findViewById(R.id.kutzTavern)
-        kutzTavern.setOnClickListener {
-            // Handle tavern image click, navigate to tavern page
-            findNavController().navigate(R.id.kutzTavern)
-        } */
         return view
     }
+
+    //Replace fragment
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
+    }
+
+    //Have phone open other app, launching from Adulting21
+    private fun toAnotherAppOpen(context: Context, profilePath: String, openAppPackageName: String) {
+        val uri = Uri.parse(profilePath)
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+
+        try {
+            intent.setPackage(openAppPackageName)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            // Log the exception message
+            e.printStackTrace()
+
+            // Provide a fallback option (e.g., open in browser)
+            val browserIntent = Intent(Intent.ACTION_VIEW, uri)
+            context.startActivity(browserIntent)
+        }
     }
 
 }
