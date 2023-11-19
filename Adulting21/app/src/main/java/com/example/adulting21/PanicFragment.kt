@@ -32,7 +32,6 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         set(value) {
             sharedPreferences.edit().putString(phoneNumberKey, value).apply()
         }
-
     var emergencyContactName: String
         get() = sharedPreferences.getString(emergencyContactNameKey, "") ?: ""
         set(value) {
@@ -80,10 +79,8 @@ class PanicFragment : Fragment() {
 
             sharedViewModel.phoneNumber = phoneNumber
             sharedViewModel.emergencyContactName = contactName
-
             // Update the emergency contact info in the Firebase Realtime Database
             sharedViewModel.updateEmergencyContact(phoneNumber, contactName)
-
             showConfirmationDialog(phoneNumber)
         }
         return view

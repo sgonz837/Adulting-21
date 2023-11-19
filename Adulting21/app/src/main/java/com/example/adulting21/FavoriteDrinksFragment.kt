@@ -36,11 +36,8 @@ class FavoriteDrinksFragment : Fragment() {
                     val cocktailId = drinkSnapshot.key // Get cocktail ID
                     val cocktailName = drinkSnapshot.value // Get cocktail name
 
-                    // Now you have the cocktailId and cocktailName, use them as needed
-                    // Example: Log the data
+                    // cocktailId and cocktailName, use them as needed
                     Log.d("FavoritesFragment", "Cocktail ID: $cocktailId, Name: $cocktailName")
-
-                    // You can display this data in your UI components or store it in a list for later use
                 }
             }
 

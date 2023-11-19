@@ -48,10 +48,10 @@
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.34" />
+        app:layout_constraintVertical_bias="0.45" />
     <!-- Parent LinearLayout to hold rows of ingredients -->
     <LinearLayout
         android:id="@+id/layoutIngredientsRows"
@@ -89,7 +89,7 @@
         android:layout_width="160dp"
         android:layout_height="61dp"
         android:layout_marginStart="125dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="126dp"
         android:layout_marginBottom="43dp"
         android:background="@color/red"
@@ -97,10 +97,10 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
+        app:layout_constraintVertical_bias="0.48" />
 
     <TextView
         android:id="@+id/cocktailNameTextView"
@@ -122,7 +122,8 @@
         android:layout_marginTop="308dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
