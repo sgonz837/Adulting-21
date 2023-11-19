@@ -77,12 +77,15 @@ package com.example.adulting21
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -171,24 +174,16 @@ class DrinkInfoFragment : Fragment() {
                 }
             }
         }
-
         return view
     }
 
-
-
     private suspend fun displayCocktailDetails(cocktail: Cocktail, view: View) {
         withContext(Dispatchers.Main) {
-            // Use the cocktail details to update the UI components in your layout
-            // Example:
             val imageView = view.findViewById<ImageView>(R.id.cocktailImageView)
-
-            if (imageView != null) {
-                Picasso.get()
-                    .load(cocktail.imageUrl)
-                    .resize(1000, 1000)
-                    .into(imageView)
-            }
+            Picasso.get()
+                .load(cocktail.imageUrl)
+                .resize(1000, 1000)
+                .into(imageView)
 
             val cocktailNameTextView = view.findViewById<TextView>(R.id.cocktailNameTextView)
             cocktailNameTextView.text = cocktail.name
@@ -205,30 +200,39 @@ class DrinkInfoFragment : Fragment() {
             for ((index, ingredient) in cocktail.ingredients.withIndex()) {
                 if (index < layoutIngredients.size) {
                     val layoutId = layoutIngredients[index]
-                    val layout = view.findViewById<LinearLayout>(layoutId)
+                    val layout = view.findViewById<RelativeLayout>(layoutId)
 
-                    // Add ImageView for ingredient image
                     val ingredientImageView = ImageView(requireContext())
+                    val layoutParams = RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT
+                    )
+
+                    ingredientImageView.id = View.generateViewId() // Generate a unique ID for ImageView
+                    layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+                    ingredientImageView.layoutParams = layoutParams
+
                     Picasso.get()
                         .load(ingredient.imageUrl)
                         .resize(1000, 1000)
                         .into(ingredientImageView)
 
-                    layout.addView(ingredientImageView)
-
-                    // Add TextView for ingredient name
                     val ingredientNameTextView = TextView(requireContext())
                     ingredientNameTextView.text = ingredient.name
-                    ingredientNamesLayout.addView(ingredientNameTextView)
+                    val nameLayoutParams = RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT
+                    )
+                    nameLayoutParams.addRule(RelativeLayout.BELOW, ingredientImageView.id)
+                    //nameLayoutParams.topMargin = 8 // Adjust this value to bring them closer
+                    nameLayoutParams.topMargin = -300 // Adjust this value to bring them closer
+                    nameLayoutParams.leftMargin = 100
+                    ingredientNameTextView.layoutParams = nameLayoutParams
+
+                    layout.addView(ingredientImageView)
+                    layout.addView(ingredientNameTextView)
                 }
             }
         }
     }
 }
-
-
-
-
-
-
-
