@@ -107,7 +107,8 @@ class Navigation : AppCompatActivity() {
                 .replace(R.id.fragment_container, HomeFragment()).commit()
             R.id.nav_bars -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, ChooseBar()).commit()
-            R.id.nav_logout -> Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show()
+            R.id.nav_logout ->
+                Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show()
         }
 
         drawerLayout.closeDrawer(GravityCompat.START)

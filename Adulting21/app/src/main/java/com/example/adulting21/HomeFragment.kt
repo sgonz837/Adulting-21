@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.adulting21.settings.SettingsHub
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -184,8 +185,6 @@ class HomeFragment : Fragment() {
 
         }
 
-
-
         // In order to keep the number of fragment pages low,
         // I will relate a number to a drink and in the bottleDinkInfo page
         // I will check the integer in drinkBottleNum and display the number that i get
@@ -258,7 +257,6 @@ class HomeFragment : Fragment() {
                     val fragmentSwitch = FavoriteDrinksFragment()
                     replaceFragment(fragmentSwitch)
                     drawerLayout.closeDrawer(GravityCompat.START)
-
                     true
                 }
 
@@ -316,6 +314,13 @@ class HomeFragment : Fragment() {
 
                 R.id.nav_logout -> {
                     // Handle logout item click
+                    FirebaseAuth.getInstance().signOut() // Log out the user from Firebase
+                    val intent = Intent(requireContext(), MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent) // Redirect back to MainActivity
+                    true
+
+
                     Toast.makeText(requireContext(), "Logout clicked", Toast.LENGTH_SHORT).show()
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true

@@ -39,25 +39,36 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.bar_info)
         firebaseAuth = FirebaseAuth.getInstance()
 
+        // Check if the user is already logged in
+        val currentUser = firebaseAuth.currentUser
+        if (currentUser != null) {
+            //Will automatically continue to navigation if user is logged in
+            val intent = Intent(this, Navigation::class.java)
+            startActivity(intent)
+            finish() // Finish MainActivity to prevent going back to it on pressing back button
+        }
+
         val buttonLogin = findViewById<Button>(R.id.login_btn)
-        //if login button is clicked, do tasks
+        //if login button is clicked call loginpage function
         buttonLogin.setOnClickListener {
             Log.d("TAG", "Succesful2")
             login_page(it)
         }
         val buttonreg = findViewById<Button>(R.id.GoToReg)
-        //if login button is clicked, do tasks
+        //if register button is clicked, do go to the register tab
         buttonreg.setOnClickListener {
             GoToReg(it)
         }
         val buttonGC = findViewById<Button>(R.id.GuestContinue)
-        //if login button is clicked, do tasks
+        //if guest button is clicked
+        //TODO(set up to continue to mocktails page only
+        // Can Probably remove button as well)
         buttonGC.setOnClickListener {
             guestcont(it)
         }
     }
     fun login_page(view: View) {
-        Log.d("TAG", "Succesful")
+        Log.d("TAG", "SuccesfulLogin")
         val email = findViewById<EditText>(R.id.email).text.toString()
         val password = findViewById<EditText>(R.id.password).text.toString()
 
