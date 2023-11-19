@@ -41,15 +41,23 @@ class register : AppCompatActivity() {
         val ContactName = findViewById<EditText>(R.id.ContactName).text.toString()
         val phoneNumber = findViewById<EditText>(R.id.phoneNumber).text.toString()
 
-
+        //error check to see if email and password are entered
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Email and password are required.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        //error check for valid phone number length
+        if (phoneNumber.isNotEmpty() && phoneNumber.length != 10 && phoneNumber.length != 12) {
+            Toast.makeText(this, "Invalid phone number.", Toast.LENGTH_SHORT).show()
             return
         }
         firebaseAuth.createUserWithEmailAndPassword(email, password)
 
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+
+
                     //navigates to the main page
                     val intent = Intent(this, Navigation::class.java)
                     startActivity(intent)

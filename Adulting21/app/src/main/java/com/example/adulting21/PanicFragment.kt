@@ -17,12 +17,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class SharedViewModel(application: Application) : AndroidViewModel(application) {
     private val sharedPreferences = application.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
     private val phoneNumberKey = "PHONE_NUMBER_KEY"
     private val emergencyContactNameKey = "EMERGENCY_CONTACT_NAME_KEY"
+    private val databaseReference = FirebaseDatabase.getInstance().getReference("users")
 
     private lateinit var firebaseAuth: FirebaseAuth
 
@@ -37,11 +38,26 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         set(value) {
             sharedPreferences.edit().putString(emergencyContactNameKey, value).apply()
         }
+
+    fun updateEmergencyContact(phoneNumber: String, contactName: String) {
+        // Update the emergency contact info in the Firebase Realtime Database
+        val user = FirebaseAuth.getInstance().currentUser
+        val userId = user?.uid
+
+        userId?.let {
+            val userData = HashMap<String, Any>()
+            userData["CotNumber"] = phoneNumber
+            userData["CotName"] = contactName
+
+            databaseReference.child(it).updateChildren(userData)
+        }
+    }
 }
 
 class PanicFragment : Fragment() {
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
+    private val databaseReference = FirebaseDatabase.getInstance().getReference("users")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,24 +75,28 @@ class PanicFragment : Fragment() {
 
         confirmButton.setOnClickListener {
             // Store the phone number and emergency contact name in the ViewModel
-            sharedViewModel.phoneNumber = phoneNumberEditText.text.toString()
-            sharedViewModel.emergencyContactName = emergencyContactNameEditText.text.toString()
+            val phoneNumber = phoneNumberEditText.text.toString()
+            val contactName = emergencyContactNameEditText.text.toString()
 
-            showConfirmationDialog()
+            sharedViewModel.phoneNumber = phoneNumber
+            sharedViewModel.emergencyContactName = contactName
+
+            // Update the emergency contact info in the Firebase Realtime Database
+            sharedViewModel.updateEmergencyContact(phoneNumber, contactName)
+
+            showConfirmationDialog(phoneNumber)
         }
         return view
     }
 
-
-
-    private fun showConfirmationDialog() {
+    private fun showConfirmationDialog(phoneNumber: String) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Confirm Action")
         builder.setMessage("Do you want to continue?")
 
         builder.setPositiveButton("Yes") { dialog, which ->
-            // Dial the phone number
-            dialPhoneNumber(sharedViewModel.phoneNumber)
+            // Dial the stored phone number
+            dialPhoneNumber(phoneNumber)
         }
 
         builder.setNegativeButton("No") { dialog, which ->

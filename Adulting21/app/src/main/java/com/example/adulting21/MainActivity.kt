@@ -1,5 +1,5 @@
 /*
-    Author: Sayan Gonzalez
+    Author: Sayan Gonzalez & Mike Prebosnyak
     Description: At first all the api calls were in this file but I have implemented a bottom
                  Navigation Bar and it required me to use fragments so this file for now
                  Just handles the navigation bar and calls the appropriate layout file when user
@@ -30,19 +30,17 @@ import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
-
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_page)
-        //setContentView(R.layout.bar_info)
         firebaseAuth = FirebaseAuth.getInstance()
 
         // Check if the user is already logged in
+        //Automatically continues to navigation if user is logged in
         val currentUser = firebaseAuth.currentUser
         if (currentUser != null) {
-            //Will automatically continue to navigation if user is logged in
             val intent = Intent(this, Navigation::class.java)
             startActivity(intent)
             finish() // Finish MainActivity to prevent going back to it on pressing back button
@@ -51,14 +49,23 @@ class MainActivity : AppCompatActivity() {
         val buttonLogin = findViewById<Button>(R.id.login_btn)
         //if login button is clicked call loginpage function
         buttonLogin.setOnClickListener {
-            Log.d("TAG", "Succesful2")
+            Log.d("TAG", "Login Button Pressed ")
             login_page(it)
         }
         val buttonreg = findViewById<Button>(R.id.GoToReg)
-        //if register button is clicked, do go to the register tab
+        //if register button is clicked call goToReg function
         buttonreg.setOnClickListener {
+            Log.d("TAG", "Go To Register Button Pressed ")
             GoToReg(it)
         }
+        val forgotPassword = findViewById<Button>(R.id.forgotPassword)
+        //if register button is clicked, call forgotPass function
+        forgotPassword.setOnClickListener{
+            Log.d("TAG", "Password Reset Pressed")
+            forgotPass(it)
+        }
+
+
         val buttonGC = findViewById<Button>(R.id.GuestContinue)
         //if guest button is clicked
         //TODO(set up to continue to mocktails page only
@@ -76,40 +83,53 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Email and password are required.", Toast.LENGTH_SHORT).show()
             return
         }
-        // Sign in with the provided email and password
+        // Sign in with email and password
         firebaseAuth.signInWithEmailAndPassword(email, password)
-
-
 
             ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Login successful, navigate to the main page
+                    // navigate to the main page
                     val intent = Intent(this, Navigation::class.java)
                     startActivity(intent)
-
                     //inputs email information into firebase realtime database
                     val user = firebaseAuth.currentUser
                     val userId = user?.uid
-
                     // Save user data to Firebase Realtime Database
                     val databaseReference = FirebaseDatabase.getInstance().getReference("users")
-
                     val userData = HashMap<String, Any>()
                     userData["email"] = email
-                    //userData["additionalField"] = additionalValue // Add other user data here
-
+                    //Add other user data here
                     // Store under a unique ID (user ID in this case)
                     userId?.let {
                         databaseReference.child(it).setValue(userData)
                     }
-
                     finish()
 
                 } else {
                     // Login failed, display an error message
-                    Toast.makeText(
-                        this, "Login failed", Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(this, "Login failed", Toast.LENGTH_LONG).show()
+                }
+            }
+    }
+
+    fun forgotPass(view: View) {
+        val email = findViewById<EditText>(R.id.email).text.toString()
+        if (email.isEmpty()) {
+            Toast.makeText(this, "Input Email", Toast.LENGTH_SHORT).show()
+            return
+        }
+        //send firebase password reset
+        firebaseAuth.sendPasswordResetEmail(email)
+
+            ?.addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    //stay on this page, not necessary
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    Toast.makeText(this, "Check Email for Reset Code", Toast.LENGTH_SHORT).show()
+                    finish()
+                }else{
+                    Toast.makeText(this, "Password Reset Failed", Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -133,4 +153,5 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
 }

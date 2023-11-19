@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="241dp"
+        android:layout_width="350dp"
         android:layout_height="64dp"
 
         android:hint="Email"
@@ -36,7 +36,7 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="244dp"
+        android:layout_width="350dp"
         android:layout_height="57dp"
         android:hint="Enter Password"
 
@@ -52,20 +52,22 @@
         app:layout_constraintVertical_bias="0.556"
         app:passwordToggleEnabled="true" />
 
-    <TextView
-        android:id="@+id/textView17"
+    <Button
+        android:id="@+id/forgotPassword"
         android:layout_width="175dp"
         android:layout_height="34dp"
         android:text="Forgot Password?"
+        android:clickable="true"
         android:textAlignment="center"
         android:textColor="@color/red"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.619" />
+        app:layout_constraintVertical_bias="0.619"
+        style="?android:attr/borderlessButtonStyle"/>
 
     <TextView
         android:id="@+id/textView18"
@@ -94,10 +96,10 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873" />
+        app:layout_constraintVertical_bias="0.89" />
 
     <Button
         android:id="@+id/GuestContinue"
@@ -123,13 +125,13 @@
         android:layout_height="34dp"
         android:text="Don't have an account?"
         android:textAlignment="center"
-        android:textColor="@color/red"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.771" />
+        app:layout_constraintVertical_bias="0.786" />
 
     <Button
         android:id="@+id/login_btn"
@@ -146,5 +148,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721" />
+        app:layout_constraintVertical_bias="0.736" />
 </androidx.constraintlayout.widget.ConstraintLayout>

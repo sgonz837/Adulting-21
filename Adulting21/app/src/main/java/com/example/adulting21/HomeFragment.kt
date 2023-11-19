@@ -318,10 +318,8 @@ class HomeFragment : Fragment() {
                     val intent = Intent(requireContext(), MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent) // Redirect back to MainActivity
-                    true
 
-
-                    Toast.makeText(requireContext(), "Logout clicked", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Logged Out", Toast.LENGTH_SHORT).show()
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
