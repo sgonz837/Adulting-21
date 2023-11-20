@@ -27,11 +27,6 @@ class SideNavigationDrawerFragment : Fragment() {
                     // You can perform actions specific to the Home menu item here
                     true
                 }
-                R.id.nav_settings -> {
-                    // Handle settings item click
-                    // You can perform actions specific to the Settings menu item here
-                    true
-                }
                 R.id.nav_logout -> {
                     // Handle logout item click
                     // You can perform actions specific to the Logout menu item here

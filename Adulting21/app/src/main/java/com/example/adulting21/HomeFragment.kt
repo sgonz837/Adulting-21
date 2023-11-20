@@ -127,12 +127,6 @@ class HomeFragment : Fragment() {
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
-                R.id.nav_settings -> {
-                    // Handle settings item click
-                    Toast.makeText(requireContext(), "Settings clicked", Toast.LENGTH_SHORT).show()
-                    drawerLayout.closeDrawer(GravityCompat.START)
-                    true
-                }
                 R.id.nav_logout -> {
                     // Handle logout item click
                     Toast.makeText(requireContext(), "Logout clicked", Toast.LENGTH_SHORT).show()
@@ -310,15 +304,7 @@ class HomeFragment : Fragment() {
                     true
                 }
 
-                R.id.nav_settings -> {
-                    val fragmentSwitch = SettingsHub()
-                    replaceFragment(fragmentSwitch)
-                    // Handle settings item click
-                    Toast.makeText(requireContext(), "Settings clicked", Toast.LENGTH_SHORT).show()
-                    drawerLayout.closeDrawer(GravityCompat.START)
-                    drawerLayout.closeDrawers()
-                    true
-                }
+
 
 
                 R.id.nav_bars_dropdown_trigger -> {
