@@ -8,6 +8,17 @@
     android:gravity="center">
 
     <TextView
+        android:id="@+id/Panic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Panic Call"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginBottom= "160dp"
+        />
+
+    <TextView
         android:id="@+id/emergencyContactLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,13 +52,16 @@
         android:layout_below="@id/phoneNumber"
         android:background="@color/red"
         android:text="Update Contact"
-        android:layout_marginBottom="16dp" />
+        android:textColor="@color/white"
+
+        android:layout_marginBottom="80dp" />
 
     <Button
         android:id="@+id/confirmButton"
-        android:layout_width="132dp"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
         android:layout_below="@id/phoneNumber"
         android:background="@color/red"
+        android:textColor="@color/white"
         android:text="Call Contact" />
 </LinearLayout>
