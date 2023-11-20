@@ -163,8 +163,60 @@ class CocktailApiService {
             return emptyList() // Return an empty list on error
         }
     }
+    fun popularCocktails(): List<Cocktail> {
+        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php"
+        val request = Request.Builder()
+            .url(url)
+            .build()
 
+        try {
+            val response = client.newCall(request).execute()
+            if (!response.isSuccessful) {
+                Log.d("TAG", "Not Successful")
+                return emptyList() // Return an empty list on error
+            }
+            Log.d("TAG", "Successful!")
+            val responseBody = response.body
+            val jsonString = responseBody?.string() ?: "Error"
 
+            val ingredientUrl = "https://www.thecocktaildb.com/images/ingredients"
+            val json = JSONObject(jsonString)
+            val drinks = json.getJSONArray("drinks")
+
+            val popularDrinksList = mutableListOf<Cocktail>()
+
+            for (i in 0 until drinks.length()) {
+                val drinkJson = drinks.getJSONObject(i)
+
+                val ingredients = (1..15).mapNotNull { j ->
+                    val ingredientName = drinkJson.getString("strIngredient$j")
+                    if (ingredientName.isNotBlank()) {
+                        val ingredientImage = "$ingredientUrl/$ingredientName.png"
+                        val measure = drinkJson.getString("strMeasure$j")
+                        Ingredient(ingredientName, ingredientImage, measure)
+                    } else {
+                        null
+                    }
+                }
+
+                // Call your function to parse measures here
+                val measures = parseMeasures(drinkJson)
+
+                val id = drinkJson.getString("idDrink")
+                val drinkName = drinkJson.getString("strDrink")
+                val drinkImg = drinkJson.getString("strDrinkThumb")
+
+                val cocktail = Cocktail(id, drinkName, drinkImg, ingredients, measures)
+                popularDrinksList.add(cocktail)
+            }
+            return popularDrinksList
+
+        } catch (e: Exception) {
+            Log.d("TAG", "Error: ${e.message}")
+            return emptyList() // Return an empty list on error
+        }
+    }
+/*
     fun popularCocktails(): List<Cocktail> {
         val url = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php"
         val request = Request.Builder().url(url).build()
@@ -209,7 +261,119 @@ class CocktailApiService {
         }
     }
 
+ */
 
+
+    fun popularDrinks(): List<Cocktail> {
+        val url = "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php"
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        try {
+            val response = client.newCall(request).execute()
+            if (!response.isSuccessful) {
+                Log.d("TAG", "Not Successful")
+                return emptyList() // Return an empty list on error
+            }
+            Log.d("TAG", "Successful!")
+            val responseBody = response.body
+            val jsonString = responseBody?.string() ?: "Error"
+
+            val ingredientUrl = "https://www.thecocktaildb.com/images/ingredients"
+            val json = JSONObject(jsonString)
+            val drinks = json.getJSONArray("drinks")
+
+            val popularDrinksList = mutableListOf<Cocktail>()
+
+            for (i in 0 until drinks.length()) {
+                val drinkJson = drinks.getJSONObject(i)
+
+                val ingredients = (1..15).mapNotNull { j ->
+                    val ingredientName = drinkJson.getString("strIngredient$j")
+                    if (ingredientName.isNotBlank()) {
+                        val ingredientImage = "$ingredientUrl/$ingredientName.png"
+                        val measure = drinkJson.getString("strMeasure$j")
+                        Ingredient(ingredientName, ingredientImage, measure)
+                    } else {
+                        null
+                    }
+                }
+
+                // Call your function to parse measures here
+                val measures = parseMeasures(drinkJson)
+
+                val id = drinkJson.getString("idDrink")
+                val drinkName = drinkJson.getString("strDrink")
+                val drinkImg = drinkJson.getString("strDrinkThumb")
+
+                val cocktail = Cocktail(id, drinkName, drinkImg, ingredients, measures)
+                popularDrinksList.add(cocktail)
+            }
+            return popularDrinksList
+
+        } catch (e: Exception) {
+            Log.d("TAG", "Error: ${e.message}")
+            return emptyList() // Return an empty list on error
+        }
+    }
+
+    /*
+        fun popularDrinks(): List<Cocktail> {
+            val url = "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php"
+            val request = Request.Builder()
+                .url(url)
+                .build()
+
+            try {
+                val response = client.newCall(request).execute()
+                if (!response.isSuccessful) {
+                    Log.d("TAG", "Not Successful")
+                    return emptyList() // Return an empty list on error
+                }
+                Log.d("TAG", "Successful!")
+                val responseBody = response.body
+                val jsonString = responseBody?.string() ?: "Error"
+
+                val ingredientUrl = "https://www.thecocktaildb.com/images/ingredients"
+                val json = JSONObject(jsonString)
+                val drinks = json.getJSONArray("drinks")
+
+                val popularDrinksList = mutableListOf<Cocktail>()
+
+                for (i in 0 until drinks.length()) {
+                    val drinkJson = drinks.getJSONObject(i)
+
+                    val ingredients = (1..15).mapNotNull { j ->
+                        val ingredientName = drinkJson.getString("strIngredient$j")
+                        if (ingredientName.isNotBlank()) {
+                            val ingredientImage = "$ingredientUrl/$ingredientName.png"
+                            Ingredient(ingredientName, ingredientImage,measure)
+                        } else {
+                            null
+                        }
+                    }
+
+                    // Call your function to parse measures here
+                    val measures = parseMeasures(drinkJson)
+
+                    val id = drinkJson.getString("idDrink")
+                    val drinkName = drinkJson.getString("strDrink")
+                    val drinkImg = drinkJson.getString("strDrinkThumb")
+
+                    val cocktail = Cocktail(id, drinkName, drinkImg, ingredients, measures)
+                    popularDrinksList.add(cocktail)
+                }
+                return popularDrinksList
+
+            } catch (e: Exception) {
+                Log.d("TAG", "Error: ${e.message}")
+                return emptyList() // Return an empty list on error
+            }
+        }
+
+     */
+/*
     fun popularDrinks(): List<Cocktail> {
         val url = "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php"
         val request = Request.Builder()
@@ -265,6 +429,8 @@ class CocktailApiService {
             return emptyList() // Return an empty list on error
         }
     }
+
+ */
 
 
 
@@ -358,13 +524,27 @@ class CocktailApiService {
 
         return searchResults
     }
-
+    private fun parseMeasures(drinkJson: JSONObject): List<String> {
+        val measures = mutableListOf<String>()
+        // Loop through "strMeasureX" fields
+        for (i in 1..15) { // Assuming a maximum of 15 measures, adjust as needed
+            val measure = drinkJson.optString("strMeasure$i", "")
+            if (measure.isNotEmpty()) {
+                measures.add(measure)
+            } else {
+                // Stop the loop if there are no more measures
+                break
+            }
+        }
+        return measures
+    }
 
     private fun parseSearchResults1(drinksArray: JSONArray): List<Cocktail> {
         val searchResults1 = mutableListOf<Cocktail>()
 
         for (i in 0 until drinksArray.length()) {
             val drinkJson = drinksArray.getJSONObject(i)
+
             // Extract relevant information and create Cocktail object
             val resultId = drinkJson.getString("idDrink")
             val resultName = drinkJson.getString("strDrink")
@@ -372,14 +552,38 @@ class CocktailApiService {
 
             // Call your function to parse ingredients here
             val ingredients = parseIngredients(drinkJson)
+            val measures = parseMeasures(drinkJson)
 
-            val cocktail = Cocktail(resultId, resultName, resultImage, ingredients)
+            val cocktail = Cocktail(resultId, resultName, resultImage, ingredients,measures)
             searchResults1.add(cocktail)
         }
 
         return searchResults1
     }
 
+    /*
+        private fun parseSearchResults1(drinksArray: JSONArray): List<Cocktail> {
+            val searchResults1 = mutableListOf<Cocktail>()
+
+            for (i in 0 until drinksArray.length()) {
+                val drinkJson = drinksArray.getJSONObject(i)
+                // Extract relevant information and create Cocktail object
+                val resultId = drinkJson.getString("idDrink")
+                val resultName = drinkJson.getString("strDrink")
+                val resultImage = drinkJson.getString("strDrinkThumb")
+
+                // Call your function to parse ingredients here
+                val ingredients = parseIngredients(drinkJson)
+
+                val cocktail = Cocktail(resultId, resultName, resultImage, ingredients)
+                searchResults1.add(cocktail)
+            }
+
+            return searchResults1
+        }
+
+     */
+/*
     private fun parseIngredients(drinkJson: JSONObject): List<Ingredient> {
         val ingredients = mutableListOf<Ingredient>()
         val ingredientUrl = "https://www.thecocktaildb.com/images/ingredients"
@@ -390,6 +594,31 @@ class CocktailApiService {
                 // If the ingredient name is not empty, create an Ingredient object
                 val ingredientImage = "$ingredientUrl/$ingredientName.png" // Update with the correct image URL logic
                 ingredients.add(Ingredient(ingredientName, ingredientImage))
+            } else {
+                // Stop the loop if there are no more ingredients
+                break
+            }
+        }
+
+        return ingredients
+    }
+
+ */
+
+
+    private fun parseIngredients(drinkJson: JSONObject): List<Ingredient> {
+        val ingredients = mutableListOf<Ingredient>()
+        val ingredientUrl = "https://www.thecocktaildb.com/images/ingredients"
+
+        // Loop through "strIngredientX" and "strMeasureX" fields
+        for (i in 1..15) { // Assuming a maximum of 15 ingredients, adjust as needed
+            val ingredientName = drinkJson.optString("strIngredient$i", "")
+            val measure = drinkJson.optString("strMeasure$i", "")
+
+            if (ingredientName.isNotEmpty()) {
+                // If the ingredient name is not empty, create an Ingredient object
+                val ingredientImage = "$ingredientUrl/$ingredientName.png" // Update with the correct image URL logic
+                ingredients.add(Ingredient(ingredientName, ingredientImage, measure))
             } else {
                 // Stop the loop if there are no more ingredients
                 break
@@ -484,15 +713,16 @@ class CocktailApiService {
 
 data class Ingredient(
     val name: String,
-    val imageUrl: String
-
+    val imageUrl: String,
+    val measure: String
     )
 
 data class Cocktail(
     val id: String,
     val name: String,
     val imageUrl: String,
-    val ingredients: List<Ingredient>
+    val ingredients: List<Ingredient>,
+    val measures: List<String> // Add this property
     )
 data class bottleDrinks(
     val drinkName: String,

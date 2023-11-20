@@ -176,7 +176,7 @@ class DrinkInfoFragment : Fragment() {
         }
         return view
     }
-
+/*
     private suspend fun displayCocktailDetails(cocktail: Cocktail, view: View) {
         withContext(Dispatchers.Main) {
             val imageView = view.findViewById<ImageView>(R.id.cocktailImageView)
@@ -188,51 +188,130 @@ class DrinkInfoFragment : Fragment() {
             val cocktailNameTextView = view.findViewById<TextView>(R.id.cocktailNameTextView)
             cocktailNameTextView.text = cocktail.name
 
-            val layoutIngredients = listOf(
-                R.id.layoutIngredient1,
-                R.id.layoutIngredient2,
-                R.id.layoutIngredient3
-                // Add more IDs as needed based on your layout
-            )
+            val layoutIngredients = view.findViewById<LinearLayout>(R.id.layoutIngredients)
 
-            val ingredientNamesLayout = view.findViewById<LinearLayout>(R.id.layoutIngredientNames)
+            // Assuming that cocktail.ingredients is a list of Ingredient objects
+            for (ingredient in cocktail.ingredients) {
+                val ingredientLayout = RelativeLayout(requireContext())
+                val layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                layoutParams.topMargin = 8 // Adjust this value as needed
+                ingredientLayout.layoutParams = layoutParams
 
-            for ((index, ingredient) in cocktail.ingredients.withIndex()) {
-                if (index < layoutIngredients.size) {
-                    val layoutId = layoutIngredients[index]
-                    val layout = view.findViewById<RelativeLayout>(layoutId)
+                val ingredientImageView = ImageView(requireContext())
+                val imageLayoutParams = RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT
+                )
+                ingredientImageView.layoutParams = imageLayoutParams
 
-                    val ingredientImageView = ImageView(requireContext())
-                    val layoutParams = RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.MATCH_PARENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT
-                    )
+                Picasso.get()
+                    .load(ingredient.imageUrl)
+                    .resize(1000, 1000)
+                    .into(ingredientImageView)
 
-                    ingredientImageView.id = View.generateViewId() // Generate a unique ID for ImageView
-                    layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP)
-                    ingredientImageView.layoutParams = layoutParams
+                val ingredientNameTextView = TextView(requireContext())
+                val nameLayoutParams = RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT
+                )
+                nameLayoutParams.addRule(RelativeLayout.BELOW, ingredientImageView.id)
+                nameLayoutParams.topMargin = 8 // Adjust this value as needed
+                ingredientNameTextView.layoutParams = nameLayoutParams
 
-                    Picasso.get()
-                        .load(ingredient.imageUrl)
-                        .resize(1000, 1000)
-                        .into(ingredientImageView)
-
-                    val ingredientNameTextView = TextView(requireContext())
-                    ingredientNameTextView.text = ingredient.name
-                    val nameLayoutParams = RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.MATCH_PARENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT
-                    )
-                    nameLayoutParams.addRule(RelativeLayout.BELOW, ingredientImageView.id)
-                    //nameLayoutParams.topMargin = 8 // Adjust this value to bring them closer
-                    nameLayoutParams.topMargin = -300 // Adjust this value to bring them closer
-                    nameLayoutParams.leftMargin = 100
-                    ingredientNameTextView.layoutParams = nameLayoutParams
-
-                    layout.addView(ingredientImageView)
-                    layout.addView(ingredientNameTextView)
+                // Check if the measurement is not null before displaying it
+                val displayText = if (ingredient.measure != null) {
+                    "${ingredient.name}: ${ingredient.measure}"
+                } else {
+                    ingredient.name
                 }
+
+                ingredientNameTextView.text = displayText
+
+                ingredientLayout.addView(ingredientImageView)
+                ingredientLayout.addView(ingredientNameTextView)
+
+                // Add the ingredient layout to the main layout
+                layoutIngredients.addView(ingredientLayout)
             }
         }
     }
+
+ */
+
+
+
+        private suspend fun displayCocktailDetails(cocktail: Cocktail, view: View) {
+            withContext(Dispatchers.Main) {
+                val imageView = view.findViewById<ImageView>(R.id.cocktailImageView)
+                Picasso.get()
+                    .load(cocktail.imageUrl)
+                    .resize(1000, 1000)
+                    .into(imageView)
+
+                val cocktailNameTextView = view.findViewById<TextView>(R.id.cocktailNameTextView)
+                cocktailNameTextView.text = cocktail.name
+
+                val layoutIngredients = listOf(
+                    R.id.layoutIngredient1,
+                    R.id.layoutIngredient2,
+                    R.id.layoutIngredient3
+                    // Add more IDs as needed based on your layout
+                )
+
+                val ingredientNamesLayout = view.findViewById<LinearLayout>(R.id.layoutIngredientNames)
+
+                for ((index, ingredient) in cocktail.ingredients.withIndex()) {
+                    if (index < layoutIngredients.size) {
+                        val layoutId = layoutIngredients[index]
+                        val layout = view.findViewById<RelativeLayout>(layoutId)
+
+                        val ingredientImageView = ImageView(requireContext())
+                        val layoutParams = RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.MATCH_PARENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT
+                        )
+
+                        ingredientImageView.id = View.generateViewId() // Generate a unique ID for ImageView
+                        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+                        ingredientImageView.layoutParams = layoutParams
+
+                        Picasso.get()
+                            .load(ingredient.imageUrl)
+                            .resize(1000, 1000)
+                            .into(ingredientImageView)
+
+                        val ingredientNameTextView = TextView(requireContext())
+                        //ingredientNameTextView.text = "${ingredient.measure}${ingredient.name} "
+                        val nameLayoutParams = RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.MATCH_PARENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT
+                        )
+                        nameLayoutParams.addRule(RelativeLayout.BELOW, ingredientImageView.id)
+                        //nameLayoutParams.topMargin = 8 // Adjust this value to bring them closer
+                        nameLayoutParams.topMargin = -300 // Adjust this value to bring them closer
+                        nameLayoutParams.leftMargin = 100
+                        ingredientNameTextView.layoutParams = nameLayoutParams
+
+
+                        // Check if the measurement is not null before displaying it
+                        val displayText = if (ingredient.measure != null) {
+                            "${ingredient.measure} ${ingredient.name}"
+                        } else {
+                            ingredient.name
+                        }
+
+                        ingredientNameTextView.text = displayText
+
+                        layout.addView(ingredientImageView)
+                        layout.addView(ingredientNameTextView)
+                    }
+                }
+            }
+        }
+
+
+
 }
