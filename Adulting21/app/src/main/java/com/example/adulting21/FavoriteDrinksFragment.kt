@@ -5,6 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -28,17 +31,33 @@ class FavoriteDrinksFragment : Fragment() {
             .child("users")
             .child(currentUser.uid)
             .child("favorites")
-        // Fetch favorite drinks data
+
+
+        val cocktailNamesListView: ListView = view.findViewById(R.id.cocktailNamesListView)
+        val cocktailNamesList = mutableListOf<String>()
+
+        val arrayAdapter = ArrayAdapter<String>(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            cocktailNamesList
+        )
+        cocktailNamesListView.adapter = arrayAdapter
 
         favoritesRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                cocktailNamesList.clear()
+
                 for (drinkSnapshot in snapshot.children) {
                     val cocktailId = drinkSnapshot.key // Get cocktail ID
                     val cocktailName = drinkSnapshot.value // Get cocktail name
 
-                    // cocktailId and cocktailName, use them as needed
-                    Log.d("FavoritesFragment", "Cocktail ID: $cocktailId, Name: $cocktailName")
+                    cocktailName?.let {
+                        cocktailNamesList.add(it.toString())
+                    }
                 }
+
+                // Notify the adapter that the data has changed
+                arrayAdapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -48,6 +67,38 @@ class FavoriteDrinksFragment : Fragment() {
         })
 
         return view
+        // Fetch favorite drinks data
+/*
+        val cocktailNamesTextView: TextView = view.findViewById(R.id.cocktailNamesTextView)
+        val cocktailNamesList = mutableListOf<String>()
+
+        favoritesRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (drinkSnapshot in snapshot.children) {
+                    val cocktailId = drinkSnapshot.key // Get cocktail ID
+                    val cocktailName = drinkSnapshot.value // Get cocktail name
+
+                    // cocktailId and cocktailName, use them as needed
+                    Log.d("FavoritesFragment", "Cocktail ID: $cocktailId, Name: $cocktailName")
+
+                    cocktailName?.let {
+                        cocktailNamesList.add(it.toString())
+                    }
+                }
+                // Update the UI with the cocktail names
+                val cocktailNames = cocktailNamesList.joinToString(", ")
+                cocktailNamesTextView.text = cocktailNames
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+                Log.e("FavoritesFragment", "Failed to read favorites: ${error.message}")
+            }
+        })
+
+        return view
+
+ */
     }
 }
 //package com.example.adulting21

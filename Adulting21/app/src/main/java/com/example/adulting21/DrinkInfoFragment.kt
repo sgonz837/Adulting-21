@@ -87,6 +87,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.Picasso
@@ -304,6 +305,9 @@ class DrinkInfoFragment : Fragment() {
                         }
 
                         ingredientNameTextView.text = displayText
+
+                        // Set text color to black
+                        ingredientNameTextView.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
 
                         layout.addView(ingredientImageView)
                         layout.addView(ingredientNameTextView)

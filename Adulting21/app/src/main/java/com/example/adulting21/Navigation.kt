@@ -3,6 +3,8 @@ package com.example.adulting21
 
 import MeterBac
 import android.content.Intent
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -39,6 +41,14 @@ class Navigation : AppCompatActivity() {
             R.string.open_nav,
             R.string.close_nav
         )
+
+        // Set the color of the hamburger icon
+        toggle.drawerArrowDrawable.colorFilter = PorterDuffColorFilter(
+            resources.getColor(R.color.white, theme),
+            PorterDuff.Mode.SRC_ATOP
+        )
+        // Set the color of the hamburger icon
+       // toggle.drawerArrowDrawable.color = resources.getColor(R.color.white, theme)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 

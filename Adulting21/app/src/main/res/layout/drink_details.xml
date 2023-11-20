@@ -144,6 +144,7 @@
 
             <TextView
                 android:id="@+id/ingredientName1"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageIngredient1"
@@ -169,6 +170,7 @@
 
             <TextView
                 android:id="@+id/ingredientName2"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageIngredient2"
@@ -193,6 +195,7 @@
 
             <TextView
                 android:id="@+id/ingredientName3"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageIngredient3"

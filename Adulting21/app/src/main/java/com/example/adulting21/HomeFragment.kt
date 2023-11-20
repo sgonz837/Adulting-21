@@ -11,6 +11,8 @@ package com.example.adulting21
 import android.content.Intent
 import android.net.Uri
 import MeterBac
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +21,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -70,6 +73,8 @@ class HomeFragment : Fragment() {
     private lateinit var randomDrinkName99: TextView
     private lateinit var randomDrinkName100: TextView
     private var drinkNum: Int = 1
+    //private lateinit var toolbar: Toolbar
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -87,6 +92,9 @@ class HomeFragment : Fragment() {
         transaction.replace(R.id.container_home, sideNavFragment)
         transaction.commit()
 
+        // Find the toolbar in the fragment_home layout
+       // toolbar = view.findViewById(R.id.toolbar)
+
 
         drawerLayout = view.findViewById(R.id.drawer_layout)
         toggle = ActionBarDrawerToggle(
@@ -96,6 +104,16 @@ class HomeFragment : Fragment() {
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
+        // Set the navigation icon (drawable) for the Toolbar
+        //val drawable = ContextCompat.getDrawable(this, R.drawable.baseline_person_24)
+        //val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.baseline_person_24)
+
+        //toolbar.navigationIcon = drawable
+
+
+        toggle.drawerArrowDrawable.color = resources.getColor(R.color.white, requireContext().theme)
+
+        // toggle.drawerArrowDrawable.color = resources.getColor(R.color.white, theme)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 

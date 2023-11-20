@@ -116,6 +116,9 @@
                                     android:layout_gravity="center"
                                     android:gravity="center"
                                     android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
                                     app:layout_constraintEnd_toEndOf="@id/drinkImage1"
                                     app:layout_constraintStart_toStartOf="@id/drinkImage1"
                                     app:layout_constraintTop_toBottomOf="@id/drinkImage1" />
@@ -144,7 +147,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -170,7 +176,9 @@
                                     android:layout_gravity="center"
                                     android:gravity="center"
                                     android:text="Text 1"
-
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
                                     />
                             </LinearLayout>
 
@@ -197,7 +205,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -222,7 +233,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
 
                             </LinearLayout>
 
@@ -248,7 +262,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
 
                             </LinearLayout>
 
@@ -274,7 +291,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
 
                             </LinearLayout>
 
@@ -300,7 +320,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
 
                             </LinearLayout>
 
@@ -326,7 +349,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
 
                             </LinearLayout>
 
@@ -352,7 +378,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
                             </LinearLayout>
 
                         </LinearLayout>
@@ -410,6 +439,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Random Drinks"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.042"
@@ -460,6 +492,9 @@
                                     android:layout_gravity="center"
                                     android:gravity="center"
                                     android:text="Text 1"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/black"
                                     app:layout_constraintEnd_toEndOf="@id/drinkImage1"
                                     app:layout_constraintStart_toStartOf="@id/drinkImage1"
                                     app:layout_constraintTop_toBottomOf="@id/drinkImage1" />
@@ -488,7 +523,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -514,6 +552,9 @@
                                     android:layout_gravity="center"
                                     android:gravity="center"
                                     android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
 
                                     />
                             </LinearLayout>
@@ -541,7 +582,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -566,7 +610,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
 
                             </LinearLayout>
 
@@ -592,7 +639,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
 
                             </LinearLayout>
 
@@ -618,7 +668,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
 
                             </LinearLayout>
 
@@ -644,7 +697,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
 
                             </LinearLayout>
 
@@ -670,7 +726,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
 
                             </LinearLayout>
 
@@ -696,7 +755,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Text 1" />
+                                    android:text="Text 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
                             </LinearLayout>
 
                         </LinearLayout>
@@ -709,6 +771,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="14dp"
                         android:text="Most Popular Drinks"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.044"
@@ -721,9 +786,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Vodka"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.109"
+                        app:layout_constraintHorizontal_bias="0.1011"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/vodkaBottleImage"
                         app:layout_constraintVertical_bias="0.406" />
@@ -733,6 +801,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Gin"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.45"
@@ -746,6 +817,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Rum"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.839"
@@ -759,6 +833,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="960dp"
                         android:text="Tequila"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.289"
                         app:layout_constraintStart_toStartOf="parent"
@@ -778,6 +855,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:text="Browse By Bottle"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/vodkaBottleImage"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.042"
