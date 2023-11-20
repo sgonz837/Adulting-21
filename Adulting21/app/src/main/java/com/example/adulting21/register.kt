@@ -57,7 +57,6 @@ class register : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
 
-
                     //navigates to the main page
                     val intent = Intent(this, Navigation::class.java)
                     startActivity(intent)
@@ -81,8 +80,7 @@ class register : AppCompatActivity() {
                     }
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_LONG).show()
                 }
             }
             ?.addOnFailureListener(this) { exception ->

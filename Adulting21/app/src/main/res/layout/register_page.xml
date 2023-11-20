@@ -103,11 +103,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.512" />
 
+
     <EditText
         android:id="@+id/password"
         android:layout_width="350dp"
         android:layout_height="51dp"
         android:hint="Password"
+        app:passwordToggleEnabled="true"
+
 
         android:inputType="textPassword"
         android:textAlignment="center"
@@ -118,7 +121,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.591"
-        app:passwordToggleEnabled="true" />
+
+        />
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/etPasswordLayout"-->
+<!--        android:layout_width="350dp"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5-->
+<!--"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.581"-->
+<!--        app:passwordToggleEnabled="true">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/password"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="56dp"-->
+<!--            android:hint="Password"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="24sp"-->
+<!--            app:layout_constraintHorizontal_bias="0.5" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <EditText
         android:id="@+id/ContactName"
