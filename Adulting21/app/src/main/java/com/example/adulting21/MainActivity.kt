@@ -65,14 +65,14 @@ class MainActivity : AppCompatActivity() {
             forgotPass(it)
         }
 
-
-        val buttonGC = findViewById<Button>(R.id.GuestContinue)
-        //if guest button is clicked
-        //TODO(set up to continue to mocktails page only
-        // Can Probably remove button as well)
-        buttonGC.setOnClickListener {
-            guestcont(it)
-        }
+// Removed from Final Build
+//        val buttonGC = findViewById<Button>(R.id.GuestContinue)
+//        //if guest button is clicked
+//        //TODO(set up to continue to mocktails page only
+//        // Can Probably remove button as well)
+//        buttonGC.setOnClickListener {
+//            guestcont(it)
+//        }
     }
     fun login_page(view: View) {
         Log.d("TAG", "SuccesfulLogin")

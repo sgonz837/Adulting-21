@@ -54,10 +54,11 @@
 
     <Button
         android:id="@+id/forgotPassword"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="175dp"
-        android:layout_height="34dp"
-        android:text="Forgot Password?"
+        android:layout_height="48dp"
         android:clickable="true"
+        android:text="Forgot Password?"
         android:textAlignment="center"
         android:textColor="@color/red"
         android:textSize="12sp"
@@ -66,8 +67,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.619"
-        style="?android:attr/borderlessButtonStyle"/>
+        app:layout_constraintVertical_bias="0.619" />
 
     <TextView
         android:id="@+id/textView18"
@@ -84,6 +84,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
+    <!--    <Button-->
+<!--        android:id="@+id/GuestContinue"-->
+<!--        android:layout_width="155dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:layout_marginStart="125dp"-->
+<!--        android:layout_marginTop="17dp"-->
+<!--        android:layout_marginEnd="126dp"-->
+<!--        android:layout_marginBottom="43dp"-->
+<!--        android:background="@color/red"-->
+<!--        android:text="Continue as Guest"-->
+<!--        android:textColor="@color/white"-->
+
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.982" />-->
+
     <Button
         android:id="@+id/GoToReg"
         android:layout_width="155dp"
@@ -98,48 +117,30 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89" />
-
-    <Button
-        android:id="@+id/GuestContinue"
-        android:layout_width="155dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="126dp"
-        android:layout_marginBottom="43dp"
-        android:background="@color/red"
-        android:text="Continue as Guest"
-        android:textColor="@color/white"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.982" />
+        app:layout_constraintVertical_bias="0.94" />
 
     <TextView
         android:id="@+id/textview19"
         android:layout_width="280dp"
-        android:layout_height="34dp"
+        android:layout_height="24dp"
         android:text="Don't have an account?"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786" />
+        app:layout_constraintVertical_bias="0.816" />
 
     <Button
         android:id="@+id/login_btn"
-        android:layout_width="160dp"
-        android:layout_height="61dp"
+        android:layout_width="170dp"
+        android:layout_height="62dp"
         android:layout_marginStart="125dp"
         android:layout_marginTop="17dp"
         android:layout_marginEnd="126dp"

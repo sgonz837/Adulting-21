@@ -87,6 +87,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -143,6 +144,7 @@ class DrinkInfoFragment : Fragment() {
                                 // Successfully added favorite to the database
                                 // You can add any UI updates or actions here if needed
                                 Log.d("TAG", "Favorite added to the database")
+                                Toast.makeText(requireContext(), "Favorite Drink Saved", Toast.LENGTH_SHORT).show()
                             }
                             .addOnFailureListener {
                                 // Failed to add favorite
