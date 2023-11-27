@@ -1,12 +1,5 @@
-<<<<<<< Updated upstream:Adulting21/app/src/main/java/com/example/adulting21/ChooseBar.kt
-package com.example.adulting21
-=======
-/*Author: Savannah Crutchfield
-* This page navigates you from choose bar page to bar info pages.
-* Kutztown tavern does not have enough info for page so navigates to webpage */
 
 package com.adulting21.adulting21
->>>>>>> Stashed changes:Adulting21/app/src/main/java/com/adulting21/adulting21/ChooseBar.kt
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
