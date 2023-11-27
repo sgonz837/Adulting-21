@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.adulting21'
+    namespace 'com.adulting21.adulting21'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.adulting21"
+        applicationId "com.adulting21.adulting21"
         minSdk 24
         targetSdk 34
         versionCode 1

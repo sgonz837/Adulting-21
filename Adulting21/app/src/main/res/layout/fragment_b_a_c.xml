@@ -12,7 +12,7 @@
 
 
 
-    <com.example.adulting21.SpeedometerView
+    <com.adulting21.adulting21.SpeedometerView
         android:id="@+id/speedometer"
         android:layout_width="485dp"
         android:layout_height="385dp"
@@ -90,7 +90,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645" />
+        app:layout_constraintVertical_bias="0.60" />
 
     <Button
         android:id="@+id/startNewSessionButton"
@@ -111,14 +111,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BAC: 0.0%"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.613" />
+        app:layout_constraintVertical_bias="0.458" />
 
     <TextView
         android:id="@+id/textView42"
