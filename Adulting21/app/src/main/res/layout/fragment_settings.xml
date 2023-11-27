@@ -13,7 +13,13 @@
         android:text="@string/hello_blank_fragment" />
 
     <!--Code has been pulled from https://github.com/codeplayon/AndroidSpeedometer -->
+<<<<<<< Updated upstream
     <com.example.adulting21.SpeedometerView
+=======
+    <com.adulting21.adulting21.SpeedometerView
+        android:id="@+id/speedometer"
+        android:layout_width="match_parent"
+>>>>>>> Stashed changes
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_gravity="center"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.adulting21">
+    package="com.adulting21.adulting21">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -18,7 +18,7 @@
         android:hardwareAccelerated="true"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="com.adulting21.adulting21.MainActivity"
             android:theme="@style/Theme.Adulting21"
             android:exported="true">
             <intent-filter>
@@ -26,11 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Navigation">
+        <activity android:name="com.adulting21.adulting21.Navigation">
             <!-- Other activity attributes -->
         </activity>
-        <activity android:name=".DrinkInfoActivity" />
-        <activity android:name=".register" />
+        <activity android:name="com.adulting21.adulting21.DrinkInfoActivity" />
+        <activity android:name="com.adulting21.adulting21.register" />
         <activity android:name=".login" />
 
         <meta-data

@@ -10,6 +10,26 @@
     <!-- TODO: Update blank fragment layout -->
 
 
+<<<<<<< Updated upstream
+=======
+
+
+    <com.adulting21.adulting21.SpeedometerView
+        android:id="@+id/speedometer"
+        android:layout_width="485dp"
+        android:layout_height="385dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991" />
+
+
+>>>>>>> Stashed changes
     <EditText
         android:id="@+id/editTextWeight"
         android:layout_width="189dp"
@@ -91,6 +111,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start New Session"
+<<<<<<< Updated upstream
+=======
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <TextView
+        android:id="@+id/bacValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BAC: 0.0%"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.471" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*Based on a 0.0 scale"
+        android:textColor="@color/black"
+>>>>>>> Stashed changes
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
