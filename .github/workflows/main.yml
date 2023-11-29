@@ -1,0 +1,28 @@
+name: Lint Checker & Unit Tests
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Run lint checks
+      run: |
+        ./gradlew lint
+
+    - name: Run unit tests
+      run: |
+        ./gradlew test
