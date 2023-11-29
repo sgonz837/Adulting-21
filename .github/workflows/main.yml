@@ -25,4 +25,4 @@ jobs:
 
     - name: Run unit tests
       run: |
-        ./Adulting21/gradlew test
+        ./gradlew test
