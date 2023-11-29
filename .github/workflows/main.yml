@@ -21,7 +21,7 @@ jobs:
 
     - name: Run lint checks
       run: |
-        ./gradlew lint
+        ./Adulting21/gradlew lint
 
     - name: Run unit tests
       run: |
