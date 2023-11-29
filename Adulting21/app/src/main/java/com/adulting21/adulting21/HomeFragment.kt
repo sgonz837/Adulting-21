@@ -11,6 +11,7 @@ package com.adulting21.adulting21
 import android.content.Intent
 import android.net.Uri
 import MeterBac
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -271,7 +272,19 @@ class HomeFragment : Fragment() {
                 R.id.nav_car_pool -> {
                     openUber()
                     // Handle home item click
-                    Toast.makeText(requireContext(), "Car pool clicked", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Car pool clicked", Toast.LENGTH_SHORT).show()
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    //return@setNavigationItemSelectedListener true
+
+                    true
+                }
+
+                R.id.nav_share -> {
+                    val profilePath = "https://play.google.com/store/apps/details?id=com.adulting21.adulting21"
+                    val packageName = "com.google.android"
+                    toAnotherAppOpen(requireContext(), profilePath, packageName)
+                    // Handle home item click
+//                    Toast.makeText(requireContext(), "Share App", Toast.LENGTH_SHORT).show()
                     drawerLayout.closeDrawer(GravityCompat.START)
                     //return@setNavigationItemSelectedListener true
 
@@ -468,6 +481,23 @@ class HomeFragment : Fragment() {
             true
         }
         popupMenu.show()
+    }
+
+    private fun toAnotherAppOpen(context: Context, profilePath: String, openAppPackageName: String) {
+        val uri = Uri.parse(profilePath)
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+
+        try {
+            intent.setPackage(openAppPackageName)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            // Log the exception message
+            e.printStackTrace()
+
+            // Provide a fallback option (e.g., open in browser)
+            val browserIntent = Intent(Intent.ACTION_VIEW, uri)
+            context.startActivity(browserIntent)
+        }
     }
 
     private fun openUber() {

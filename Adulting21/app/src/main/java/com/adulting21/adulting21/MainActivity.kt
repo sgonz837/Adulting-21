@@ -91,14 +91,14 @@ class MainActivity : AppCompatActivity() {
                     val user = firebaseAuth.currentUser
                     val userId = user?.uid
                     // Save user data to Firebase Realtime Database
-                    val databaseReference = FirebaseDatabase.getInstance().getReference("users")
-                    val userData = HashMap<String, Any>()
-                    userData["email"] = email
-                    //Add other user data here
-                    // Store under a unique ID (user ID in this case)
-                    userId?.let {
-                        databaseReference.child(it).setValue(userData)
-                    }
+//                    val databaseReference = FirebaseDatabase.getInstance().getReference("users")
+//                    val userData = HashMap<String, Any>()
+//                    userData["email"] = email
+//                    //Add other user data here
+////                    // Store under a unique ID (user ID in this case)
+//                    userId?.let {
+//                        databaseReference.child(it).setValue(userData)
+//                    }
                     finish()
 
                 } else {

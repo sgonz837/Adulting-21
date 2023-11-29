@@ -250,17 +250,6 @@ class MeterBac : Fragment() {
             ) {
                 selectedDrink = drinkList[position]
                 val alcValue = drinkBACMap[selectedDrink]
-                if (alcValue != null) {
-                    val message = "$selectedDrink - Alcohol Content: $alcValue"
-                    Toast.makeText(
-                        requireContext(),
-                        message,
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    // Log the message
-                    Log.d(TAG, message)
-                }
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -321,11 +310,11 @@ class MeterBac : Fragment() {
             // Call the function to update the BAC value
             updateBACValue()
 
-            Toast.makeText(
-                requireContext(),
-                "Drink Count: $drinkCount, Sex: $selectedSex, Weight: $userWeight",
-                Toast.LENGTH_SHORT
-            ).show()
+//            Toast.makeText(
+//                requireContext(),
+//                "Drink Count: $drinkCount, Sex: $selectedSex, Weight: $userWeight",
+//                Toast.LENGTH_SHORT
+//            ).show()
 
             // Save updated data to SharedPreferences
             val prefs: SharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
