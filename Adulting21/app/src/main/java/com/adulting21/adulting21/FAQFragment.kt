@@ -1,10 +1,17 @@
 package com.adulting21.adulting21
 
+
+import MeterBac
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.content.Intent
+import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
 class FAQFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
-    
+
 
     private var param1: String? = null
     private var param2: String? = null
@@ -36,8 +43,39 @@ class FAQFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_faq, container, false)
+
+        val drinkTip: TextView = view.findViewById(R.id.q1)
+        drinkTip.setOnClickListener {
+            Log.d("TAG", "Question 1")
+            val fragmentSwitch = TipFragment()
+            replaceFragment(fragmentSwitch)
+        }
+
+        //Take user to Mocktails page
+        val mockInfo: TextView = view.findViewById(R.id.q3)
+        mockInfo.setOnClickListener {
+            Log.d("TAG", "Question 3")
+            val fragmentSwitch = MocktailFragment()
+            replaceFragment(fragmentSwitch)
+        }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_faq, container, false)
+
+        val BAC: TextView = view.findViewById(R.id.q6)
+        BAC.setOnClickListener {
+            Log.d("TAG", "Question 6")
+            val fragmentSwitch = MeterBac()
+            replaceFragment(fragmentSwitch)
+        }
+
+        return view
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
     }
 
     companion object {
